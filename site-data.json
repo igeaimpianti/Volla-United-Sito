@@ -1,0 +1,12 @@
+{
+  "firstTeam": {
+    "competition": "PROMOZIONE",
+    "season": "",
+    "group": "",
+    "sourceUrl": "",
+    "updatedAt": "",
+    "live": {"provider": "youtube", "youtubeId": "", "title": "", "status": "scheduled"},
+    "matches": [],
+    "standings": []
+  }
+}

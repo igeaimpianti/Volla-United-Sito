@@ -248,6 +248,2409 @@
       }
     ],
     "automaticSofascore": false,
-    "automaticData": true
+    "automaticData": true,
+    "fullCalendar": [
+      {
+        "date": "2026-09-12",
+        "dateLabel": "12/09/2026",
+        "time": "",
+        "homeTeam": "A.C. SAN GIORGIO CALCIO",
+        "awayTeam": "BOCA ACADEMY",
+        "score": "3 - 1",
+        "venue": "GIORNATA 1",
+        "round": 1
+      },
+      {
+        "date": "2026-09-12",
+        "dateLabel": "12/09/2026",
+        "time": "",
+        "homeTeam": "ATS CASALNUOVO",
+        "awayTeam": "CITTA DI GRAGNANO",
+        "score": "1 - 1",
+        "venue": "GIORNATA 1",
+        "round": 1
+      },
+      {
+        "date": "2026-09-12",
+        "dateLabel": "12/09/2026",
+        "time": "",
+        "homeTeam": "G.B. CAPRESE",
+        "awayTeam": "STABIA CITY",
+        "score": "2 - 2",
+        "venue": "GIORNATA 1",
+        "round": 1
+      },
+      {
+        "date": "2026-09-12",
+        "dateLabel": "12/09/2026",
+        "time": "",
+        "homeTeam": "REAL SAN SEBASTIANO",
+        "awayTeam": "IMBRIANI TEAM ASSOCIAZIO",
+        "score": "0 - 1",
+        "venue": "GIORNATA 1",
+        "round": 1
+      },
+      {
+        "date": "2026-09-12",
+        "dateLabel": "12/09/2026",
+        "time": "",
+        "homeTeam": "VIRTUS POMPEI SOCCER",
+        "awayTeam": "A.C. TERZIGNO 1964",
+        "score": "1 - 0",
+        "venue": "GIORNATA 1",
+        "round": 1
+      },
+      {
+        "date": "2026-09-12",
+        "dateLabel": "12/09/2026",
+        "time": "",
+        "homeTeam": "VIRTUS SAN GENNARELLO",
+        "awayTeam": "F.C. VIRIBUS UNITIS 1917",
+        "score": "1 - 6",
+        "venue": "GIORNATA 1",
+        "round": 1
+      },
+      {
+        "date": "2026-09-12",
+        "dateLabel": "12/09/2026",
+        "time": "",
+        "homeTeam": "MASSA LUBRENSE",
+        "awayTeam": "A.C. MARCHESA",
+        "score": "0 - 0",
+        "venue": "GIORNATA 1",
+        "round": 1
+      },
+      {
+        "date": "2026-09-13",
+        "dateLabel": "13/09/2026",
+        "time": "",
+        "homeTeam": "VOLLA UNITED 2024",
+        "awayTeam": "F.C. STADERA SSD ARL",
+        "score": "1 - 0",
+        "venue": "GIORNATA 1",
+        "round": 1
+      },
+      {
+        "date": "2026-09-19",
+        "dateLabel": "19/09/2026",
+        "time": "",
+        "homeTeam": "F.C. STADERA SSD ARL",
+        "awayTeam": "REAL SAN SEBASTIANO",
+        "score": "5 - 1",
+        "venue": "GIORNATA 2",
+        "round": 2
+      },
+      {
+        "date": "2026-09-19",
+        "dateLabel": "19/09/2026",
+        "time": "",
+        "homeTeam": "STABIA CITY",
+        "awayTeam": "VIRTUS POMPEI SOCCER",
+        "score": "1 - 1",
+        "venue": "GIORNATA 2",
+        "round": 2
+      },
+      {
+        "date": "2026-09-19",
+        "dateLabel": "19/09/2026",
+        "time": "",
+        "homeTeam": "A.C. MARCHESA",
+        "awayTeam": "G.B. CAPRESE",
+        "score": "3 - 1",
+        "venue": "GIORNATA 2",
+        "round": 2
+      },
+      {
+        "date": "2026-09-19",
+        "dateLabel": "19/09/2026",
+        "time": "",
+        "homeTeam": "F.C. VIRIBUS UNITIS 1917",
+        "awayTeam": "VOLLA UNITED 2024",
+        "score": "4 - 1",
+        "venue": "GIORNATA 2",
+        "round": 2
+      },
+      {
+        "date": "2026-09-19",
+        "dateLabel": "19/09/2026",
+        "time": "",
+        "homeTeam": "B.A. PORTICI",
+        "awayTeam": "MASSA LUBRENSE",
+        "score": "2 - 2",
+        "venue": "GIORNATA 2",
+        "round": 2
+      },
+      {
+        "date": "2026-09-20",
+        "dateLabel": "20/09/2026",
+        "time": "",
+        "homeTeam": "A.C. TERZIGNO 1964",
+        "awayTeam": "ATS CASALNUOVO",
+        "score": "1 - 3",
+        "venue": "GIORNATA 2",
+        "round": 2
+      },
+      {
+        "date": "2026-09-20",
+        "dateLabel": "20/09/2026",
+        "time": "",
+        "homeTeam": "CITTA DI GRAGNANO",
+        "awayTeam": "VIRTUS SAN GENNARELLO",
+        "score": "3 - 2",
+        "venue": "GIORNATA 2",
+        "round": 2
+      },
+      {
+        "date": "2026-09-20",
+        "dateLabel": "20/09/2026",
+        "time": "",
+        "homeTeam": "IMBRIANI TEAM ASSOCIAZIO",
+        "awayTeam": "A.C. SAN GIORGIO CALCIO",
+        "score": "1 - 1",
+        "venue": "GIORNATA 2",
+        "round": 2
+      },
+      {
+        "date": "2026-09-26",
+        "dateLabel": "26/09/2026",
+        "time": "",
+        "homeTeam": "G.B. CAPRESE",
+        "awayTeam": "BOCA ACADEMY PORTICI",
+        "score": "0 - 0",
+        "venue": "GIORNATA 3",
+        "round": 3
+      },
+      {
+        "date": "2026-09-26",
+        "dateLabel": "26/09/2026",
+        "time": "",
+        "homeTeam": "A.C. MARCHESA",
+        "awayTeam": "STABIA CITY",
+        "score": "0 - 3",
+        "venue": "GIORNATA 3",
+        "round": 3
+      },
+      {
+        "date": "2026-09-26",
+        "dateLabel": "26/09/2026",
+        "time": "",
+        "homeTeam": "A.C. SAN GIORGIO CALCIO",
+        "awayTeam": "F.C. STADERA SSD ARL",
+        "score": "2 - 2",
+        "venue": "GIORNATA 3",
+        "round": 3
+      },
+      {
+        "date": "2026-09-26",
+        "dateLabel": "26/09/2026",
+        "time": "",
+        "homeTeam": "ATS CASALNUOVO",
+        "awayTeam": "VIRTUS POMPEI SOCCER",
+        "score": "2 - 4",
+        "venue": "GIORNATA 3",
+        "round": 3
+      },
+      {
+        "date": "2026-09-26",
+        "dateLabel": "26/09/2026",
+        "time": "",
+        "homeTeam": "MASSA LUBRENSE",
+        "awayTeam": "IMBRIANI TEAM ASSOCIAZIO",
+        "score": "1 - 4",
+        "venue": "GIORNATA 3",
+        "round": 3
+      },
+      {
+        "date": "2026-09-26",
+        "dateLabel": "26/09/2026",
+        "time": "",
+        "homeTeam": "REAL SAN SEBASTIANO",
+        "awayTeam": "F.C. VIRIBUS UNITIS 1917",
+        "score": "0 - 3",
+        "venue": "GIORNATA 3",
+        "round": 3
+      },
+      {
+        "date": "2026-09-26",
+        "dateLabel": "26/09/2026",
+        "time": "",
+        "homeTeam": "VIRTUS SAN GENNARELLO",
+        "awayTeam": "A.C. TERZIGNO 1964",
+        "score": "1 - 0",
+        "venue": "GIORNATA 3",
+        "round": 3
+      },
+      {
+        "date": "2026-09-27",
+        "dateLabel": "27/09/2026",
+        "time": "",
+        "homeTeam": "VOLLA UNITED 2024",
+        "awayTeam": "CITTA DI GRAGNANO",
+        "score": "0 - 2",
+        "venue": "GIORNATA 3",
+        "round": 3
+      },
+      {
+        "date": "2026-10-03",
+        "dateLabel": "03/10/2026",
+        "time": "",
+        "homeTeam": "STABIA CITY",
+        "awayTeam": "ATS CASALNUOVO",
+        "score": "4 - 0",
+        "venue": "GIORNATA 4",
+        "round": 4
+      },
+      {
+        "date": "2026-10-03",
+        "dateLabel": "03/10/2026",
+        "time": "",
+        "homeTeam": "CITTA DI GRAGNANO",
+        "awayTeam": "REAL SAN SEBASTIANO",
+        "score": "1 - 2",
+        "venue": "GIORNATA 4",
+        "round": 4
+      },
+      {
+        "date": "2026-10-03",
+        "dateLabel": "03/10/2026",
+        "time": "",
+        "homeTeam": "F.C. VIRIBUS UNITIS 1917",
+        "awayTeam": "A.C. SAN GIORGIO CALCIO",
+        "score": "1 - 0",
+        "venue": "GIORNATA 4",
+        "round": 4
+      },
+      {
+        "date": "2026-10-03",
+        "dateLabel": "03/10/2026",
+        "time": "",
+        "homeTeam": "VIRTUS POMPEI SOCCER",
+        "awayTeam": "VIRTUS SAN GENNARELLO",
+        "score": "1 - 1",
+        "venue": "GIORNATA 4",
+        "round": 4
+      },
+      {
+        "date": "2026-10-03",
+        "dateLabel": "03/10/2026",
+        "time": "",
+        "homeTeam": "F.C. STADERA SSD ARL",
+        "awayTeam": "MASSA LUBRENSE",
+        "score": "2 - 2",
+        "venue": "GIORNATA 4",
+        "round": 4
+      },
+      {
+        "date": "2026-10-04",
+        "dateLabel": "04/10/2026",
+        "time": "",
+        "homeTeam": "BOCA ACADEMY PORTICI",
+        "awayTeam": "A.C. MARCHESA",
+        "score": "1 - 2",
+        "venue": "GIORNATA 4",
+        "round": 4
+      },
+      {
+        "date": "2026-10-04",
+        "dateLabel": "04/10/2026",
+        "time": "",
+        "homeTeam": "IMBRIANI TEAM ASSOCIAZIO",
+        "awayTeam": "G.B. CAPRESE",
+        "score": "5 - 0",
+        "venue": "GIORNATA 4",
+        "round": 4
+      },
+      {
+        "date": "2026-10-10",
+        "dateLabel": "10/10/2026",
+        "time": "",
+        "homeTeam": "A.C. SAN GIORGIO CALCIO",
+        "awayTeam": "CITTA DI GRAGNANO",
+        "score": "0 - 1",
+        "venue": "GIORNATA 5",
+        "round": 5
+      },
+      {
+        "date": "2026-10-10",
+        "dateLabel": "10/10/2026",
+        "time": "",
+        "homeTeam": "BOCA ACADEMY PORTICI",
+        "awayTeam": "STABIA CITY",
+        "score": "1 - 3",
+        "venue": "GIORNATA 5",
+        "round": 5
+      },
+      {
+        "date": "2026-10-10",
+        "dateLabel": "10/10/2026",
+        "time": "",
+        "homeTeam": "G.B. CAPRESE",
+        "awayTeam": "F.C. STADERA SSD ARL",
+        "score": "2 - 1",
+        "venue": "GIORNATA 5",
+        "round": 5
+      },
+      {
+        "date": "2026-10-10",
+        "dateLabel": "10/10/2026",
+        "time": "",
+        "homeTeam": "VIRTUS SAN GENNARELLO",
+        "awayTeam": "ATS CASALNUOVO",
+        "score": "1 - 0",
+        "venue": "GIORNATA 5",
+        "round": 5
+      },
+      {
+        "date": "2026-10-10",
+        "dateLabel": "10/10/2026",
+        "time": "",
+        "homeTeam": "MASSA LUBRENSE",
+        "awayTeam": "F.C. VIRIBUS UNITIS 1917",
+        "score": "0 - 1",
+        "venue": "GIORNATA 5",
+        "round": 5
+      },
+      {
+        "date": "2026-10-10",
+        "dateLabel": "10/10/2026",
+        "time": "",
+        "homeTeam": "REAL SAN SEBASTIANO",
+        "awayTeam": "A.C. TERZIGNO 1964",
+        "score": "0 - 0",
+        "venue": "GIORNATA 5",
+        "round": 5
+      },
+      {
+        "date": "2026-10-11",
+        "dateLabel": "11/10/2026",
+        "time": "",
+        "homeTeam": "A.C. MARCHESA",
+        "awayTeam": "IMBRIANI TEAM ASSOCIAZIO",
+        "score": "1 - 3",
+        "venue": "GIORNATA 5",
+        "round": 5
+      },
+      {
+        "date": "2026-10-11",
+        "dateLabel": "11/10/2026",
+        "time": "",
+        "homeTeam": "VOLLA UNITED 2024",
+        "awayTeam": "VIRTUS POMPEI SOCCER",
+        "score": "1 - 1",
+        "venue": "GIORNATA 5",
+        "round": 5
+      },
+      {
+        "date": "2026-10-17",
+        "dateLabel": "17/10/2026",
+        "time": "",
+        "homeTeam": "F.C. VIRIBUS UNITIS 1917",
+        "awayTeam": "G.B. CAPRESE",
+        "score": "1 - 3",
+        "venue": "GIORNATA 6",
+        "round": 6
+      },
+      {
+        "date": "2026-10-17",
+        "dateLabel": "17/10/2026",
+        "time": "",
+        "homeTeam": "F.C. STADERA SSD ARL",
+        "awayTeam": "A.C. MARCHESA",
+        "score": "2 - 1",
+        "venue": "GIORNATA 6",
+        "round": 6
+      },
+      {
+        "date": "2026-10-17",
+        "dateLabel": "17/10/2026",
+        "time": "",
+        "homeTeam": "STABIA CITY",
+        "awayTeam": "VIRTUS SAN GENNARELLO",
+        "score": "1 - 1",
+        "venue": "GIORNATA 6",
+        "round": 6
+      },
+      {
+        "date": "2026-10-17",
+        "dateLabel": "17/10/2026",
+        "time": "",
+        "homeTeam": "A.C. TERZIGNO 1964",
+        "awayTeam": "A.C. SAN GIORGIO CALCIO",
+        "score": "2 - 1",
+        "venue": "GIORNATA 6",
+        "round": 6
+      },
+      {
+        "date": "2026-10-17",
+        "dateLabel": "17/10/2026",
+        "time": "",
+        "homeTeam": "ATS CASALNUOVO",
+        "awayTeam": "VOLLA UNITED 2024",
+        "score": "1 - 0",
+        "venue": "GIORNATA 6",
+        "round": 6
+      },
+      {
+        "date": "2026-10-17",
+        "dateLabel": "17/10/2026",
+        "time": "",
+        "homeTeam": "VIRTUS POMPEI SOCCER",
+        "awayTeam": "REAL SAN SEBASTIANO",
+        "score": "1 - 1",
+        "venue": "GIORNATA 6",
+        "round": 6
+      },
+      {
+        "date": "2026-10-18",
+        "dateLabel": "18/10/2026",
+        "time": "",
+        "homeTeam": "CITTA DI GRAGNANO",
+        "awayTeam": "MASSA LUBRENSE",
+        "score": "0 - 1",
+        "venue": "GIORNATA 6",
+        "round": 6
+      },
+      {
+        "date": "2026-10-18",
+        "dateLabel": "18/10/2026",
+        "time": "",
+        "homeTeam": "IMBRIANI TEAM ASSOCIAZIO",
+        "awayTeam": "BOCA ACADEMY",
+        "score": "3 - 0",
+        "venue": "GIORNATA 6",
+        "round": 6
+      },
+      {
+        "date": "2026-10-24",
+        "dateLabel": "24/10/2026",
+        "time": "",
+        "homeTeam": "REAL SAN SEBASTIANO",
+        "awayTeam": "ATS CASALNUOVO",
+        "score": "1 - 0",
+        "venue": "GIORNATA 7",
+        "round": 7
+      },
+      {
+        "date": "2026-10-24",
+        "dateLabel": "24/10/2026",
+        "time": "",
+        "homeTeam": "A.C. SAN GIORGIO CALCIO",
+        "awayTeam": "VIRTUS POMPEI SOCCER",
+        "score": "2 - 2",
+        "venue": "GIORNATA 7",
+        "round": 7
+      },
+      {
+        "date": "2026-10-24",
+        "dateLabel": "24/10/2026",
+        "time": "",
+        "homeTeam": "BOCA ACADEMY PORTICI",
+        "awayTeam": "F.C. STADERA SSD ARL",
+        "score": "4 - 0",
+        "venue": "GIORNATA 7",
+        "round": 7
+      },
+      {
+        "date": "2026-10-24",
+        "dateLabel": "24/10/2026",
+        "time": "",
+        "homeTeam": "G.B. CAPRESE",
+        "awayTeam": "CITTA DI GRAGNANO",
+        "score": "2 - 0",
+        "venue": "GIORNATA 7",
+        "round": 7
+      },
+      {
+        "date": "2026-10-24",
+        "dateLabel": "24/10/2026",
+        "time": "",
+        "homeTeam": "A.C. MARCHESA",
+        "awayTeam": "F.C. VIRIBUS UNITIS 1917",
+        "score": "3 - 2",
+        "venue": "GIORNATA 7",
+        "round": 7
+      },
+      {
+        "date": "2026-10-25",
+        "dateLabel": "25/10/2026",
+        "time": "",
+        "homeTeam": "MASSA LUBRENSE",
+        "awayTeam": "A.C. TERZIGNO 1964",
+        "score": "2 - 2",
+        "venue": "GIORNATA 7",
+        "round": 7
+      },
+      {
+        "date": "2026-10-25",
+        "dateLabel": "25/10/2026",
+        "time": "",
+        "homeTeam": "VOLLA UNITED 2024",
+        "awayTeam": "VIRTUS SAN GENNARELLO",
+        "score": "1 - 1",
+        "venue": "GIORNATA 7",
+        "round": 7
+      },
+      {
+        "date": "2026-10-25",
+        "dateLabel": "25/10/2026",
+        "time": "",
+        "homeTeam": "IMBRIANI TEAM ASSOCIAZIO",
+        "awayTeam": "STABIA CITY",
+        "score": "4 - 1",
+        "venue": "GIORNATA 7",
+        "round": 7
+      },
+      {
+        "date": "2026-10-28",
+        "dateLabel": "28/10/2026",
+        "time": "",
+        "homeTeam": "A.C. TERZIGNO 1964",
+        "awayTeam": "VOLLA UNITED 2024",
+        "score": "0 - 3",
+        "venue": "GIORNATA 4",
+        "round": 4
+      },
+      {
+        "date": "2026-10-31",
+        "dateLabel": "31/10/2026",
+        "time": "",
+        "homeTeam": "F.C. STADERA SSD ARL",
+        "awayTeam": "IMBRIANI TEAM ASSOCIAZIO",
+        "score": "2 - 4",
+        "venue": "GIORNATA 8",
+        "round": 8
+      },
+      {
+        "date": "2026-10-31",
+        "dateLabel": "31/10/2026",
+        "time": "",
+        "homeTeam": "VIRTUS SAN GENNARELLO",
+        "awayTeam": "REAL SAN SEBASTIANO",
+        "score": "0 - 3",
+        "venue": "GIORNATA 8",
+        "round": 8
+      },
+      {
+        "date": "2026-10-31",
+        "dateLabel": "31/10/2026",
+        "time": "",
+        "homeTeam": "A.C. TERZIGNO 1964",
+        "awayTeam": "G.B. CAPRESE",
+        "score": "1 - 0",
+        "venue": "GIORNATA 8",
+        "round": 8
+      },
+      {
+        "date": "2026-11-01",
+        "dateLabel": "01/11/2026",
+        "time": "",
+        "homeTeam": "ATS CASALNUOVO",
+        "awayTeam": "A.C. SAN GIORGIO CALCIO",
+        "score": "1 - 0",
+        "venue": "GIORNATA 8",
+        "round": 8
+      },
+      {
+        "date": "2026-11-01",
+        "dateLabel": "01/11/2026",
+        "time": "",
+        "homeTeam": "F.C. VIRIBUS UNITIS 1917",
+        "awayTeam": "BOCA ACADEMY PORTICI",
+        "score": "3 - 0",
+        "venue": "GIORNATA 8",
+        "round": 8
+      },
+      {
+        "date": "2026-11-01",
+        "dateLabel": "01/11/2026",
+        "time": "",
+        "homeTeam": "CITTA DI GRAGNANO",
+        "awayTeam": "A.C. MARCHESA",
+        "score": "2 - 1",
+        "venue": "GIORNATA 8",
+        "round": 8
+      },
+      {
+        "date": "2026-11-01",
+        "dateLabel": "01/11/2026",
+        "time": "",
+        "homeTeam": "STABIA CITY",
+        "awayTeam": "VOLLA UNITED 2024",
+        "score": "2 - 1",
+        "venue": "GIORNATA 8",
+        "round": 8
+      },
+      {
+        "date": "2026-11-01",
+        "dateLabel": "01/11/2026",
+        "time": "",
+        "homeTeam": "VIRTUS POMPEI SOCCER",
+        "awayTeam": "MASSA LUBRENSE",
+        "score": "1 - 1",
+        "venue": "GIORNATA 8",
+        "round": 8
+      },
+      {
+        "date": "2026-11-07",
+        "dateLabel": "07/11/2026",
+        "time": "",
+        "homeTeam": "F.C. STADERA SSD ARL",
+        "awayTeam": "STABIA CITY",
+        "score": "—",
+        "venue": "GIORNATA 9",
+        "round": 9
+      },
+      {
+        "date": "2026-11-07",
+        "dateLabel": "07/11/2026",
+        "time": "",
+        "homeTeam": "A.C. MARCHESA",
+        "awayTeam": "A.C. TERZIGNO 1964",
+        "score": "—",
+        "venue": "GIORNATA 9",
+        "round": 9
+      },
+      {
+        "date": "2026-11-07",
+        "dateLabel": "07/11/2026",
+        "time": "",
+        "homeTeam": "A.C. SAN GIORGIO CALCIO",
+        "awayTeam": "VIRTUS SAN GENNARELLO",
+        "score": "—",
+        "venue": "GIORNATA 9",
+        "round": 9
+      },
+      {
+        "date": "2026-11-07",
+        "dateLabel": "07/11/2026",
+        "time": "",
+        "homeTeam": "G.B. CAPRESE",
+        "awayTeam": "VIRTUS POMPEI SOCCER",
+        "score": "—",
+        "venue": "GIORNATA 9",
+        "round": 9
+      },
+      {
+        "date": "2026-11-07",
+        "dateLabel": "07/11/2026",
+        "time": "",
+        "homeTeam": "REAL SAN SEBASTIANO",
+        "awayTeam": "VOLLA UNITED 2024",
+        "score": "—",
+        "venue": "GIORNATA 9",
+        "round": 9
+      },
+      {
+        "date": "2026-11-07",
+        "dateLabel": "07/11/2026",
+        "time": "",
+        "homeTeam": "MASSA LUBRENSE",
+        "awayTeam": "ATS CASALNUOVO",
+        "score": "—",
+        "venue": "GIORNATA 9",
+        "round": 9
+      },
+      {
+        "date": "2026-11-08",
+        "dateLabel": "08/11/2026",
+        "time": "",
+        "homeTeam": "BOCA ACADEMY  PORTICI",
+        "awayTeam": "CITTA DI GRAGNANO",
+        "score": "—",
+        "venue": "GIORNATA 9",
+        "round": 9
+      },
+      {
+        "date": "2026-11-08",
+        "dateLabel": "08/11/2026",
+        "time": "",
+        "homeTeam": "IMBRIANI TEAM ASSOCIAZIO",
+        "awayTeam": "F.C. VIRIBUS UNITIS 1917",
+        "score": "—",
+        "venue": "GIORNATA 9",
+        "round": 9
+      },
+      {
+        "date": "2026-11-15",
+        "dateLabel": "15/11/2026",
+        "time": "",
+        "homeTeam": "A.C. TERZIGNO 1964",
+        "awayTeam": "BOCA ACADEMY",
+        "score": "—",
+        "venue": "GIORNATA 10",
+        "round": 10
+      },
+      {
+        "date": "2026-11-15",
+        "dateLabel": "15/11/2026",
+        "time": "",
+        "homeTeam": "ATS CASALNUOVO",
+        "awayTeam": "G.B. CAPRESE",
+        "score": "—",
+        "venue": "GIORNATA 10",
+        "round": 10
+      },
+      {
+        "date": "2026-11-15",
+        "dateLabel": "15/11/2026",
+        "time": "",
+        "homeTeam": "CITTA DI GRAGNANO",
+        "awayTeam": "IMBRIANI TEAM ASSOCIAZIO",
+        "score": "—",
+        "venue": "GIORNATA 10",
+        "round": 10
+      },
+      {
+        "date": "2026-11-15",
+        "dateLabel": "15/11/2026",
+        "time": "",
+        "homeTeam": "F.C. VIRIBUS UNITIS 1917",
+        "awayTeam": "F.C. STADERA SSD ARL",
+        "score": "—",
+        "venue": "GIORNATA 10",
+        "round": 10
+      },
+      {
+        "date": "2026-11-15",
+        "dateLabel": "15/11/2026",
+        "time": "",
+        "homeTeam": "STABIA CITY",
+        "awayTeam": "REAL SAN SEBASTIANO",
+        "score": "—",
+        "venue": "GIORNATA 10",
+        "round": 10
+      },
+      {
+        "date": "2026-11-15",
+        "dateLabel": "15/11/2026",
+        "time": "",
+        "homeTeam": "VIRTUS POMPEI SOCCER",
+        "awayTeam": "A.C. MARCHESA",
+        "score": "—",
+        "venue": "GIORNATA 10",
+        "round": 10
+      },
+      {
+        "date": "2026-11-15",
+        "dateLabel": "15/11/2026",
+        "time": "",
+        "homeTeam": "VIRTUS SAN GENNARELLO",
+        "awayTeam": "MASSA LUBRENSE",
+        "score": "—",
+        "venue": "GIORNATA 10",
+        "round": 10
+      },
+      {
+        "date": "2026-11-15",
+        "dateLabel": "15/11/2026",
+        "time": "",
+        "homeTeam": "VOLLA UNITED 2024",
+        "awayTeam": "A.C. SAN GIORGIO CALCIO",
+        "score": "—",
+        "venue": "GIORNATA 10",
+        "round": 10
+      },
+      {
+        "date": "2026-11-22",
+        "dateLabel": "22/11/2026",
+        "time": "",
+        "homeTeam": "A.C. MARCHESA",
+        "awayTeam": "ATS CASALNUOVO",
+        "score": "—",
+        "venue": "GIORNATA 11",
+        "round": 11
+      },
+      {
+        "date": "2026-11-22",
+        "dateLabel": "22/11/2026",
+        "time": "",
+        "homeTeam": "A.C. SAN GIORGIO CALCIO",
+        "awayTeam": "REAL SAN SEBASTIANO",
+        "score": "—",
+        "venue": "GIORNATA 11",
+        "round": 11
+      },
+      {
+        "date": "2026-11-22",
+        "dateLabel": "22/11/2026",
+        "time": "",
+        "homeTeam": "BOCA ACADEMY",
+        "awayTeam": "VIRTUS POMPEI SOCCER",
+        "score": "—",
+        "venue": "GIORNATA 11",
+        "round": 11
+      },
+      {
+        "date": "2026-11-22",
+        "dateLabel": "22/11/2026",
+        "time": "",
+        "homeTeam": "F.C. STADERA SSD ARL",
+        "awayTeam": "CITTA DI GRAGNANO",
+        "score": "—",
+        "venue": "GIORNATA 11",
+        "round": 11
+      },
+      {
+        "date": "2026-11-22",
+        "dateLabel": "22/11/2026",
+        "time": "",
+        "homeTeam": "F.C. VIRIBUS UNITIS 1917",
+        "awayTeam": "STABIA CITY",
+        "score": "—",
+        "venue": "GIORNATA 11",
+        "round": 11
+      },
+      {
+        "date": "2026-11-22",
+        "dateLabel": "22/11/2026",
+        "time": "",
+        "homeTeam": "G.B. CAPRESE",
+        "awayTeam": "VIRTUS SAN GENNARELLO",
+        "score": "—",
+        "venue": "GIORNATA 11",
+        "round": 11
+      },
+      {
+        "date": "2026-11-22",
+        "dateLabel": "22/11/2026",
+        "time": "",
+        "homeTeam": "IMBRIANI TEAM ASSOCIAZIO",
+        "awayTeam": "A.C. TERZIGNO 1964",
+        "score": "—",
+        "venue": "GIORNATA 11",
+        "round": 11
+      },
+      {
+        "date": "2026-11-22",
+        "dateLabel": "22/11/2026",
+        "time": "",
+        "homeTeam": "MASSA LUBRENSE",
+        "awayTeam": "VOLLA UNITED 2024",
+        "score": "—",
+        "venue": "GIORNATA 11",
+        "round": 11
+      },
+      {
+        "date": "2026-11-29",
+        "dateLabel": "29/11/2026",
+        "time": "",
+        "homeTeam": "A.C. TERZIGNO 1964",
+        "awayTeam": "F.C. STADERA SSD ARL",
+        "score": "—",
+        "venue": "GIORNATA 12",
+        "round": 12
+      },
+      {
+        "date": "2026-11-29",
+        "dateLabel": "29/11/2026",
+        "time": "",
+        "homeTeam": "ATS CASALNUOVO",
+        "awayTeam": "BOCA ACADEMY",
+        "score": "—",
+        "venue": "GIORNATA 12",
+        "round": 12
+      },
+      {
+        "date": "2026-11-29",
+        "dateLabel": "29/11/2026",
+        "time": "",
+        "homeTeam": "CITTA DI GRAGNANO",
+        "awayTeam": "F.C. VIRIBUS UNITIS 1917",
+        "score": "—",
+        "venue": "GIORNATA 12",
+        "round": 12
+      },
+      {
+        "date": "2026-11-29",
+        "dateLabel": "29/11/2026",
+        "time": "",
+        "homeTeam": "REAL SAN SEBASTIANO",
+        "awayTeam": "MASSA LUBRENSE",
+        "score": "—",
+        "venue": "GIORNATA 12",
+        "round": 12
+      },
+      {
+        "date": "2026-11-29",
+        "dateLabel": "29/11/2026",
+        "time": "",
+        "homeTeam": "STABIA CITY",
+        "awayTeam": "A.C. SAN GIORGIO CALCIO",
+        "score": "—",
+        "venue": "GIORNATA 12",
+        "round": 12
+      },
+      {
+        "date": "2026-11-29",
+        "dateLabel": "29/11/2026",
+        "time": "",
+        "homeTeam": "VIRTUS POMPEI SOCCER",
+        "awayTeam": "IMBRIANI TEAM ASSOCIAZIO",
+        "score": "—",
+        "venue": "GIORNATA 12",
+        "round": 12
+      },
+      {
+        "date": "2026-11-29",
+        "dateLabel": "29/11/2026",
+        "time": "",
+        "homeTeam": "VIRTUS SAN GENNARELLO",
+        "awayTeam": "A.C. MARCHESA",
+        "score": "—",
+        "venue": "GIORNATA 12",
+        "round": 12
+      },
+      {
+        "date": "2026-11-29",
+        "dateLabel": "29/11/2026",
+        "time": "",
+        "homeTeam": "VOLLA UNITED 2024",
+        "awayTeam": "G.B. CAPRESE",
+        "score": "—",
+        "venue": "GIORNATA 12",
+        "round": 12
+      },
+      {
+        "date": "2026-12-06",
+        "dateLabel": "06/12/2026",
+        "time": "",
+        "homeTeam": "A.C. MARCHESA",
+        "awayTeam": "VOLLA UNITED 2024",
+        "score": "—",
+        "venue": "GIORNATA 13",
+        "round": 13
+      },
+      {
+        "date": "2026-12-06",
+        "dateLabel": "06/12/2026",
+        "time": "",
+        "homeTeam": "BOCA ACADEMY",
+        "awayTeam": "VIRTUS SAN GENNARELLO",
+        "score": "—",
+        "venue": "GIORNATA 13",
+        "round": 13
+      },
+      {
+        "date": "2026-12-06",
+        "dateLabel": "06/12/2026",
+        "time": "",
+        "homeTeam": "CITTA DI GRAGNANO",
+        "awayTeam": "STABIA CITY",
+        "score": "—",
+        "venue": "GIORNATA 13",
+        "round": 13
+      },
+      {
+        "date": "2026-12-06",
+        "dateLabel": "06/12/2026",
+        "time": "",
+        "homeTeam": "F.C. STADERA SSD ARL",
+        "awayTeam": "VIRTUS POMPEI SOCCER",
+        "score": "—",
+        "venue": "GIORNATA 13",
+        "round": 13
+      },
+      {
+        "date": "2026-12-06",
+        "dateLabel": "06/12/2026",
+        "time": "",
+        "homeTeam": "F.C. VIRIBUS UNITIS 1917",
+        "awayTeam": "A.C. TERZIGNO 1964",
+        "score": "—",
+        "venue": "GIORNATA 13",
+        "round": 13
+      },
+      {
+        "date": "2026-12-06",
+        "dateLabel": "06/12/2026",
+        "time": "",
+        "homeTeam": "G.B. CAPRESE",
+        "awayTeam": "REAL SAN SEBASTIANO",
+        "score": "—",
+        "venue": "GIORNATA 13",
+        "round": 13
+      },
+      {
+        "date": "2026-12-06",
+        "dateLabel": "06/12/2026",
+        "time": "",
+        "homeTeam": "IMBRIANI TEAM ASSOCIAZIO",
+        "awayTeam": "ATS CASALNUOVO",
+        "score": "—",
+        "venue": "GIORNATA 13",
+        "round": 13
+      },
+      {
+        "date": "2026-12-06",
+        "dateLabel": "06/12/2026",
+        "time": "",
+        "homeTeam": "MASSA LUBRENSE",
+        "awayTeam": "A.C. SAN GIORGIO CALCIO",
+        "score": "—",
+        "venue": "GIORNATA 13",
+        "round": 13
+      },
+      {
+        "date": "2026-12-13",
+        "dateLabel": "13/12/2026",
+        "time": "",
+        "homeTeam": "A.C. SAN GIORGIO CALCIO",
+        "awayTeam": "G.B. CAPRESE",
+        "score": "—",
+        "venue": "GIORNATA 14",
+        "round": 14
+      },
+      {
+        "date": "2026-12-13",
+        "dateLabel": "13/12/2026",
+        "time": "",
+        "homeTeam": "A.C. TERZIGNO 1964",
+        "awayTeam": "CITTA DI GRAGNANO",
+        "score": "—",
+        "venue": "GIORNATA 14",
+        "round": 14
+      },
+      {
+        "date": "2026-12-13",
+        "dateLabel": "13/12/2026",
+        "time": "",
+        "homeTeam": "ATS CASALNUOVO",
+        "awayTeam": "F.C. STADERA SSD ARL",
+        "score": "—",
+        "venue": "GIORNATA 14",
+        "round": 14
+      },
+      {
+        "date": "2026-12-13",
+        "dateLabel": "13/12/2026",
+        "time": "",
+        "homeTeam": "MASSA LUBRENSE",
+        "awayTeam": "STABIA CITY",
+        "score": "—",
+        "venue": "GIORNATA 14",
+        "round": 14
+      },
+      {
+        "date": "2026-12-13",
+        "dateLabel": "13/12/2026",
+        "time": "",
+        "homeTeam": "REAL SAN SEBASTIANO",
+        "awayTeam": "A.C. MARCHESA",
+        "score": "—",
+        "venue": "GIORNATA 14",
+        "round": 14
+      },
+      {
+        "date": "2026-12-13",
+        "dateLabel": "13/12/2026",
+        "time": "",
+        "homeTeam": "VIRTUS POMPEI SOCCER",
+        "awayTeam": "F.C. VIRIBUS UNITIS 1917",
+        "score": "—",
+        "venue": "GIORNATA 14",
+        "round": 14
+      },
+      {
+        "date": "2026-12-13",
+        "dateLabel": "13/12/2026",
+        "time": "",
+        "homeTeam": "VIRTUS SAN GENNARELLO",
+        "awayTeam": "IMBRIANI TEAM ASSOCIAZIO",
+        "score": "—",
+        "venue": "GIORNATA 14",
+        "round": 14
+      },
+      {
+        "date": "2026-12-13",
+        "dateLabel": "13/12/2026",
+        "time": "",
+        "homeTeam": "VOLLA UNITED 2024",
+        "awayTeam": "BOCA ACADEMY",
+        "score": "—",
+        "venue": "GIORNATA 14",
+        "round": 14
+      },
+      {
+        "date": "2026-12-20",
+        "dateLabel": "20/12/2026",
+        "time": "",
+        "homeTeam": "A.C. MARCHESA",
+        "awayTeam": "A.C. SAN GIORGIO CALCIO",
+        "score": "—",
+        "venue": "GIORNATA 15",
+        "round": 15
+      },
+      {
+        "date": "2026-12-20",
+        "dateLabel": "20/12/2026",
+        "time": "",
+        "homeTeam": "BOCA ACADEMY",
+        "awayTeam": "REAL SAN SEBASTIANO",
+        "score": "—",
+        "venue": "GIORNATA 15",
+        "round": 15
+      },
+      {
+        "date": "2026-12-20",
+        "dateLabel": "20/12/2026",
+        "time": "",
+        "homeTeam": "CITTA DI GRAGNANO",
+        "awayTeam": "VIRTUS POMPEI SOCCER",
+        "score": "—",
+        "venue": "GIORNATA 15",
+        "round": 15
+      },
+      {
+        "date": "2026-12-20",
+        "dateLabel": "20/12/2026",
+        "time": "",
+        "homeTeam": "F.C. STADERA SSD ARL",
+        "awayTeam": "VIRTUS SAN GENNARELLO",
+        "score": "—",
+        "venue": "GIORNATA 15",
+        "round": 15
+      },
+      {
+        "date": "2026-12-20",
+        "dateLabel": "20/12/2026",
+        "time": "",
+        "homeTeam": "F.C. VIRIBUS UNITIS 1917",
+        "awayTeam": "ATS CASALNUOVO",
+        "score": "—",
+        "venue": "GIORNATA 15",
+        "round": 15
+      },
+      {
+        "date": "2026-12-20",
+        "dateLabel": "20/12/2026",
+        "time": "",
+        "homeTeam": "G.B. CAPRESE",
+        "awayTeam": "MASSA LUBRENSE",
+        "score": "—",
+        "venue": "GIORNATA 15",
+        "round": 15
+      },
+      {
+        "date": "2026-12-20",
+        "dateLabel": "20/12/2026",
+        "time": "",
+        "homeTeam": "IMBRIANI TEAM ASSOCIAZIO",
+        "awayTeam": "VOLLA UNITED 2024",
+        "score": "—",
+        "venue": "GIORNATA 15",
+        "round": 15
+      },
+      {
+        "date": "2026-12-20",
+        "dateLabel": "20/12/2026",
+        "time": "",
+        "homeTeam": "STABIA CITY",
+        "awayTeam": "A.C. TERZIGNO 1964",
+        "score": "—",
+        "venue": "GIORNATA 15",
+        "round": 15
+      },
+      {
+        "date": "2027-01-06",
+        "dateLabel": "06/01/2027",
+        "time": "",
+        "homeTeam": "BOCA ACADEMY",
+        "awayTeam": "A.C. SAN GIORGIO CALCIO",
+        "score": "—",
+        "venue": "GIORNATA 16",
+        "round": 16
+      },
+      {
+        "date": "2027-01-06",
+        "dateLabel": "06/01/2027",
+        "time": "",
+        "homeTeam": "CITTA DI GRAGNANO",
+        "awayTeam": "ATS CASALNUOVO",
+        "score": "—",
+        "venue": "GIORNATA 16",
+        "round": 16
+      },
+      {
+        "date": "2027-01-06",
+        "dateLabel": "06/01/2027",
+        "time": "",
+        "homeTeam": "STABIA CITY",
+        "awayTeam": "G.B. CAPRESE",
+        "score": "—",
+        "venue": "GIORNATA 16",
+        "round": 16
+      },
+      {
+        "date": "2027-01-06",
+        "dateLabel": "06/01/2027",
+        "time": "",
+        "homeTeam": "A.C. MARCHESA",
+        "awayTeam": "MASSA LUBRENSE",
+        "score": "—",
+        "venue": "GIORNATA 16",
+        "round": 16
+      },
+      {
+        "date": "2027-01-06",
+        "dateLabel": "06/01/2027",
+        "time": "",
+        "homeTeam": "IMBRIANI TEAM ASSOCIAZIO",
+        "awayTeam": "REAL SAN SEBASTIANO",
+        "score": "—",
+        "venue": "GIORNATA 16",
+        "round": 16
+      },
+      {
+        "date": "2027-01-06",
+        "dateLabel": "06/01/2027",
+        "time": "",
+        "homeTeam": "A.C. TERZIGNO 1964",
+        "awayTeam": "VIRTUS POMPEI SOCCER",
+        "score": "—",
+        "venue": "GIORNATA 16",
+        "round": 16
+      },
+      {
+        "date": "2027-01-06",
+        "dateLabel": "06/01/2027",
+        "time": "",
+        "homeTeam": "F.C. VIRIBUS UNITIS 1917",
+        "awayTeam": "VIRTUS SAN GENNARELLO",
+        "score": "—",
+        "venue": "GIORNATA 16",
+        "round": 16
+      },
+      {
+        "date": "2027-01-06",
+        "dateLabel": "06/01/2027",
+        "time": "",
+        "homeTeam": "F.C. STADERA SSD ARL",
+        "awayTeam": "VOLLA UNITED 2024",
+        "score": "—",
+        "venue": "GIORNATA 16",
+        "round": 16
+      },
+      {
+        "date": "2027-01-10",
+        "dateLabel": "10/01/2027",
+        "time": "",
+        "homeTeam": "G.B. CAPRESE",
+        "awayTeam": "A.C. MARCHESA",
+        "score": "—",
+        "venue": "GIORNATA 17",
+        "round": 17
+      },
+      {
+        "date": "2027-01-10",
+        "dateLabel": "10/01/2027",
+        "time": "",
+        "homeTeam": "ATS CASALNUOVO",
+        "awayTeam": "A.C. TERZIGNO 1964",
+        "score": "—",
+        "venue": "GIORNATA 17",
+        "round": 17
+      },
+      {
+        "date": "2027-01-10",
+        "dateLabel": "10/01/2027",
+        "time": "",
+        "homeTeam": "MASSA LUBRENSE",
+        "awayTeam": "BOCA ACADEMY",
+        "score": "—",
+        "venue": "GIORNATA 17",
+        "round": 17
+      },
+      {
+        "date": "2027-01-10",
+        "dateLabel": "10/01/2027",
+        "time": "",
+        "homeTeam": "VIRTUS SAN GENNARELLO",
+        "awayTeam": "CITTA DI GRAGNANO",
+        "score": "—",
+        "venue": "GIORNATA 17",
+        "round": 17
+      },
+      {
+        "date": "2027-01-10",
+        "dateLabel": "10/01/2027",
+        "time": "",
+        "homeTeam": "REAL SAN SEBASTIANO",
+        "awayTeam": "F.C. STADERA SSD ARL",
+        "score": "—",
+        "venue": "GIORNATA 17",
+        "round": 17
+      },
+      {
+        "date": "2027-01-10",
+        "dateLabel": "10/01/2027",
+        "time": "",
+        "homeTeam": "VOLLA UNITED 2024",
+        "awayTeam": "F.C. VIRIBUS UNITIS 1917",
+        "score": "—",
+        "venue": "GIORNATA 17",
+        "round": 17
+      },
+      {
+        "date": "2027-01-10",
+        "dateLabel": "10/01/2027",
+        "time": "",
+        "homeTeam": "A.C. SAN GIORGIO CALCIO",
+        "awayTeam": "IMBRIANI TEAM ASSOCIAZIO",
+        "score": "—",
+        "venue": "GIORNATA 17",
+        "round": 17
+      },
+      {
+        "date": "2027-01-10",
+        "dateLabel": "10/01/2027",
+        "time": "",
+        "homeTeam": "VIRTUS POMPEI SOCCER",
+        "awayTeam": "STABIA CITY",
+        "score": "—",
+        "venue": "GIORNATA 17",
+        "round": 17
+      },
+      {
+        "date": "2027-01-17",
+        "dateLabel": "17/01/2027",
+        "time": "",
+        "homeTeam": "STABIA CITY",
+        "awayTeam": "A.C. MARCHESA",
+        "score": "—",
+        "venue": "GIORNATA 18",
+        "round": 18
+      },
+      {
+        "date": "2027-01-17",
+        "dateLabel": "17/01/2027",
+        "time": "",
+        "homeTeam": "F.C. STADERA SSD ARL",
+        "awayTeam": "A.C. SAN GIORGIO CALCIO",
+        "score": "—",
+        "venue": "GIORNATA 18",
+        "round": 18
+      },
+      {
+        "date": "2027-01-17",
+        "dateLabel": "17/01/2027",
+        "time": "",
+        "homeTeam": "VIRTUS POMPEI SOCCER",
+        "awayTeam": "ATS CASALNUOVO",
+        "score": "—",
+        "venue": "GIORNATA 18",
+        "round": 18
+      },
+      {
+        "date": "2027-01-17",
+        "dateLabel": "17/01/2027",
+        "time": "",
+        "homeTeam": "BOCA ACADEMY",
+        "awayTeam": "G.B. CAPRESE",
+        "score": "—",
+        "venue": "GIORNATA 18",
+        "round": 18
+      },
+      {
+        "date": "2027-01-17",
+        "dateLabel": "17/01/2027",
+        "time": "",
+        "homeTeam": "IMBRIANI TEAM ASSOCIAZIO",
+        "awayTeam": "MASSA LUBRENSE",
+        "score": "—",
+        "venue": "GIORNATA 18",
+        "round": 18
+      },
+      {
+        "date": "2027-01-17",
+        "dateLabel": "17/01/2027",
+        "time": "",
+        "homeTeam": "F.C. VIRIBUS UNITIS 1917",
+        "awayTeam": "REAL SAN SEBASTIANO",
+        "score": "—",
+        "venue": "GIORNATA 18",
+        "round": 18
+      },
+      {
+        "date": "2027-01-17",
+        "dateLabel": "17/01/2027",
+        "time": "",
+        "homeTeam": "A.C. TERZIGNO 1964",
+        "awayTeam": "VIRTUS SAN GENNARELLO",
+        "score": "—",
+        "venue": "GIORNATA 18",
+        "round": 18
+      },
+      {
+        "date": "2027-01-17",
+        "dateLabel": "17/01/2027",
+        "time": "",
+        "homeTeam": "CITTA DI GRAGNANO",
+        "awayTeam": "VOLLA UNITED 2024",
+        "score": "—",
+        "venue": "GIORNATA 18",
+        "round": 18
+      },
+      {
+        "date": "2027-01-24",
+        "dateLabel": "24/01/2027",
+        "time": "",
+        "homeTeam": "VOLLA UNITED 2024",
+        "awayTeam": "A.C. TERZIGNO 1964",
+        "score": "—",
+        "venue": "GIORNATA 19",
+        "round": 19
+      },
+      {
+        "date": "2027-01-24",
+        "dateLabel": "24/01/2027",
+        "time": "",
+        "homeTeam": "A.C. MARCHESA",
+        "awayTeam": "BOCA ACADEMY",
+        "score": "—",
+        "venue": "GIORNATA 19",
+        "round": 19
+      },
+      {
+        "date": "2027-01-24",
+        "dateLabel": "24/01/2027",
+        "time": "",
+        "homeTeam": "REAL SAN SEBASTIANO",
+        "awayTeam": "CITTA DI GRAGNANO",
+        "score": "—",
+        "venue": "GIORNATA 19",
+        "round": 19
+      },
+      {
+        "date": "2027-01-24",
+        "dateLabel": "24/01/2027",
+        "time": "",
+        "homeTeam": "MASSA LUBRENSE",
+        "awayTeam": "F.C. STADERA SSD ARL",
+        "score": "—",
+        "venue": "GIORNATA 19",
+        "round": 19
+      },
+      {
+        "date": "2027-01-24",
+        "dateLabel": "24/01/2027",
+        "time": "",
+        "homeTeam": "A.C. SAN GIORGIO CALCIO",
+        "awayTeam": "F.C. VIRIBUS UNITIS 1917",
+        "score": "—",
+        "venue": "GIORNATA 19",
+        "round": 19
+      },
+      {
+        "date": "2027-01-24",
+        "dateLabel": "24/01/2027",
+        "time": "",
+        "homeTeam": "G.B. CAPRESE",
+        "awayTeam": "IMBRIANI TEAM ASSOCIAZIO",
+        "score": "—",
+        "venue": "GIORNATA 19",
+        "round": 19
+      },
+      {
+        "date": "2027-01-24",
+        "dateLabel": "24/01/2027",
+        "time": "",
+        "homeTeam": "ATS CASALNUOVO",
+        "awayTeam": "STABIA CITY",
+        "score": "—",
+        "venue": "GIORNATA 19",
+        "round": 19
+      },
+      {
+        "date": "2027-01-24",
+        "dateLabel": "24/01/2027",
+        "time": "",
+        "homeTeam": "VIRTUS SAN GENNARELLO",
+        "awayTeam": "VIRTUS POMPEI SOCCER",
+        "score": "—",
+        "venue": "GIORNATA 19",
+        "round": 19
+      },
+      {
+        "date": "2027-01-31",
+        "dateLabel": "31/01/2027",
+        "time": "",
+        "homeTeam": "IMBRIANI TEAM ASSOCIAZIO",
+        "awayTeam": "A.C. MARCHESA",
+        "score": "—",
+        "venue": "GIORNATA 20",
+        "round": 20
+      },
+      {
+        "date": "2027-01-31",
+        "dateLabel": "31/01/2027",
+        "time": "",
+        "homeTeam": "CITTA DI GRAGNANO",
+        "awayTeam": "A.C. SAN GIORGIO CALCIO",
+        "score": "—",
+        "venue": "GIORNATA 20",
+        "round": 20
+      },
+      {
+        "date": "2027-01-31",
+        "dateLabel": "31/01/2027",
+        "time": "",
+        "homeTeam": "STABIA CITY",
+        "awayTeam": "BOCA ACADEMY",
+        "score": "—",
+        "venue": "GIORNATA 20",
+        "round": 20
+      },
+      {
+        "date": "2027-01-31",
+        "dateLabel": "31/01/2027",
+        "time": "",
+        "homeTeam": "F.C. STADERA SSD ARL",
+        "awayTeam": "G.B. CAPRESE",
+        "score": "—",
+        "venue": "GIORNATA 20",
+        "round": 20
+      },
+      {
+        "date": "2027-01-31",
+        "dateLabel": "31/01/2027",
+        "time": "",
+        "homeTeam": "F.C. VIRIBUS UNITIS 1917",
+        "awayTeam": "MASSA LUBRENSE",
+        "score": "—",
+        "venue": "GIORNATA 20",
+        "round": 20
+      },
+      {
+        "date": "2027-01-31",
+        "dateLabel": "31/01/2027",
+        "time": "",
+        "homeTeam": "A.C. TERZIGNO 1964",
+        "awayTeam": "REAL SAN SEBASTIANO",
+        "score": "—",
+        "venue": "GIORNATA 20",
+        "round": 20
+      },
+      {
+        "date": "2027-01-31",
+        "dateLabel": "31/01/2027",
+        "time": "",
+        "homeTeam": "ATS CASALNUOVO",
+        "awayTeam": "VIRTUS SAN GENNARELLO",
+        "score": "—",
+        "venue": "GIORNATA 20",
+        "round": 20
+      },
+      {
+        "date": "2027-01-31",
+        "dateLabel": "31/01/2027",
+        "time": "",
+        "homeTeam": "VIRTUS POMPEI SOCCER",
+        "awayTeam": "VOLLA UNITED 2024",
+        "score": "—",
+        "venue": "GIORNATA 20",
+        "round": 20
+      },
+      {
+        "date": "2027-02-07",
+        "dateLabel": "07/02/2027",
+        "time": "",
+        "homeTeam": "A.C. SAN GIORGIO CALCIO",
+        "awayTeam": "A.C. TERZIGNO 1964",
+        "score": "—",
+        "venue": "GIORNATA 21",
+        "round": 21
+      },
+      {
+        "date": "2027-02-07",
+        "dateLabel": "07/02/2027",
+        "time": "",
+        "homeTeam": "VOLLA UNITED 2024",
+        "awayTeam": "ATS CASALNUOVO",
+        "score": "—",
+        "venue": "GIORNATA 21",
+        "round": 21
+      },
+      {
+        "date": "2027-02-07",
+        "dateLabel": "07/02/2027",
+        "time": "",
+        "homeTeam": "MASSA LUBRENSE",
+        "awayTeam": "CITTA DI GRAGNANO",
+        "score": "—",
+        "venue": "GIORNATA 21",
+        "round": 21
+      },
+      {
+        "date": "2027-02-07",
+        "dateLabel": "07/02/2027",
+        "time": "",
+        "homeTeam": "A.C. MARCHESA",
+        "awayTeam": "F.C. STADERA SSD ARL",
+        "score": "—",
+        "venue": "GIORNATA 21",
+        "round": 21
+      },
+      {
+        "date": "2027-02-07",
+        "dateLabel": "07/02/2027",
+        "time": "",
+        "homeTeam": "G.B. CAPRESE",
+        "awayTeam": "F.C. VIRIBUS UNITIS 1917",
+        "score": "—",
+        "venue": "GIORNATA 21",
+        "round": 21
+      },
+      {
+        "date": "2027-02-07",
+        "dateLabel": "07/02/2027",
+        "time": "",
+        "homeTeam": "BOCA ACADEMY",
+        "awayTeam": "IMBRIANI TEAM ASSOCIAZIO",
+        "score": "—",
+        "venue": "GIORNATA 21",
+        "round": 21
+      },
+      {
+        "date": "2027-02-07",
+        "dateLabel": "07/02/2027",
+        "time": "",
+        "homeTeam": "VIRTUS SAN GENNARELLO",
+        "awayTeam": "STABIA CITY",
+        "score": "—",
+        "venue": "GIORNATA 21",
+        "round": 21
+      },
+      {
+        "date": "2027-02-07",
+        "dateLabel": "07/02/2027",
+        "time": "",
+        "homeTeam": "REAL SAN SEBASTIANO",
+        "awayTeam": "VIRTUS POMPEI SOCCER",
+        "score": "—",
+        "venue": "GIORNATA 21",
+        "round": 21
+      },
+      {
+        "date": "2027-02-14",
+        "dateLabel": "14/02/2027",
+        "time": "",
+        "homeTeam": "F.C. VIRIBUS UNITIS 1917",
+        "awayTeam": "A.C. MARCHESA",
+        "score": "—",
+        "venue": "GIORNATA 22",
+        "round": 22
+      },
+      {
+        "date": "2027-02-14",
+        "dateLabel": "14/02/2027",
+        "time": "",
+        "homeTeam": "VIRTUS POMPEI SOCCER",
+        "awayTeam": "A.C. SAN GIORGIO CALCIO",
+        "score": "—",
+        "venue": "GIORNATA 22",
+        "round": 22
+      },
+      {
+        "date": "2027-02-14",
+        "dateLabel": "14/02/2027",
+        "time": "",
+        "homeTeam": "F.C. STADERA SSD ARL",
+        "awayTeam": "BOCA ACADEMY",
+        "score": "—",
+        "venue": "GIORNATA 22",
+        "round": 22
+      },
+      {
+        "date": "2027-02-14",
+        "dateLabel": "14/02/2027",
+        "time": "",
+        "homeTeam": "CITTA DI GRAGNANO",
+        "awayTeam": "G.B. CAPRESE",
+        "score": "—",
+        "venue": "GIORNATA 22",
+        "round": 22
+      },
+      {
+        "date": "2027-02-14",
+        "dateLabel": "14/02/2027",
+        "time": "",
+        "homeTeam": "STABIA CITY",
+        "awayTeam": "IMBRIANI TEAM ASSOCIAZIO",
+        "score": "—",
+        "venue": "GIORNATA 22",
+        "round": 22
+      },
+      {
+        "date": "2027-02-14",
+        "dateLabel": "14/02/2027",
+        "time": "",
+        "homeTeam": "A.C. TERZIGNO 1964",
+        "awayTeam": "MASSA LUBRENSE",
+        "score": "—",
+        "venue": "GIORNATA 22",
+        "round": 22
+      },
+      {
+        "date": "2027-02-14",
+        "dateLabel": "14/02/2027",
+        "time": "",
+        "homeTeam": "ATS CASALNUOVO",
+        "awayTeam": "REAL SAN SEBASTIANO",
+        "score": "—",
+        "venue": "GIORNATA 22",
+        "round": 22
+      },
+      {
+        "date": "2027-02-14",
+        "dateLabel": "14/02/2027",
+        "time": "",
+        "homeTeam": "VIRTUS SAN GENNARELLO",
+        "awayTeam": "VOLLA UNITED 2024",
+        "score": "—",
+        "venue": "GIORNATA 22",
+        "round": 22
+      },
+      {
+        "date": "2027-02-21",
+        "dateLabel": "21/02/2027",
+        "time": "",
+        "homeTeam": "G.B. CAPRESE",
+        "awayTeam": "A.C. TERZIGNO 1964",
+        "score": "—",
+        "venue": "GIORNATA 23",
+        "round": 23
+      },
+      {
+        "date": "2027-02-21",
+        "dateLabel": "21/02/2027",
+        "time": "",
+        "homeTeam": "A.C. SAN GIORGIO CALCIO",
+        "awayTeam": "ATS CASALNUOVO",
+        "score": "—",
+        "venue": "GIORNATA 23",
+        "round": 23
+      },
+      {
+        "date": "2027-02-21",
+        "dateLabel": "21/02/2027",
+        "time": "",
+        "homeTeam": "A.C. MARCHESA",
+        "awayTeam": "CITTA DI GRAGNANO",
+        "score": "—",
+        "venue": "GIORNATA 23",
+        "round": 23
+      },
+      {
+        "date": "2027-02-21",
+        "dateLabel": "21/02/2027",
+        "time": "",
+        "homeTeam": "IMBRIANI TEAM ASSOCIAZIO",
+        "awayTeam": "F.C. STADERA SSD ARL",
+        "score": "—",
+        "venue": "GIORNATA 23",
+        "round": 23
+      },
+      {
+        "date": "2027-02-21",
+        "dateLabel": "21/02/2027",
+        "time": "",
+        "homeTeam": "BOCA ACADEMY",
+        "awayTeam": "F.C. VIRIBUS UNITIS 1917",
+        "score": "—",
+        "venue": "GIORNATA 23",
+        "round": 23
+      },
+      {
+        "date": "2027-02-21",
+        "dateLabel": "21/02/2027",
+        "time": "",
+        "homeTeam": "VOLLA UNITED 2024",
+        "awayTeam": "STABIA CITY",
+        "score": "—",
+        "venue": "GIORNATA 23",
+        "round": 23
+      },
+      {
+        "date": "2027-02-21",
+        "dateLabel": "21/02/2027",
+        "time": "",
+        "homeTeam": "MASSA LUBRENSE",
+        "awayTeam": "VIRTUS POMPEI SOCCER",
+        "score": "—",
+        "venue": "GIORNATA 23",
+        "round": 23
+      },
+      {
+        "date": "2027-02-21",
+        "dateLabel": "21/02/2027",
+        "time": "",
+        "homeTeam": "REAL SAN SEBASTIANO",
+        "awayTeam": "VIRTUS SAN GENNARELLO",
+        "score": "—",
+        "venue": "GIORNATA 23",
+        "round": 23
+      },
+      {
+        "date": "2027-02-28",
+        "dateLabel": "28/02/2027",
+        "time": "",
+        "homeTeam": "A.C. TERZIGNO 1964",
+        "awayTeam": "A.C. MARCHESA",
+        "score": "—",
+        "venue": "GIORNATA 24",
+        "round": 24
+      },
+      {
+        "date": "2027-02-28",
+        "dateLabel": "28/02/2027",
+        "time": "",
+        "homeTeam": "VIRTUS SAN GENNARELLO",
+        "awayTeam": "A.C. SAN GIORGIO CALCIO",
+        "score": "—",
+        "venue": "GIORNATA 24",
+        "round": 24
+      },
+      {
+        "date": "2027-02-28",
+        "dateLabel": "28/02/2027",
+        "time": "",
+        "homeTeam": "CITTA DI GRAGNANO",
+        "awayTeam": "BOCA ACADEMY",
+        "score": "—",
+        "venue": "GIORNATA 24",
+        "round": 24
+      },
+      {
+        "date": "2027-02-28",
+        "dateLabel": "28/02/2027",
+        "time": "",
+        "homeTeam": "STABIA CITY",
+        "awayTeam": "F.C. STADERA SSD ARL",
+        "score": "—",
+        "venue": "GIORNATA 24",
+        "round": 24
+      },
+      {
+        "date": "2027-02-28",
+        "dateLabel": "28/02/2027",
+        "time": "",
+        "homeTeam": "VIRTUS POMPEI SOCCER",
+        "awayTeam": "G.B. CAPRESE",
+        "score": "—",
+        "venue": "GIORNATA 24",
+        "round": 24
+      },
+      {
+        "date": "2027-02-28",
+        "dateLabel": "28/02/2027",
+        "time": "",
+        "homeTeam": "F.C. VIRIBUS UNITIS 1917",
+        "awayTeam": "IMBRIANI TEAM ASSOCIAZIO",
+        "score": "—",
+        "venue": "GIORNATA 24",
+        "round": 24
+      },
+      {
+        "date": "2027-02-28",
+        "dateLabel": "28/02/2027",
+        "time": "",
+        "homeTeam": "ATS CASALNUOVO",
+        "awayTeam": "MASSA LUBRENSE",
+        "score": "—",
+        "venue": "GIORNATA 24",
+        "round": 24
+      },
+      {
+        "date": "2027-02-28",
+        "dateLabel": "28/02/2027",
+        "time": "",
+        "homeTeam": "VOLLA UNITED 2024",
+        "awayTeam": "REAL SAN SEBASTIANO",
+        "score": "—",
+        "venue": "GIORNATA 24",
+        "round": 24
+      },
+      {
+        "date": "2027-03-07",
+        "dateLabel": "07/03/2027",
+        "time": "",
+        "homeTeam": "BOCA ACADEMY",
+        "awayTeam": "A.C. TERZIGNO 1964",
+        "score": "—",
+        "venue": "GIORNATA 25",
+        "round": 25
+      },
+      {
+        "date": "2027-03-07",
+        "dateLabel": "07/03/2027",
+        "time": "",
+        "homeTeam": "G.B. CAPRESE",
+        "awayTeam": "ATS CASALNUOVO",
+        "score": "—",
+        "venue": "GIORNATA 25",
+        "round": 25
+      },
+      {
+        "date": "2027-03-07",
+        "dateLabel": "07/03/2027",
+        "time": "",
+        "homeTeam": "IMBRIANI TEAM ASSOCIAZIO",
+        "awayTeam": "CITTA DI GRAGNANO",
+        "score": "—",
+        "venue": "GIORNATA 25",
+        "round": 25
+      },
+      {
+        "date": "2027-03-07",
+        "dateLabel": "07/03/2027",
+        "time": "",
+        "homeTeam": "F.C. STADERA SSD ARL",
+        "awayTeam": "F.C. VIRIBUS UNITIS 1917",
+        "score": "—",
+        "venue": "GIORNATA 25",
+        "round": 25
+      },
+      {
+        "date": "2027-03-07",
+        "dateLabel": "07/03/2027",
+        "time": "",
+        "homeTeam": "REAL SAN SEBASTIANO",
+        "awayTeam": "STABIA CITY",
+        "score": "—",
+        "venue": "GIORNATA 25",
+        "round": 25
+      },
+      {
+        "date": "2027-03-07",
+        "dateLabel": "07/03/2027",
+        "time": "",
+        "homeTeam": "A.C. MARCHESA",
+        "awayTeam": "VIRTUS POMPEI SOCCER",
+        "score": "—",
+        "venue": "GIORNATA 25",
+        "round": 25
+      },
+      {
+        "date": "2027-03-07",
+        "dateLabel": "07/03/2027",
+        "time": "",
+        "homeTeam": "MASSA LUBRENSE",
+        "awayTeam": "VIRTUS SAN GENNARELLO",
+        "score": "—",
+        "venue": "GIORNATA 25",
+        "round": 25
+      },
+      {
+        "date": "2027-03-07",
+        "dateLabel": "07/03/2027",
+        "time": "",
+        "homeTeam": "A.C. SAN GIORGIO CALCIO",
+        "awayTeam": "VOLLA UNITED 2024",
+        "score": "—",
+        "venue": "GIORNATA 25",
+        "round": 25
+      },
+      {
+        "date": "2027-03-14",
+        "dateLabel": "14/03/2027",
+        "time": "",
+        "homeTeam": "ATS CASALNUOVO",
+        "awayTeam": "A.C. MARCHESA",
+        "score": "—",
+        "venue": "GIORNATA 26",
+        "round": 26
+      },
+      {
+        "date": "2027-03-14",
+        "dateLabel": "14/03/2027",
+        "time": "",
+        "homeTeam": "REAL SAN SEBASTIANO",
+        "awayTeam": "A.C. SAN GIORGIO CALCIO",
+        "score": "—",
+        "venue": "GIORNATA 26",
+        "round": 26
+      },
+      {
+        "date": "2027-03-14",
+        "dateLabel": "14/03/2027",
+        "time": "",
+        "homeTeam": "VIRTUS POMPEI SOCCER",
+        "awayTeam": "BOCA ACADEMY",
+        "score": "—",
+        "venue": "GIORNATA 26",
+        "round": 26
+      },
+      {
+        "date": "2027-03-14",
+        "dateLabel": "14/03/2027",
+        "time": "",
+        "homeTeam": "CITTA DI GRAGNANO",
+        "awayTeam": "F.C. STADERA SSD ARL",
+        "score": "—",
+        "venue": "GIORNATA 26",
+        "round": 26
+      },
+      {
+        "date": "2027-03-14",
+        "dateLabel": "14/03/2027",
+        "time": "",
+        "homeTeam": "STABIA CITY",
+        "awayTeam": "F.C. VIRIBUS UNITIS 1917",
+        "score": "—",
+        "venue": "GIORNATA 26",
+        "round": 26
+      },
+      {
+        "date": "2027-03-14",
+        "dateLabel": "14/03/2027",
+        "time": "",
+        "homeTeam": "VIRTUS SAN GENNARELLO",
+        "awayTeam": "G.B. CAPRESE",
+        "score": "—",
+        "venue": "GIORNATA 26",
+        "round": 26
+      },
+      {
+        "date": "2027-03-14",
+        "dateLabel": "14/03/2027",
+        "time": "",
+        "homeTeam": "A.C. TERZIGNO 1964",
+        "awayTeam": "IMBRIANI TEAM ASSOCIAZIO",
+        "score": "—",
+        "venue": "GIORNATA 26",
+        "round": 26
+      },
+      {
+        "date": "2027-03-14",
+        "dateLabel": "14/03/2027",
+        "time": "",
+        "homeTeam": "VOLLA UNITED 2024",
+        "awayTeam": "MASSA LUBRENSE",
+        "score": "—",
+        "venue": "GIORNATA 26",
+        "round": 26
+      },
+      {
+        "date": "2027-04-04",
+        "dateLabel": "04/04/2027",
+        "time": "",
+        "homeTeam": "F.C. STADERA SSD ARL",
+        "awayTeam": "A.C. TERZIGNO 1964",
+        "score": "—",
+        "venue": "GIORNATA 27",
+        "round": 27
+      },
+      {
+        "date": "2027-04-04",
+        "dateLabel": "04/04/2027",
+        "time": "",
+        "homeTeam": "BOCA ACADEMY",
+        "awayTeam": "ATS CASALNUOVO",
+        "score": "—",
+        "venue": "GIORNATA 27",
+        "round": 27
+      },
+      {
+        "date": "2027-04-04",
+        "dateLabel": "04/04/2027",
+        "time": "",
+        "homeTeam": "F.C. VIRIBUS UNITIS 1917",
+        "awayTeam": "CITTA DI GRAGNANO",
+        "score": "—",
+        "venue": "GIORNATA 27",
+        "round": 27
+      },
+      {
+        "date": "2027-04-04",
+        "dateLabel": "04/04/2027",
+        "time": "",
+        "homeTeam": "MASSA LUBRENSE",
+        "awayTeam": "REAL SAN SEBASTIANO",
+        "score": "—",
+        "venue": "GIORNATA 27",
+        "round": 27
+      },
+      {
+        "date": "2027-04-04",
+        "dateLabel": "04/04/2027",
+        "time": "",
+        "homeTeam": "A.C. SAN GIORGIO CALCIO",
+        "awayTeam": "STABIA CITY",
+        "score": "—",
+        "venue": "GIORNATA 27",
+        "round": 27
+      },
+      {
+        "date": "2027-04-04",
+        "dateLabel": "04/04/2027",
+        "time": "",
+        "homeTeam": "IMBRIANI TEAM ASSOCIAZIO",
+        "awayTeam": "VIRTUS POMPEI SOCCER",
+        "score": "—",
+        "venue": "GIORNATA 27",
+        "round": 27
+      },
+      {
+        "date": "2027-04-04",
+        "dateLabel": "04/04/2027",
+        "time": "",
+        "homeTeam": "A.C. MARCHESA",
+        "awayTeam": "VIRTUS SAN GENNARELLO",
+        "score": "—",
+        "venue": "GIORNATA 27",
+        "round": 27
+      },
+      {
+        "date": "2027-04-04",
+        "dateLabel": "04/04/2027",
+        "time": "",
+        "homeTeam": "G.B. CAPRESE",
+        "awayTeam": "VOLLA UNITED 2024",
+        "score": "—",
+        "venue": "GIORNATA 27",
+        "round": 27
+      },
+      {
+        "date": "2027-04-11",
+        "dateLabel": "11/04/2027",
+        "time": "",
+        "homeTeam": "VOLLA UNITED 2024",
+        "awayTeam": "A.C. MARCHESA",
+        "score": "—",
+        "venue": "GIORNATA 28",
+        "round": 28
+      },
+      {
+        "date": "2027-04-11",
+        "dateLabel": "11/04/2027",
+        "time": "",
+        "homeTeam": "VIRTUS SAN GENNARELLO",
+        "awayTeam": "BOCA ACADEMY",
+        "score": "—",
+        "venue": "GIORNATA 28",
+        "round": 28
+      },
+      {
+        "date": "2027-04-11",
+        "dateLabel": "11/04/2027",
+        "time": "",
+        "homeTeam": "STABIA CITY",
+        "awayTeam": "CITTA DI GRAGNANO",
+        "score": "—",
+        "venue": "GIORNATA 28",
+        "round": 28
+      },
+      {
+        "date": "2027-04-11",
+        "dateLabel": "11/04/2027",
+        "time": "",
+        "homeTeam": "VIRTUS POMPEI SOCCER",
+        "awayTeam": "F.C. STADERA SSD ARL",
+        "score": "—",
+        "venue": "GIORNATA 28",
+        "round": 28
+      },
+      {
+        "date": "2027-04-11",
+        "dateLabel": "11/04/2027",
+        "time": "",
+        "homeTeam": "A.C. TERZIGNO 1964",
+        "awayTeam": "F.C. VIRIBUS UNITIS 1917",
+        "score": "—",
+        "venue": "GIORNATA 28",
+        "round": 28
+      },
+      {
+        "date": "2027-04-11",
+        "dateLabel": "11/04/2027",
+        "time": "",
+        "homeTeam": "REAL SAN SEBASTIANO",
+        "awayTeam": "G.B. CAPRESE",
+        "score": "—",
+        "venue": "GIORNATA 28",
+        "round": 28
+      },
+      {
+        "date": "2027-04-11",
+        "dateLabel": "11/04/2027",
+        "time": "",
+        "homeTeam": "ATS CASALNUOVO",
+        "awayTeam": "IMBRIANI TEAM ASSOCIAZIO",
+        "score": "—",
+        "venue": "GIORNATA 28",
+        "round": 28
+      },
+      {
+        "date": "2027-04-11",
+        "dateLabel": "11/04/2027",
+        "time": "",
+        "homeTeam": "A.C. SAN GIORGIO CALCIO",
+        "awayTeam": "MASSA LUBRENSE",
+        "score": "—",
+        "venue": "GIORNATA 28",
+        "round": 28
+      },
+      {
+        "date": "2027-04-18",
+        "dateLabel": "18/04/2027",
+        "time": "",
+        "homeTeam": "G.B. CAPRESE",
+        "awayTeam": "A.C. SAN GIORGIO CALCIO",
+        "score": "—",
+        "venue": "GIORNATA 29",
+        "round": 29
+      },
+      {
+        "date": "2027-04-18",
+        "dateLabel": "18/04/2027",
+        "time": "",
+        "homeTeam": "CITTA DI GRAGNANO",
+        "awayTeam": "A.C. TERZIGNO 1964",
+        "score": "—",
+        "venue": "GIORNATA 29",
+        "round": 29
+      },
+      {
+        "date": "2027-04-18",
+        "dateLabel": "18/04/2027",
+        "time": "",
+        "homeTeam": "F.C. STADERA SSD ARL",
+        "awayTeam": "ATS CASALNUOVO",
+        "score": "—",
+        "venue": "GIORNATA 29",
+        "round": 29
+      },
+      {
+        "date": "2027-04-18",
+        "dateLabel": "18/04/2027",
+        "time": "",
+        "homeTeam": "STABIA CITY",
+        "awayTeam": "MASSA LUBRENSE",
+        "score": "—",
+        "venue": "GIORNATA 29",
+        "round": 29
+      },
+      {
+        "date": "2027-04-18",
+        "dateLabel": "18/04/2027",
+        "time": "",
+        "homeTeam": "A.C. MARCHESA",
+        "awayTeam": "REAL SAN SEBASTIANO",
+        "score": "—",
+        "venue": "GIORNATA 29",
+        "round": 29
+      },
+      {
+        "date": "2027-04-18",
+        "dateLabel": "18/04/2027",
+        "time": "",
+        "homeTeam": "F.C. VIRIBUS UNITIS 1917",
+        "awayTeam": "VIRTUS POMPEI SOCCER",
+        "score": "—",
+        "venue": "GIORNATA 29",
+        "round": 29
+      },
+      {
+        "date": "2027-04-18",
+        "dateLabel": "18/04/2027",
+        "time": "",
+        "homeTeam": "IMBRIANI TEAM ASSOCIAZIO",
+        "awayTeam": "VIRTUS SAN GENNARELLO",
+        "score": "—",
+        "venue": "GIORNATA 29",
+        "round": 29
+      },
+      {
+        "date": "2027-04-18",
+        "dateLabel": "18/04/2027",
+        "time": "",
+        "homeTeam": "BOCA ACADEMY",
+        "awayTeam": "VOLLA UNITED 2024",
+        "score": "—",
+        "venue": "GIORNATA 29",
+        "round": 29
+      },
+      {
+        "date": "2027-04-25",
+        "dateLabel": "25/04/2027",
+        "time": "",
+        "homeTeam": "A.C. SAN GIORGIO CALCIO",
+        "awayTeam": "A.C. MARCHESA",
+        "score": "—",
+        "venue": "GIORNATA 30",
+        "round": 30
+      },
+      {
+        "date": "2027-04-25",
+        "dateLabel": "25/04/2027",
+        "time": "",
+        "homeTeam": "REAL SAN SEBASTIANO",
+        "awayTeam": "BOCA ACADEMY",
+        "score": "—",
+        "venue": "GIORNATA 30",
+        "round": 30
+      },
+      {
+        "date": "2027-04-25",
+        "dateLabel": "25/04/2027",
+        "time": "",
+        "homeTeam": "VIRTUS POMPEI SOCCER",
+        "awayTeam": "CITTA DI GRAGNANO",
+        "score": "—",
+        "venue": "GIORNATA 30",
+        "round": 30
+      },
+      {
+        "date": "2027-04-25",
+        "dateLabel": "25/04/2027",
+        "time": "",
+        "homeTeam": "VIRTUS SAN GENNARELLO",
+        "awayTeam": "F.C. STADERA SSD ARL",
+        "score": "—",
+        "venue": "GIORNATA 30",
+        "round": 30
+      },
+      {
+        "date": "2027-04-25",
+        "dateLabel": "25/04/2027",
+        "time": "",
+        "homeTeam": "ATS CASALNUOVO",
+        "awayTeam": "F.C. VIRIBUS UNITIS 1917",
+        "score": "—",
+        "venue": "GIORNATA 30",
+        "round": 30
+      },
+      {
+        "date": "2027-04-25",
+        "dateLabel": "25/04/2027",
+        "time": "",
+        "homeTeam": "MASSA LUBRENSE",
+        "awayTeam": "G.B. CAPRESE",
+        "score": "—",
+        "venue": "GIORNATA 30",
+        "round": 30
+      },
+      {
+        "date": "2027-04-25",
+        "dateLabel": "25/04/2027",
+        "time": "",
+        "homeTeam": "VOLLA UNITED 2024",
+        "awayTeam": "IMBRIANI TEAM ASSOCIAZIO",
+        "score": "—",
+        "venue": "GIORNATA 30",
+        "round": 30
+      },
+      {
+        "date": "2027-04-25",
+        "dateLabel": "25/04/2027",
+        "time": "",
+        "homeTeam": "A.C. TERZIGNO 1964",
+        "awayTeam": "STABIA CITY",
+        "score": "—",
+        "venue": "GIORNATA 30",
+        "round": 30
+      }
+    ],
+    "calendarSourceUrl": "https://www.tuttocalciocampano.it/calendar/promozione-girone-b-2026-2027/"
   }
 }

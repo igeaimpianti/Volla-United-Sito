@@ -1,12 +1,18 @@
 {
   "firstTeam": {
-    "competition": "PROMOZIONE",
-    "season": "",
-    "group": "",
-    "sourceUrl": "",
+    "competition": "PROMOZIONE CAMPANIA",
+    "season": "2026/27",
+    "group": "GIRONE B",
+    "sourceUrl": "https://www.sofascore.com/it/football/tournament/italy-amateur/promozione-campania/21987#id:96361",
     "updatedAt": "",
-    "live": {"provider": "youtube", "youtubeId": "", "title": "", "status": "scheduled"},
+    "live": {
+      "provider": "youtube",
+      "youtubeId": "",
+      "title": "",
+      "status": "scheduled"
+    },
     "matches": [],
-    "standings": []
+    "standings": [],
+    "automaticSofascore": true
   }
 }

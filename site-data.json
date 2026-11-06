@@ -3,7 +3,7 @@
     "competition": "PROMOZIONE CAMPANIA",
     "season": "2026/27",
     "group": "GIRONE B",
-    "sourceUrl": "https://www.sofascore.com/it/football/tournament/italy-amateur/promozione-campania/21987#id:96361",
+    "sourceUrl": "https://www.tuttocampo.it/WidgetV2/Classifica/94e9e03a-43ad-4573-ab6d-0829547ca206",
     "updatedAt": "06/11/2026 08:44",
     "live": {
       "provider": "youtube",
@@ -248,7 +248,7 @@
       }
     ],
     "automaticSofascore": false,
-    "automaticData": true,
+    "automaticData": false,
     "fullCalendar": [
       {
         "date": "2026-09-12",
@@ -2651,6 +2651,7 @@
         "round": 30
       }
     ],
-    "calendarSourceUrl": "https://www.tuttocalciocampano.it/calendar/promozione-girone-b-2026-2027/"
+    "calendarSourceUrl": "https://www.tuttocalciocampano.it/calendar/promozione-girone-b-2026-2027/",
+    "automaticTuttocampo": true
   }
 }

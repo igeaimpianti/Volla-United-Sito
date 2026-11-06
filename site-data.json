@@ -3,7 +3,7 @@
     "competition": "PROMOZIONE CAMPANIA",
     "season": "2026/27",
     "group": "GIRONE B",
-    "sourceUrl": "https://www.sofascore.com/it/football/tournament/italy-amateur/promozione-campania/21987#id:96361",
+    "sourceUrl": "https://napoli.iamcalcio.it/classifiche/17/promozione-girone-b/2026-2027.html",
     "updatedAt": "06/11/2026 08:44",
     "live": {
       "provider": "youtube",
@@ -2651,6 +2651,7 @@
         "round": 30
       }
     ],
-    "calendarSourceUrl": "https://www.tuttocalciocampano.it/calendar/promozione-girone-b-2026-2027/"
+    "calendarSourceUrl": "https://www.tuttocalciocampano.it/calendar/promozione-girone-b-2026-2027/",
+    "automaticIamCalcio": true
   }
 }

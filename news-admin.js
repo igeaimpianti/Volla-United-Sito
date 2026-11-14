@@ -63,7 +63,9 @@ el('article').onsubmit=async e=>{e.preventDefault();if(!user)return;const save=e
  const path=user.id+'/'+crypto.randomUUID()+'-'+file.name.replace(/[^a-zA-Z0-9._-]/g,'_');const {error}=await db.storage.from('volla-news').upload(path,file,{cacheControl:'3600',upsert:false,contentType:file.type});if(error)throw error;currentImages.push(db.storage.from('volla-news').getPublicUrl(path).data.publicUrl)}
  const title=el('title').value.trim();const published=el('published').checked;const id=el('articleid').value;
  const original=articles.find(x=>x.id===id);
- const entry={title,slug:original?.slug||'news-'+crypto.randomUUID(),excerpt:el('excerpt').value.trim(),content:el('content').value.trim(),cover_url:currentImages[0]||null,image_urls:currentImages.slice(1),published,author_id:original?.author_id||user.id,published_at:published?(original?.published_at||new Date().toISOString()):null,updated_at:new Date().toISOString()};
+ const baseSlug=title.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,65)||'articolo';
+ const slug=original?.slug||(articles.some(article=>article.slug===baseSlug)?baseSlug+'-'+crypto.randomUUID().slice(0,6):baseSlug);
+ const entry={title,slug,excerpt:el('excerpt').value.trim(),content:el('content').value.trim(),cover_url:currentImages[0]||null,image_urls:currentImages.slice(1),published,author_id:original?.author_id||user.id,published_at:published?(original?.published_at||new Date().toISOString()):null,updated_at:new Date().toISOString()};
  const req=id?db.from('news_articles').update(entry).eq('id',id):db.from('news_articles').insert(entry);
  const {error}=await req;if(error)throw error;tell(published?'Articolo pubblicato sul sito.':'Bozza salvata.');reset();await load();
  }catch(e){tell('Errore: '+e.message)}finally{save.disabled=false}};

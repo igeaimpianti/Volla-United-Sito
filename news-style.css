@@ -64,3 +64,15 @@
 .news-preview-body .news-carousel{margin:18px 0 24px}
 @media(max-width:560px){.news-carousel{border-radius:12px;margin:20px 0 25px}.news-carousel-slide{aspect-ratio:1/1}.news-carousel-controls{padding:8px 12px 3px}.news-carousel-arrow{width:40px;height:40px}}
 @media(prefers-reduced-motion:reduce){.news-carousel-track{scroll-behavior:auto}.news-carousel-dot{transition:none}}
+
+/* Article sharing and permanent club signature */
+.news-share{margin:38px 0 20px;padding:26px 22px 24px;border-top:3px solid #d61b3d;background:#fff;border-radius:0 0 16px 16px;box-shadow:0 8px 26px #0000000a;text-align:center}
+.news-share h2{font-size:13px;font-weight:850;line-height:1.4;letter-spacing:.13em;margin:0 0 17px;color:#23232a}
+.news-share-actions{display:flex;align-items:center;justify-content:center;gap:9px;flex-wrap:wrap}
+.news-share-link{display:inline-flex;justify-content:center;align-items:center;min-height:43px;padding:10px 17px;border:1px solid #dadadd;border-radius:10px;background:#24252b;color:#fff;font-size:13px;font-weight:750;text-decoration:none;cursor:pointer}
+.news-share-link.whatsapp{background:#167c47;border-color:#167c47}
+.news-share-link.facebook{background:#1877f2;border-color:#1877f2}
+.news-share-link:hover{filter:brightness(1.08)}
+.news-share-link:focus-visible{outline:2px solid #e63b59;outline-offset:3px}
+.news-share-signature{margin:24px 0 0;padding-top:19px;border-top:1px solid #ece9e9;font-size:clamp(15px,3.2vw,21px);font-weight:850;letter-spacing:.01em;color:#bd1736;overflow-wrap:anywhere}
+@media(max-width:520px){.news-share{padding:21px 12px}.news-share-actions{gap:7px}.news-share-link{flex:1;min-width:0;padding:10px 7px;font-size:12px}}

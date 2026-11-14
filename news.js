@@ -73,7 +73,6 @@ else if(query){
   const showPhotoHint=message=>{photoHint.textContent=message;photoHint.hidden=false};
   const sharePhoto=async()=>{
    if(!photoUrl){showPhotoHint('Questo articolo non contiene fotografie da condividere.');return}
-   // L'immagine viene preparata prima del clic per non perdere l'attivazione iOS.
    if(!preparedPhoto){
     if(!photoError){showPhotoHint('La fotografia si sta caricando: riprova tra qualche istante.');return}
     showPhotoHint('Non è possibile condividere direttamente questa foto. Aprila e salvala nelle Foto, poi pubblicala come Storia Instagram.');
@@ -81,14 +80,19 @@ else if(query){
    }
    if(navigator.share&&navigator.canShare?.({files:[preparedPhoto]})){
     try{
-     // Condivide solo il FILE: un URL testuale non può diventare una Storia.
-     await navigator.share({files:[preparedPhoto]});
-     photoHint.hidden=true;
+     // Invio immagine + testo + URL. L'app destinataria può ignorare il link.
+     await navigator.share({
+      files:[preparedPhoto],
+      title:item.title,
+      text:'Leggi la notizia sul sito Volla United Academy: '+articleUrl,
+      url:articleUrl
+     });
+     showPhotoHint('Foto e link inviati al menu di condivisione. Se Instagram non inserisce il link nella Storia, usa l’icona Copia link e aggiungilo con l’adesivo Link.');
     }catch(err){
-     if(err.name!=='AbortError')showPhotoHint('Condivisione non riuscita. Apri la fotografia, salvala e caricala come Storia dall’app Instagram.');
+     if(err.name!=='AbortError')showPhotoHint('Il dispositivo non è riuscito a condividere foto e link insieme. Puoi copiare il link e inserirlo nella Storia con l’adesivo Link.');
     }
    }else{
-    showPhotoHint('Il browser non supporta la condivisione delle foto. Apri l’immagine, salvala e aggiungila a una Storia dall’app Instagram.');
+    showPhotoHint('Il browser non supporta la condivisione delle foto. Apri l’immagine e salvala; copia il link dall’icona accanto e inseriscilo nella Storia.');
     window.open(photoUrl,'_blank','noopener');
    }
   };
@@ -114,7 +118,15 @@ else if(query){
   const moreShare=document.createElement('button');moreShare.type='button';moreShare.className='news-share-link more';
   moreShare.setAttribute('aria-label','Altre opzioni di condivisione');moreShare.title='Condividi';moreShare.innerHTML=iconSvg('more');
   moreShare.onclick=()=>shareNative(moreShare);
-  links.append(moreShare);sharing.append(links,photoHint);
+  const copyLink=document.createElement('button');
+  copyLink.type='button';copyLink.className='news-share-link copy-link';
+  copyLink.setAttribute('aria-label','Copia il link per la Storia Instagram');copyLink.title='Copia link';
+  copyLink.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>';
+  copyLink.onclick=async()=>{
+   try{await navigator.clipboard.writeText(articleUrl);showPhotoHint('Link copiato. Su Instagram, nella Storia, aggiungi l’adesivo Link e incollalo.');}
+   catch{window.prompt('Copia il link dell’articolo',articleUrl)}
+  };
+  links.append(moreShare,copyLink);sharing.append(links,photoHint);
   const signature=document.createElement('p');signature.className='news-share-signature';signature.textContent='#𝚠𝚎𝙻⚽️𝚟𝚎 VOLLAUNITED🔥';
   sharing.append(signature);root.append(sharing);
   const back=document.createElement('p');back.style.marginTop='35px';const a=document.createElement('a');a.href='/news.html';a.textContent='← Torna alle news';a.style.color='#db153b';back.append(a);root.append(back);document.title=item.title+' | Volla United Academy';

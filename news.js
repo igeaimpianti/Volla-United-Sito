@@ -20,6 +20,30 @@ else if(query){
   const carousel=createNewsCarousel([item.cover_url,...(item.image_urls||[])],item.title);
   if(carousel)root.append(carousel);
   const text=document.createElement('div');text.className='bodycopy';text.textContent=item.content;root.append(text);
+  const sharing=document.createElement('section');sharing.className='news-share';sharing.setAttribute('aria-label','Condividi questo articolo');
+  const shareTitle=document.createElement('h2');shareTitle.textContent='CONDIVIDI LA NOTIZIA';sharing.append(shareTitle);
+  const links=document.createElement('div');links.className='news-share-actions';
+  const articleUrl=new URL('/news.html?articolo='+encodeURIComponent(item.slug||item.id),location.origin).href;
+  const shareText=item.title+' — Volla United Academy';
+  const makeLink=(label,url,kind)=>{
+   const link=document.createElement('a');link.className='news-share-link '+kind;link.href=url;
+   link.target='_blank';link.rel='noopener noreferrer';link.textContent=label;return link;
+  };
+  links.append(
+   makeLink('WhatsApp','https://api.whatsapp.com/send?text='+encodeURIComponent(shareText+'\n'+articleUrl),'whatsapp'),
+   makeLink('Facebook','https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(articleUrl),'facebook')
+  );
+  const moreShare=document.createElement('button');moreShare.type='button';moreShare.className='news-share-link more';moreShare.textContent='Condividi';
+  moreShare.onclick=async()=>{
+   if(navigator.share){
+    try{await navigator.share({title:item.title,text:shareText,url:articleUrl})}catch(err){if(err.name!=='AbortError')console.warn('Condivisione non riuscita',err)}
+   }else{
+    try{await navigator.clipboard.writeText(articleUrl);moreShare.textContent='Link copiato'}catch{window.prompt('Copia il link',articleUrl)}
+   }
+  };
+  links.append(moreShare);sharing.append(links);
+  const signature=document.createElement('p');signature.className='news-share-signature';signature.textContent='#𝚠𝚎𝙻⚽️𝚟𝚎 VOLLAUNITED🔥';
+  sharing.append(signature);root.append(sharing);
   const back=document.createElement('p');back.style.marginTop='35px';const a=document.createElement('a');a.href='/news.html';a.textContent='← Torna alle news';a.style.color='#db153b';back.append(a);root.append(back);document.title=item.title+' | Volla United Academy';
  }
 }else{

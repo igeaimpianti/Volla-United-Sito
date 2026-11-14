@@ -91,3 +91,14 @@
 .news-share-link:hover{background:#f7f8fa;filter:none}
 .news-share-signature{color:#26292e}
 @media(max-width:520px){.news-share-link,.news-share-link.whatsapp,.news-share-link.facebook,.news-share-link.more{flex:0 0 auto;width:46px;height:46px;min-width:46px;min-height:46px}}
+
+/* Instagram and TikTok – icon only, neutral backgrounds as requested. */
+.news-share-link.instagram,.news-share-link.tiktok{
+ display:grid;place-items:center;flex:0 0 auto;width:48px;height:48px;min-width:48px;min-height:48px;
+ padding:10px;border:1px solid #e1e3e7;border-radius:14px;background:#fff;box-shadow:0 3px 12px rgba(0,0,0,.05);
+ color:#24272c;font-size:0;
+}
+.news-share-link.instagram:hover,.news-share-link.tiktok:hover{background:#f7f8fa}
+.news-share-link.instagram svg,.news-share-link.tiktok svg{display:block;width:25px;height:25px}
+.news-share-link.tiktok svg{filter:drop-shadow(-1.1px 1px #25f4ee) drop-shadow(1.1px -1px #fe2c55)}
+@media(max-width:520px){.news-share-actions{gap:7px}.news-share-link.instagram,.news-share-link.tiktok{width:46px;height:46px;min-width:46px;min-height:46px}}

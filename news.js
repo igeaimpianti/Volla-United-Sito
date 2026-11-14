@@ -39,7 +39,7 @@ else if(query){
    link.innerHTML=iconSvg(kind);return link;
   };
   links.append(
-   makeLink('WhatsApp','https://api.whatsapp.com/send?text='+encodeURIComponent(shareText+'\\n'+articleUrl),'whatsapp'),
+   makeLink('WhatsApp','https://api.whatsapp.com/send?text='+encodeURIComponent(shareText+'\n'+articleUrl),'whatsapp'),
    makeLink('Facebook','https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(articleUrl),'facebook')
   );
   const moreShare=document.createElement('button');moreShare.type='button';moreShare.className='news-share-link more';

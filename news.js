@@ -21,12 +21,24 @@ else if(query){
   const back=document.createElement('p');back.style.marginTop='35px';const a=document.createElement('a');a.href='/news.html';a.textContent='← Torna alle news';a.style.color='#db153b';back.append(a);root.append(back);document.title=item.title+' | Volla United Academy';
  }
 }else{
- for(const item of data){const box=document.createElement('article');box.className='article';
- if(item.cover_url){const img=document.createElement('img');img.src=item.cover_url;img.alt=item.title;img.loading='lazy';box.append(img);}
- const copy=document.createElement('div');copy.className='copy';
- const dt=document.createElement('span');dt.className='date';dt.textContent=fmt(item.published_at||item.created_at);
- const title=document.createElement('h2');title.textContent=item.title;
- const descr=document.createElement('p');descr.textContent=item.excerpt||item.content.slice(0,145)+'…';
- const link=document.createElement('a');link.href='/news.html?id='+encodeURIComponent(item.id);link.textContent='Leggi l’articolo →';
- copy.append(dt,title,descr,link);box.append(copy);root.append(box);}
+ root.className='grid news-list';
+ for(const item of data){
+  const card=document.createElement('a');
+  card.className='vu-home-news-card';
+  card.href='/news.html?id='+encodeURIComponent(item.id);
+  if(item.cover_url){
+   const img=document.createElement('img');
+   img.src=item.cover_url;img.alt='Fotografia: '+item.title;img.loading='lazy';
+   card.append(img);
+  }else{
+   const placeholder=document.createElement('div');placeholder.className='vu-home-news-placeholder';
+   placeholder.textContent='VOLLA UNITED';card.append(placeholder);
+  }
+  const copy=document.createElement('div');copy.className='vu-home-news-copy';
+  const date=document.createElement('span');date.className='vu-home-news-date';date.textContent=fmt(item.published_at||item.created_at);
+  const title=document.createElement('h2');title.textContent=item.title;
+  const excerpt=document.createElement('p');excerpt.textContent=item.excerpt||item.content.slice(0,180);
+  const more=document.createElement('span');more.className='vu-home-news-more';more.textContent='LEGGI LA NEWS →';
+  copy.append(date,title,excerpt,more);card.append(copy);root.append(card);
+ }
 }

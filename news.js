@@ -115,9 +115,6 @@ else if(query){
    button.setAttribute('aria-label','Condividi tramite '+platform);button.title='Condividi tramite '+platform;
    button.innerHTML=iconSvg(kind);button.onclick=sharePhoto;links.append(button);
   }
-  const moreShare=document.createElement('button');moreShare.type='button';moreShare.className='news-share-link more';
-  moreShare.setAttribute('aria-label','Altre opzioni di condivisione');moreShare.title='Condividi';moreShare.innerHTML=iconSvg('more');
-  moreShare.onclick=()=>shareNative(moreShare);
   const copyLink=document.createElement('button');
   copyLink.type='button';copyLink.className='news-share-link copy-link';
   copyLink.setAttribute('aria-label','Copia il link per la Storia Instagram');copyLink.title='Copia link';
@@ -126,7 +123,7 @@ else if(query){
    try{await navigator.clipboard.writeText(articleUrl);showPhotoHint('Link copiato. Su Instagram, nella Storia, aggiungi l’adesivo Link e incollalo.');}
    catch{window.prompt('Copia il link dell’articolo',articleUrl)}
   };
-  links.append(moreShare,copyLink);sharing.append(links,photoHint);
+  links.append(copyLink);sharing.append(links,photoHint);
   const signature=document.createElement('p');signature.className='news-share-signature';signature.textContent='#𝚠𝚎𝙻⚽️𝚟𝚎 VOLLAUNITED🔥';
   sharing.append(signature);root.append(sharing);
   const back=document.createElement('p');back.style.marginTop='35px';const a=document.createElement('a');a.href='/news.html';a.textContent='← Torna alle news';a.style.color='#db153b';back.append(a);root.append(back);document.title=item.title+' | Volla United Academy';

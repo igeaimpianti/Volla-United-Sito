@@ -1,3 +1,4 @@
+import {createNewsCarousel} from './news-carousel.js?v=1';
 import {createClient} from 'https://esm.sh/@supabase/supabase-js@2';
 const db=createClient('https://ceitsxrbpabphfplahve.supabase.co',"sb_publishable_NVDBiMpRUshpXEEV8viKRg_pw6bVV8b");
 const el=id=>document.getElementById(id);
@@ -12,9 +13,9 @@ function showPreview(item){
  body.append(tag('div','date',item.published?'ARTICOLO PUBBLICATO':'ANTEPRIMA BOZZA'),tag('h2','news-preview-title',item.title||'Articolo senza titolo'));
  if(item.excerpt)body.append(tag('p','news-preview-lead',item.excerpt));
  const photos=[item.cover_url,...(item.image_urls||[])].filter(Boolean);
- if(photos.length){const cover=document.createElement('img');cover.src=photos[0];cover.alt=item.title||'Copertina';cover.className='news-preview-cover';body.append(cover)}
+ const carousel=createNewsCarousel(photos,item.title||'Anteprima articolo');
+ if(carousel)body.append(carousel);
  body.append(tag('div','news-preview-text',item.content||''));
- if(photos.length>1){const gallery=document.createElement('div');gallery.className='gallery';for(const photo of photos.slice(1)){const image=document.createElement('img');image.src=photo;image.alt=item.title||'Fotografia';image.loading='lazy';gallery.append(image)}body.append(gallery)}
  modal.showModal();
 }
 el('article-preview-close').onclick=()=>el('article-preview').close();

@@ -3,13 +3,14 @@ import {createClient} from 'https://esm.sh/@supabase/supabase-js@2';
 const db=createClient('https://ceitsxrbpabphfplahve.supabase.co',"sb_publishable_NVDBiMpRUshpXEEV8viKRg_pw6bVV8b");
 const root=document.getElementById('news');
 const fmt=d=>new Date(d).toLocaleDateString('it-IT',{day:'2-digit',month:'long',year:'numeric'});
-const query=new URLSearchParams(location.search).get('id');
-const {data,error}=await db.from('news_articles').select('id,title,excerpt,content,cover_url,image_urls,published_at,created_at').eq('published',true).order('published_at',{ascending:false}).limit(100);
+const params=new URLSearchParams(location.search);
+const query=params.get('articolo')||params.get('id');
+const {data,error}=await db.from('news_articles').select('id,slug,title,excerpt,content,cover_url,image_urls,published_at,created_at').eq('published',true).order('published_at',{ascending:false}).limit(100);
 root.replaceChildren();
 if(error){root.textContent='Impossibile caricare le notizie al momento.';}
 else if(!data?.length){root.textContent='Le notizie ufficiali saranno pubblicate qui a breve.';}
 else if(query){
- const item=data.find(x=>x.id===query);
+ const item=data.find(x=>x.slug===query||x.id===query);
  if(!item){root.textContent='Articolo non disponibile.';}
  else {
   root.className='single';const date=document.createElement('div');date.className='date';date.textContent=fmt(item.published_at||item.created_at);
@@ -26,7 +27,7 @@ else if(query){
  for(const item of data){
   const card=document.createElement('a');
   card.className='vu-home-news-card';
-  card.href='/news.html?id='+encodeURIComponent(item.id);
+  card.href='/news.html?articolo='+encodeURIComponent(item.slug||item.id);
   if(item.cover_url){
    const img=document.createElement('img');
    img.src=item.cover_url;img.alt='Fotografia: '+item.title;img.loading='lazy';

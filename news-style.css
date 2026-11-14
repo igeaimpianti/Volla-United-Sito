@@ -102,3 +102,7 @@
 .news-share-link.instagram svg,.news-share-link.tiktok svg{display:block;width:25px;height:25px}
 .news-share-link.tiktok svg{filter:drop-shadow(-1.1px 1px #25f4ee) drop-shadow(1.1px -1px #fe2c55)}
 @media(max-width:520px){.news-share-actions{gap:7px}.news-share-link.instagram,.news-share-link.tiktok{width:46px;height:46px;min-width:46px;min-height:46px}}
+
+/* Guidance shown only when Instagram/TikTok cannot receive a photo file. */
+.news-share-hint{max-width:580px;margin:13px auto 0;padding:9px 12px;border-radius:9px;background:#f5f5f6;color:#52545b;font-size:12px;line-height:1.55;text-align:center}
+.news-share-hint[hidden]{display:none!important}

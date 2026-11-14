@@ -46,3 +46,21 @@
  .news-list .vu-home-news-more{font-size:9px;margin-top:6px}
 }
 @media(prefers-reduced-motion:reduce){.news-list .vu-home-news-card{transition:none}}
+
+/* News gallery: first uploaded image is the cover, others swipe horizontally. */
+.news-carousel{margin:26px 0 30px;max-width:100%;background:#17191d;border:1px solid #303139;border-radius:17px;overflow:hidden;box-shadow:0 14px 35px #00000017}
+.news-carousel-track{display:flex;width:100%;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none;touch-action:pan-x pan-y}
+.news-carousel-track::-webkit-scrollbar{display:none}
+.news-carousel-slide{flex:0 0 100%;width:100%;min-width:0;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;scroll-snap-align:start;scroll-snap-stop:always}
+.news-carousel-slide img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;user-select:none;-webkit-user-drag:none}
+.news-carousel-controls{display:flex;justify-content:center;align-items:center;gap:18px;padding:9px 14px 4px;color:#fff}
+.news-carousel-arrow{display:grid;place-items:center;width:38px;height:38px;border:1px solid #ffffff45;border-radius:50%;background:#ffffff13;color:#fff;font-size:27px;line-height:1;cursor:pointer}
+.news-carousel-arrow:disabled{opacity:.28;cursor:default}
+.news-carousel-count{font-size:12px;font-weight:750;letter-spacing:.14em;min-width:60px;text-align:center;font-variant-numeric:tabular-nums}
+.news-carousel-dots{display:flex;justify-content:center;align-items:center;gap:7px;padding:5px 15px 16px;flex-wrap:wrap}
+.news-carousel-dot{width:7px;height:7px;border:0;border-radius:30px;background:#777983;padding:0;min-width:7px;cursor:pointer;transition:width .18s,background .18s}
+.news-carousel-dot.active{width:19px;background:#f03c5c}
+.news-carousel-arrow:focus-visible,.news-carousel-dot:focus-visible,.news-carousel-track:focus-visible{outline:2px solid #fe7790;outline-offset:2px}
+.news-preview-body .news-carousel{margin:18px 0 24px}
+@media(max-width:560px){.news-carousel{border-radius:12px;margin:20px 0 25px}.news-carousel-slide{aspect-ratio:1/1}.news-carousel-controls{padding:8px 12px 3px}.news-carousel-arrow{width:40px;height:40px}}
+@media(prefers-reduced-motion:reduce){.news-carousel-track{scroll-behavior:auto}.news-carousel-dot{transition:none}}

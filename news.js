@@ -29,9 +29,11 @@ else if(query){
    const paths={
     whatsapp:'<path d="M20.5 11.8a8.5 8.5 0 0 1-12.3 7.6L3 21l1.7-5.1a8.5 8.5 0 1 1 15.8-4.1Z"/><path d="M8.6 8.3c-.3-.5-.6-.5-.9-.5-.4 0-.9.3-1.1.7-.4.5-.5 1.2.1 2.3 1 2 2.5 3.5 4.5 4.4 1 .5 1.8.5 2.4.1l.8-1.2c.1-.3 0-.5-.2-.6l-1.8-.8c-.2-.1-.4 0-.5.2l-.6.7c-1.2-.5-2.2-1.5-2.8-2.8l.6-.6c.2-.2.2-.4.1-.6Z"/>',
     facebook:'<path d="M14.1 21v-8.2h2.7l.4-3.2h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V3.2c-.3 0-1.3-.2-2.4-.2-2.7 0-4.3 1.6-4.3 4.5v2.1H8v3.2h2.7V21Z"/>',
-    more:'<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M12 15V3m0 0L8 7m4-4 4 4"/>'
+    more:'<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M12 15V3m0 0L8 7m4-4 4 4"/>',
+    instagram:'<defs><linearGradient id="vu-share-instagram" x1="0" y1="24" x2="24" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#FEDA75"/><stop offset=".35" stop-color="#FA7E1E"/><stop offset=".68" stop-color="#D62976"/><stop offset="1" stop-color="#4F5BD5"/></linearGradient></defs><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="url(#vu-share-instagram)" stroke="none"/>',
+    tiktok:'<path d="M16.7 2h-3.2v13.1a3.1 3.1 0 1 1-2.7-3.1V8.8a6.5 6.5 0 1 0 6 6.5V8.6a8.2 8.2 0 0 0 4.7 1.5V6.9a4.8 4.8 0 0 1-4.8-4.9z"/>'
    };
-   return '<svg viewBox="0 0 24 24" aria-hidden="true" '+(kind==='facebook'?'fill="currentColor"':'fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"')+'>'+paths[kind]+'</svg>';
+   return '<svg viewBox="0 0 24 24" aria-hidden="true" '+(kind==='facebook'||kind==='tiktok'?'fill="currentColor"':kind==='instagram'?'fill="none" stroke="url(#vu-share-instagram)" stroke-width="1.9"':'fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"')+'>'+paths[kind]+'</svg>';
   };
   const makeLink=(label,url,kind)=>{
    const link=document.createElement('a');link.className='news-share-link '+kind;link.href=url;
@@ -42,15 +44,26 @@ else if(query){
    makeLink('WhatsApp','https://api.whatsapp.com/send?text='+encodeURIComponent(shareText+'\n'+articleUrl),'whatsapp'),
    makeLink('Facebook','https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(articleUrl),'facebook')
   );
-  const moreShare=document.createElement('button');moreShare.type='button';moreShare.className='news-share-link more';
-  moreShare.setAttribute('aria-label','Altre opzioni di condivisione');moreShare.title='Condividi';moreShare.innerHTML=iconSvg('more');
-  moreShare.onclick=async()=>{
+  const shareNative=async(control)=>{
    if(navigator.share){
-    try{await navigator.share({title:item.title,text:shareText,url:articleUrl})}catch(err){if(err.name!=='AbortError')console.warn('Condivisione non riuscita',err)}
+    try{await navigator.share({title:item.title,text:shareText,url:articleUrl})}
+    catch(err){if(err.name!=='AbortError')console.warn('Condivisione non riuscita',err)}
    }else{
-    try{await navigator.clipboard.writeText(articleUrl);moreShare.title='Link copiato'}catch{window.prompt('Copia il link',articleUrl)}
+    try{await navigator.clipboard.writeText(articleUrl);control.title='Link copiato: incollalo nell’app scelta'}
+    catch{window.prompt('Copia il link per condividerlo',articleUrl)}
    }
   };
+  // Instagram e TikTok non offrono un link web per pubblicare direttamente un URL.
+  // Il pulsante apre il menu di condivisione nativo: la scelta dell’app spetta all’utente.
+  for(const platform of ['Instagram','TikTok']){
+   const kind=platform.toLowerCase();
+   const button=document.createElement('button');button.type='button';button.className='news-share-link '+kind;
+   button.setAttribute('aria-label','Condividi tramite '+platform);button.title='Condividi tramite '+platform;
+   button.innerHTML=iconSvg(kind);button.onclick=()=>shareNative(button);links.append(button);
+  }
+  const moreShare=document.createElement('button');moreShare.type='button';moreShare.className='news-share-link more';
+  moreShare.setAttribute('aria-label','Altre opzioni di condivisione');moreShare.title='Condividi';moreShare.innerHTML=iconSvg('more');
+  moreShare.onclick=()=>shareNative(moreShare);
   links.append(moreShare);sharing.append(links);
   const signature=document.createElement('p');signature.className='news-share-signature';signature.textContent='#𝚠𝚎𝙻⚽️𝚟𝚎 VOLLAUNITED🔥';
   sharing.append(signature);root.append(sharing);

@@ -44,6 +44,56 @@ else if(query){
    makeLink('WhatsApp','https://api.whatsapp.com/send?text='+encodeURIComponent(shareText+'\n'+articleUrl),'whatsapp'),
    makeLink('Facebook','https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(articleUrl),'facebook')
   );
+  // Carica in anticipo la copertina così iOS può condividere un vero file
+  // quando il lettore tocca Instagram/TikTok (la condivisione richiede un gesto utente).
+  const photoUrl=item.cover_url||(item.image_urls||[])[0]||null;
+  let preparedPhoto=null;
+  let photoError=null;
+  const photoReady=photoUrl?fetch(photoUrl,{mode:'cors'}).then(async response=>{
+   if(!response.ok)throw Error('Immagine non disponibile');
+   const blob=await response.blob();
+   if(!blob.type.startsWith('image/'))throw Error('Il file non è una fotografia');
+   // Instagram è più interoperabile con JPEG e PNG; converte WEBP ove possibile.
+   let finalBlob=blob;
+   if(!['image/jpeg','image/png'].includes(blob.type)){
+    const bitmap=await createImageBitmap(blob);
+    try{
+     const canvas=document.createElement('canvas');canvas.width=bitmap.width;canvas.height=bitmap.height;
+     const ctx=canvas.getContext('2d');if(!ctx)throw Error('Conversione non disponibile');
+     ctx.fillStyle='#ffffff';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(bitmap,0,0);
+     finalBlob=await new Promise(resolve=>canvas.toBlob(resolve,'image/jpeg',.94));
+     if(!finalBlob)throw Error('Conversione non disponibile');
+    }finally{bitmap.close()}
+   }
+   const extension=finalBlob.type==='image/png'?'png':'jpg';
+   preparedPhoto=new File([finalBlob],'volla-united-'+(item.slug||'news')+'.'+extension,{type:finalBlob.type});
+   return preparedPhoto;
+  }).catch(err=>{photoError=err;return null}):Promise.resolve(null);
+  const photoHint=document.createElement('p');photoHint.className='news-share-hint';photoHint.hidden=true;
+  const showPhotoHint=message=>{photoHint.textContent=message;photoHint.hidden=false};
+  const sharePhoto=async()=>{
+   if(!photoUrl){showPhotoHint('Questo articolo non contiene fotografie da condividere.');return}
+   // L'immagine viene preparata prima del clic per non perdere l'attivazione iOS.
+   if(!preparedPhoto){
+    if(!photoError){showPhotoHint('La fotografia si sta caricando: riprova tra qualche istante.');return}
+    showPhotoHint('Non è possibile condividere direttamente questa foto. Aprila e salvala nelle Foto, poi pubblicala come Storia Instagram.');
+    window.open(photoUrl,'_blank','noopener');return;
+   }
+   if(navigator.share&&navigator.canShare?.({files:[preparedPhoto]})){
+    try{
+     // Condivide solo il FILE: un URL testuale non può diventare una Storia.
+     await navigator.share({files:[preparedPhoto]});
+     photoHint.hidden=true;
+    }catch(err){
+     if(err.name!=='AbortError')showPhotoHint('Condivisione non riuscita. Apri la fotografia, salvala e caricala come Storia dall’app Instagram.');
+    }
+   }else{
+    showPhotoHint('Il browser non supporta la condivisione delle foto. Apri l’immagine, salvala e aggiungila a una Storia dall’app Instagram.');
+    window.open(photoUrl,'_blank','noopener');
+   }
+  };
+  // Non bloccare l'interfaccia: il caricamento procede durante la lettura.
+  void photoReady;
   const shareNative=async(control)=>{
    if(navigator.share){
     try{await navigator.share({title:item.title,text:shareText,url:articleUrl})}
@@ -59,12 +109,12 @@ else if(query){
    const kind=platform.toLowerCase();
    const button=document.createElement('button');button.type='button';button.className='news-share-link '+kind;
    button.setAttribute('aria-label','Condividi tramite '+platform);button.title='Condividi tramite '+platform;
-   button.innerHTML=iconSvg(kind);button.onclick=()=>shareNative(button);links.append(button);
+   button.innerHTML=iconSvg(kind);button.onclick=sharePhoto;links.append(button);
   }
   const moreShare=document.createElement('button');moreShare.type='button';moreShare.className='news-share-link more';
   moreShare.setAttribute('aria-label','Altre opzioni di condivisione');moreShare.title='Condividi';moreShare.innerHTML=iconSvg('more');
   moreShare.onclick=()=>shareNative(moreShare);
-  links.append(moreShare);sharing.append(links);
+  links.append(moreShare);sharing.append(links,photoHint);
   const signature=document.createElement('p');signature.className='news-share-signature';signature.textContent='#𝚠𝚎𝙻⚽️𝚟𝚎 VOLLAUNITED🔥';
   sharing.append(signature);root.append(sharing);
   const back=document.createElement('p');back.style.marginTop='35px';const a=document.createElement('a');a.href='/news.html';a.textContent='← Torna alle news';a.style.color='#db153b';back.append(a);root.append(back);document.title=item.title+' | Volla United Academy';

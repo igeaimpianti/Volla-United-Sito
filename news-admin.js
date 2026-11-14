@@ -1,0 +1,23 @@
+import {createClient} from 'https://esm.sh/@supabase/supabase-js@2';
+const db=createClient('https://ceitsxrbpabphfplahve.supabase.co',"sb_publishable_NVDBiMpRUshpXEEV8viKRg_pw6bVV8b");
+const el=id=>document.getElementById(id);
+const tell=s=>{el('msg').textContent=s};
+let user=null,articles=[],currentImages=[];
+function reset(){el('article').reset();el('articleid').value='';currentImages=[];renderThumbs();}
+function renderThumbs(){el('thumbs').replaceChildren();for(const url of currentImages){const wrap=document.createElement('div'),img=document.createElement('img'),btn=document.createElement('button');img.src=url;img.alt='Foto articolo';btn.type='button';btn.textContent='Rimuovi';btn.className='mini';btn.onclick=()=>{currentImages=currentImages.filter(x=>x!==url);renderThumbs()};wrap.append(img,btn);el('thumbs').append(wrap)}}
+async function load(){const {data,error}=await db.from('news_articles').select('*').order('created_at',{ascending:false});if(error)throw error;articles=data||[];el('articlelist').replaceChildren();if(!articles.length){el('articlelist').textContent='Nessun articolo.';return}for(const item of articles){const row=document.createElement('div');row.className='mini';const name=document.createElement('strong');name.textContent=item.title+(item.published?' · Pubblicato':' · Bozza');const edit=document.createElement('button');edit.textContent='Modifica';edit.onclick=()=>{el('articleid').value=item.id;el('title').value=item.title;el('excerpt').value=item.excerpt;el('content').value=item.content;el('published').checked=item.published;currentImages=[item.cover_url,...(item.image_urls||[])].filter(Boolean);renderThumbs();window.scrollTo({top:0,behavior:'smooth'})};const del=document.createElement('button');del.textContent='Elimina';del.onclick=async()=>{if(!confirm('Eliminare definitivamente questo articolo?'))return;const {error}=await db.from('news_articles').delete().eq('id',item.id);if(error)tell(error.message);else{tell('Articolo eliminato');await load()}};row.append(name,edit,del);el('articlelist').append(row)}}
+async function verify(){const {data:{user:u}}=await db.auth.getUser();if(!u)return;const {data:p,error}=await db.from('profiles').select('role,active').eq('id',u.id).single();if(error||p?.role!=='admin'||!p.active){await db.auth.signOut();tell('Accesso riservato agli amministratori.');return}user=u;el('loginpanel').classList.add('hidden');el('editor').classList.remove('hidden');await load();}
+el('login').onsubmit=async e=>{e.preventDefault();try{const name=el('username').value.trim().toLowerCase();const email=name.includes('@')?name:name+'@users.volla.invalid';const {error}=await db.auth.signInWithPassword({email,password:el('password').value});if(error)throw Error('Credenziali non valide');await verify()}catch(e){tell(e.message)}};
+el('logout').onclick=async()=>{await db.auth.signOut();location.reload()};
+el('new').onclick=reset;
+el('preview').onclick=()=>{const title=el('title').value,body=el('content').value;alert(title+'\n\n'+body.slice(0,700))};
+el('article').onsubmit=async e=>{e.preventDefault();if(!user)return;const save=e.submitter;save.disabled=true;try{
+ const files=[...el('images').files];for(const file of files){if(file.size>10485760||!['image/jpeg','image/png','image/webp'].includes(file.type))throw Error('Formato o dimensione foto non consentiti');
+ const path=user.id+'/'+crypto.randomUUID()+'-'+file.name.replace(/[^a-zA-Z0-9._-]/g,'_');const {error}=await db.storage.from('volla-news').upload(path,file,{cacheControl:'3600',upsert:false,contentType:file.type});if(error)throw error;currentImages.push(db.storage.from('volla-news').getPublicUrl(path).data.publicUrl)}
+ const title=el('title').value.trim();const published=el('published').checked;const id=el('articleid').value;
+ const original=articles.find(x=>x.id===id);
+ const entry={title,slug:original?.slug||'news-'+crypto.randomUUID(),excerpt:el('excerpt').value.trim(),content:el('content').value.trim(),cover_url:currentImages[0]||null,image_urls:currentImages.slice(1),published,author_id:original?.author_id||user.id,published_at:published?(original?.published_at||new Date().toISOString()):null,updated_at:new Date().toISOString()};
+ const req=id?db.from('news_articles').update(entry).eq('id',id):db.from('news_articles').insert(entry);
+ const {error}=await req;if(error)throw error;tell(published?'Articolo pubblicato sul sito.':'Bozza salvata.');reset();await load();
+ }catch(e){tell('Errore: '+e.message)}finally{save.disabled=false}};
+verify().catch(e=>tell(e.message));

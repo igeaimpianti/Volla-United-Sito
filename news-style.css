@@ -23,3 +23,26 @@
 .news-preview-text{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.8}
 @media(min-width:760px){.news-managed-item{flex-direction:row;align-items:center;justify-content:space-between}.news-managed-info{flex:1}.news-managed-actions{width:340px;flex:none}}
 @media(max-width:360px){.news-managed-actions{grid-template-columns:1fr}.news-action{min-height:42px}}
+
+/* Coherent, compact horizontal news layout: same design as the homepage. */
+.news-list{grid-template-columns:minmax(0,1fr);max-width:960px;gap:12px;margin:0 auto}
+.news-list .vu-home-news-card{display:grid;grid-template-columns:155px minmax(0,1fr);min-height:120px;overflow:hidden;background:#fff;border:1px solid #e1dedb;box-shadow:0 6px 20px #00000009;color:#18181a;transition:transform .18s,border-color .18s;text-decoration:none}
+.news-list .vu-home-news-card:hover{transform:translateY(-2px);border-color:#ce2b46}
+.news-list .vu-home-news-card>img,.news-list .vu-home-news-placeholder{width:100%;height:100%;min-height:120px;max-height:165px;object-fit:contain;background:#20151a}
+.news-list .vu-home-news-placeholder{display:grid;place-items:center;color:#fff;font-size:11px;font-weight:850;letter-spacing:.1em}
+.news-list .vu-home-news-copy{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;min-width:0;padding:14px 20px}
+.news-list .vu-home-news-date{color:#c82242;font-size:10px;font-weight:850;letter-spacing:.11em;text-transform:uppercase}
+.news-list .vu-home-news-card h2{font-size:clamp(18px,2.2vw,23px);font-weight:900;line-height:1.2;letter-spacing:-.015em;text-transform:uppercase;margin:7px 0}
+.news-list .vu-home-news-card p{font-size:12px;line-height:1.5;color:#666;margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.news-list .vu-home-news-more{font-size:10px;color:#c62040;font-weight:850;letter-spacing:.07em;margin-top:9px}
+.single .cover{object-fit:contain;background:#20151a}
+@media(max-width:560px){
+ .news-list{gap:10px}
+ .news-list .vu-home-news-card{grid-template-columns:105px minmax(0,1fr);min-height:115px}
+ .news-list .vu-home-news-card>img,.news-list .vu-home-news-placeholder{min-height:115px;max-height:150px}
+ .news-list .vu-home-news-copy{padding:10px 12px}
+ .news-list .vu-home-news-card h2{font-size:17px;margin:5px 0}
+ .news-list .vu-home-news-card p{font-size:11px}
+ .news-list .vu-home-news-more{font-size:9px;margin-top:6px}
+}
+@media(prefers-reduced-motion:reduce){.news-list .vu-home-news-card{transition:none}}

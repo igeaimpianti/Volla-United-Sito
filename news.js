@@ -1,3 +1,4 @@
+import {createNewsCarousel} from './news-carousel.js?v=1';
 import {createClient} from 'https://esm.sh/@supabase/supabase-js@2';
 const db=createClient('https://ceitsxrbpabphfplahve.supabase.co',"sb_publishable_NVDBiMpRUshpXEEV8viKRg_pw6bVV8b");
 const root=document.getElementById('news');
@@ -15,9 +16,9 @@ else if(query){
   const title=document.createElement('h1');title.textContent=item.title;
   const lead=document.createElement('p');lead.className='lead';lead.textContent=item.excerpt||'';
   root.append(date,title,lead);
-  if(item.cover_url){const img=document.createElement('img');img.src=item.cover_url;img.alt=item.title;img.className='cover';root.append(img);}
+  const carousel=createNewsCarousel([item.cover_url,...(item.image_urls||[])],item.title);
+  if(carousel)root.append(carousel);
   const text=document.createElement('div');text.className='bodycopy';text.textContent=item.content;root.append(text);
-  if(item.image_urls?.length){const gal=document.createElement('div');gal.className='gallery';item.image_urls.forEach(src=>{const i=document.createElement('img');i.src=src;i.alt=item.title;i.loading='lazy';gal.append(i)});root.append(gal);}
   const back=document.createElement('p');back.style.marginTop='35px';const a=document.createElement('a');a.href='/news.html';a.textContent='← Torna alle news';a.style.color='#db153b';back.append(a);root.append(back);document.title=item.title+' | Volla United Academy';
  }
 }else{

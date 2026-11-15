@@ -6,7 +6,7 @@ const fmt=d=>new Date(d).toLocaleDateString('it-IT',{day:'2-digit',month:'long',
 const params=new URLSearchParams(location.search);
 const pageSlug=location.pathname.match(/^\/notizie\/([a-z0-9-]+)\.html$/i)?.[1]||'';
 const query=pageSlug||params.get('articolo')||params.get('id');
-const {data,error}=await db.from('news_articles').select('id,slug,title,excerpt,content,cover_url,image_urls,published_at,created_at').eq('published',true).order('published_at',{ascending:false}).limit(100);
+const {data,error}=await db.from('news_articles').select('id,slug,title,excerpt,content,cover_url,image_urls,published_at,created_at,updated_at').eq('published',true).order('published_at',{ascending:false}).limit(100);
 root.replaceChildren();
 if(error){root.textContent='Impossibile caricare le notizie al momento.';}
 else if(!data?.length){root.textContent='Le notizie ufficiali saranno pubblicate qui a breve.';}
@@ -24,7 +24,8 @@ else if(query){
   const sharing=document.createElement('section');sharing.className='news-share';sharing.setAttribute('aria-label','Condividi questo articolo');
   const shareTitle=document.createElement('h2');shareTitle.textContent='CONDIVIDI LA NOTIZIA';sharing.append(shareTitle);
   const links=document.createElement('div');links.className='news-share-actions';
-  const articleUrl=new URL('/notizie/'+encodeURIComponent(item.slug||item.id)+'.html',location.origin).href;
+  const shareVersion=encodeURIComponent(item.updated_at||item.published_at||item.created_at||'1');
+  const articleUrl=new URL('/notizie/'+encodeURIComponent(item.slug||item.id)+'.html?v='+shareVersion,location.origin).href;
   const shareText=item.title+' — Volla United Academy';
   const iconSvg=(kind)=>{
    const paths={

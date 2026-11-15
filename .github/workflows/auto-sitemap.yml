@@ -6,6 +6,7 @@ on:
     paths:
       - '**/*.html'
       - 'scripts/generate_sitemap.py'
+      - 'scripts/optimize_seo.py'
       - '.github/workflows/auto-sitemap.yml'
   schedule:
     - cron: '17 3 * * *'
@@ -28,19 +29,22 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: true
+      - name: Fill and repair on-page SEO metadata
+        run: python3 scripts/optimize_seo.py
       - name: Build sitemap from public pages
         run: python3 scripts/generate_sitemap.py
       - name: Commit only when sitemap changes
         id: commit
         run: |
-          if git diff --quiet -- sitemap.xml; then
+          if git diff --quiet -- sitemap.xml "*.html"; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add sitemap.xml
-          git commit -m "seo: update sitemap for published pages [skip ci]"
+          git add -- sitemap.xml
+          git add -u -- "*.html"
+          git commit -m "seo: update sitemap and page SEO automatically [skip ci]"
           git push
           echo "changed=true" >> "$GITHUB_OUTPUT"
       - name: Request GitHub Pages rebuild of updated sitemap

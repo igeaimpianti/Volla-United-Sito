@@ -51,11 +51,11 @@ def replace_or_add_canonical(head, url, current):
     tag = '<link rel="canonical" href="' + escape(url, quote=True) + '">'
     if not current:
         return add_tag(head, tag)
-    return re.sub(r'<link\\b(?=[^>]*\\brel=["\\\']canonical["\\\'])[^>]*>', lambda _: tag, head, count=1, flags=re.I)
+    return re.sub(r'<link\b(?=[^>]*\brel=["\\']canonical["\\'])[^>]*>', lambda _: tag, head, count=1, flags=re.I)
 
 def set_meta(head, key, name, value, overwrite=False):
     # Do not alter an editorially selected value unless the field is a page URL.
-    regexp = re.compile(r'<meta\\b(?=[^>]*\\b' + re.escape(key) + r'=["\\\']' + re.escape(name) + r'["\\\'])[^>]*>', re.I)
+    regexp = re.compile(r'<meta\b(?=[^>]*\b' + re.escape(key) + r'=["\\']' + re.escape(name) + r'["\\'])[^>]*>', re.I)
     tag = '<meta ' + key + '="' + name + '" content="' + escape(value, quote=True) + '">'
     if regexp.search(head):
         return regexp.sub(lambda _: tag, head, count=1) if overwrite else head
@@ -68,7 +68,7 @@ def main():
         if path.name in EXCLUDE or any(x.startswith(".") or x in SKIP_DIRS for x in rel.parts[:-1]):
             continue
         raw = path.read_text(encoding="utf-8", errors="replace")
-        match = re.search(r'<head\\b[^>]*>([\\s\\S]*?)</head\\s*>', raw, re.I)
+        match = re.search(r'<head\b[^>]*>([\s\S]*?)</head\s*>', raw, re.I)
         if not match:
             continue
         head = match.group(1)
@@ -82,9 +82,9 @@ def main():
         title = raw_title or (path.stem.replace("-", " ").title() + " | Volla United Academy")
         description = parser.field("meta", "name", "description").strip()
         if not description:
-            excerpt = re.search(r'<(?:p|h1)\\b[^>]*>([\\s\\S]*?)</(?:p|h1)>', raw[match.end():], re.I)
+            excerpt = re.search(r'<(?:p|h1)\b[^>]*>([\s\S]*?)</(?:p|h1)>', raw[match.end():], re.I)
             plain = re.sub(r'<[^>]+>', " ", excerpt.group(1)) if excerpt else ""
-            plain = re.sub(r'\\s+', " ", unescape(plain)).strip()
+            plain = re.sub(r'\s+', " ", unescape(plain)).strip()
             description = (plain[:155].rsplit(" ", 1)[0] if len(plain) > 155 else plain) or (title + ". Notizie, squadre e aggiornamenti ufficiali Volla United Academy.")
         if not raw_title:
             head = add_tag(head, "<title>" + escape(title) + "</title>")
@@ -103,7 +103,7 @@ def main():
         head = set_meta(head, "name", "twitter:description", description)
         img = parser.field("meta", "property", "og:image") or LOGO
         head = set_meta(head, "name", "twitter:image", img)
-        structured = re.findall(r'<script\\b[^>]*type=["\\\']application/ld\\+json["\\\'][^>]*>([\\s\\S]*?)</script>', head, re.I)
+        structured = re.findall(r'<script\b[^>]*type=["\\']application/ld\+json["\\'][^>]*>([\s\S]*?)</script>', head, re.I)
         has_page = any('"WebPage"' in s or '"NewsArticle"' in s or '"Article"' in s for s in structured)
         if not has_page:
             data = {"@context": "https://schema.org",
@@ -114,7 +114,7 @@ def main():
             if rel.parts[0] == "notizie":
                 data["image"] = [img]
                 data["publisher"] = {"@type": "Organization", "name": "Volla United Academy", "logo": {"@type": "ImageObject", "url": LOGO}}
-            head = add_tag(head, '<script type="application/ld+json">' + json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c") + '</script>')
+            head = add_tag(head, '<script type="application/ld+json">' + json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("<", "\u003c") + '</script>')
         updated = raw[:match.start(1)] + head + raw[match.end(1):]
         if updated != raw:
             path.write_text(updated, encoding="utf-8")

@@ -51,11 +51,11 @@ def replace_or_add_canonical(head, url, current):
     tag = '<link rel="canonical" href="' + escape(url, quote=True) + '">'
     if not current:
         return add_tag(head, tag)
-    return re.sub(r'<link\b(?=[^>]*\brel=["\\']canonical["\\'])[^>]*>', lambda _: tag, head, count=1, flags=re.I)
+    return re.sub(r'<link\b(?=[^>]*\brel="canonical")[^>]*>', lambda _: tag, head, count=1, flags=re.I)
 
 def set_meta(head, key, name, value, overwrite=False):
     # Do not alter an editorially selected value unless the field is a page URL.
-    regexp = re.compile(r'<meta\b(?=[^>]*\b' + re.escape(key) + r'=["\\']' + re.escape(name) + r'["\\'])[^>]*>', re.I)
+    regexp = re.compile(r'<meta\b(?=[^>]*\b' + re.escape(key) + r'="' + re.escape(name) + r'")[^>]*>', re.I)
     tag = '<meta ' + key + '="' + name + '" content="' + escape(value, quote=True) + '">'
     if regexp.search(head):
         return regexp.sub(lambda _: tag, head, count=1) if overwrite else head

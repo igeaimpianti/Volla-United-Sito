@@ -7,7 +7,7 @@ if(root){
  if(error){const p=document.createElement('p');p.textContent='Le notizie non sono disponibili in questo momento.';root.append(p);console.warn('News Volla United',error)}
  else if(!data?.length){const p=document.createElement('p');p.textContent='Le nuove notizie della società saranno pubblicate qui.';root.append(p)}
  else for(const item of data){
-  const card=document.createElement('a');card.className='vu-home-news-card';card.href='/news.html?articolo='+encodeURIComponent(item.slug||item.id);
+  const card=document.createElement('a');card.className='vu-home-news-card';card.href='/notizie/'+encodeURIComponent(item.slug||item.id)+'.html';
   if(item.cover_url){const img=document.createElement('img');img.src=item.cover_url;img.alt='Fotografia: '+item.title;img.loading='lazy';card.append(img)}
   else{const image=document.createElement('div');image.className='vu-home-news-placeholder';image.textContent='VOLLA UNITED';card.append(image)}
   const copy=document.createElement('div');copy.className='vu-home-news-copy';

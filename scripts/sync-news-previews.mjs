@@ -1,0 +1,33 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+const API='https://ceitsxrbpabphfplahve.supabase.co/rest/v1/news_articles';
+const KEY='sb_publishable_NVDBiMpRUshpXEEV8viKRg_pw6bVV8b';
+const site='https://www.vollaunitedacademy.com';
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const template=await fs.readFile('news.html','utf8');
+const res=await fetch(API+'?select=id,slug,title,excerpt,cover_url,published&published=eq.true&limit=500',{headers:{apikey:KEY,Authorization:'Bearer '+KEY},signal:AbortSignal.timeout(20000)});
+if(!res.ok)throw Error('News API returned '+res.status);
+const posts=await res.json();
+if(!Array.isArray(posts))throw Error('Invalid published news data');
+await fs.mkdir('notizie',{recursive:true});
+let count=0;
+for(const p of posts){
+ const slug=String(p.slug||p.id||'');
+ if(!/^[a-z0-9-]{1,160}$/.test(slug))continue;
+ const title=String(p.title||'Notizia Volla United Academy');
+ const excerpt=String(p.excerpt||'Notizie ufficiali Volla United Academy');
+ const image=String(p.cover_url||'');
+ const url=site+'/notizie/'+slug+'.html';
+ let meta='<title>'+esc(title)+' | Volla United Academy</title>';
+ meta+='<meta name="description" content="'+esc(excerpt)+'">';
+ meta+='<link rel="canonical" href="'+url+'">';
+ meta+='<meta property="og:type" content="article"><meta property="og:site_name" content="Volla United Academy">';
+ meta+='<meta property="og:title" content="'+esc(title)+'"><meta property="og:description" content="'+esc(excerpt)+'"><meta property="og:url" content="'+url+'">';
+ if(image)meta+='<meta property="og:image" content="'+esc(image)+'"><meta property="og:image:secure_url" content="'+esc(image)+'"><meta property="og:image:alt" content="'+esc(title)+'">';
+ meta+='<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="'+esc(title)+'"><meta name="twitter:description" content="'+esc(excerpt)+'">';
+ if(image)meta+='<meta name="twitter:image" content="'+esc(image)+'">';
+ const html=template.replace('<title>News | Volla United Academy</title>',meta);
+ await fs.writeFile(path.join('notizie',slug+'.html'),html,'utf8');
+ count++;
+}
+console.log('Generated social preview pages:',count);

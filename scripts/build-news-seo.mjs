@@ -84,6 +84,51 @@ function htmlArticle(item, template) {
     .replace('<body>', '<body class="article-view">');
 }
 
+
+// Pagine categorie indicizzabili: soltanto le rose autorizzate e pubblicate sul sito.
+// Evita di mettere nella sitemap categorie che restituiscono una rosa vuota.
+const publicCategories = [
+  '2011 REGIONALI','2013 REGIONALI','2016 NERA','2016 ROSSA','2017','2019','2020'
+];
+const categorySlug = value => value.toLowerCase().replaceAll(' ','-');
+async function generateCategoryPages(){
+  const template = await fs.readFile('gruppo.html','utf8');
+  await fs.mkdir('categorie',{recursive:true});
+  for(const category of publicCategories){
+    const url = origin+'/categorie/'+categorySlug(category)+'.html';
+    const seoTitle = 'Volla United '+category+' – Rosa e Staff | Stagione 2026/27';
+    const desc = 'Scopri la rosa ufficiale e lo staff tecnico della categoria '+category+
+      ' della Volla United Academy di Volla (Napoli), stagione calcistica 2026/27.';
+    const schema = {
+      '@context':'https://schema.org','@type':'WebPage',name:seoTitle,url,
+      description:desc,inLanguage:'it-IT',isPartOf:{'@type':'WebSite',name:'Volla United Academy',url:origin+'/'},
+      about:{'@type':'SportsOrganization',name:'Volla United Academy',url:origin+'/'}
+    };
+    const head = '<title>'+escapeHtml(seoTitle)+'</title>'+
+      '<meta name="description" content="'+escapeHtml(desc)+'">'+
+      '<meta property="og:title" content="'+escapeHtml(seoTitle)+'">'+
+      '<meta property="og:description" content="'+escapeHtml(desc)+'">'+
+      '<meta property="og:type" content="website">'+
+      '<meta property="og:url" content="'+escapeHtml(url)+'">'+
+      '<meta property="og:image" content="'+origin+'/assets/volla-google-logo-1200.png">'+
+      '<script type="application/ld+json">'+jsonForScript(schema)+'</script>'+
+      '<meta name="robots" content="index,follow,max-image-preview:large">'+
+      '<link rel="canonical" href="'+escapeHtml(url)+'">';
+    const original = '<title>Rose e Staff delle Squadre | Volla United Academy</title>'+
+      '<meta name="description" content="Consulta le rose e gli staff tecnici delle categorie Volla United Academy per la stagione 2026/27.">'+
+      '<meta name="robots" content="index,follow,max-image-preview:large">'+
+      '<link rel="canonical" href="https://www.vollaunitedacademy.com/squadre.html">';
+    if(!template.includes(original)) throw new Error('Intestazione gruppo.html modificata: aggiornare il generatore SEO');
+    const page = template.replace(original,head)
+      .replace('<h1 id="title">LE NOSTRE <span>SQUADRE</span></h1>',
+        '<h1 id="title">'+escapeHtml(category)+'</h1>')
+      .replace('<p class="sub" id="count"></p>',
+        '<p class="sub" id="count">Rosa ufficiale e staff tecnico · Stagione 2026/27</p>');
+    await fs.writeFile('categorie/'+categorySlug(category)+'.html',page);
+  }
+}
+await generateCategoryPages();
+
 const all = await getPublishedNews();
 const template = await fs.readFile('news.html','utf8');
 const directory = 'notizie';
@@ -106,9 +151,12 @@ for(const name of await fs.readdir(directory)){
 }
 const oldSitemap = await fs.readFile('sitemap.xml','utf8');
 const originalUrls = [...oldSitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>m[1])
-  .filter(u=>!u.includes('/notizie/') && !u.includes('/news.html?'));
+  .filter(u=>!u.includes('/notizie/') && !u.includes('/news.html?') && !u.includes('/gruppo.html?categoria=') && !u.includes('/categorie/'));
 if(!originalUrls.includes(origin+'/news.html')) originalUrls.push(origin+'/news.html');
 const entries = originalUrls.map(u=>'  <url><loc>'+escapeXml(u)+'</loc></url>');
+for(const category of publicCategories){
+  entries.push('  <url><loc>'+escapeXml(origin+'/categorie/'+categorySlug(category)+'.html')+'</loc></url>');
+}
 for(const item of all){
   const updated = dateOnly(item.updated_at || item.published_at || item.created_at);
   entries.push('  <url><loc>'+escapeXml(origin+articlePath(item))+'</loc>'+

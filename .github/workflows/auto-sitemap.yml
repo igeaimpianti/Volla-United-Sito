@@ -1,0 +1,51 @@
+name: Aggiorna sitemap SEO automaticamente
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.html'
+      - 'scripts/generate_sitemap.py'
+      - '.github/workflows/auto-sitemap.yml'
+  schedule:
+    - cron: '17 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: seo-sitemap-main
+  cancel-in-progress: false
+
+jobs:
+  sitemap:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout complete history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - name: Build sitemap from public pages
+        run: python3 scripts/generate_sitemap.py
+      - name: Commit only when sitemap changes
+        id: commit
+        run: |
+          if git diff --quiet -- sitemap.xml; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sitemap.xml
+          git commit -m "seo: update sitemap for published pages [skip ci]"
+          git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+      - name: Request GitHub Pages rebuild of updated sitemap
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api --method POST "repos/${GITHUB_REPOSITORY}/pages/builds" || echo "::warning::Pages rebuild request unavailable; check Pages publishing settings."

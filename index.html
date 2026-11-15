@@ -87,7 +87,10 @@ const menu=document.querySelector('#menu'),nav=document.querySelector('#navlinks
       const img=document.createElement('img');img.src='assets/logo.webp';img.alt='Volla United';panel.appendChild(img);
     }else if(/MASSA\s*LUBRENSE/i.test(String(name||''))){
       const img=document.createElement('img');
-      img.src='/assets/massa-lubrense.webp?v=20261115-2';
+      img.src='/assets/massa-lubrense.webp?v=20261115-3';
+      img.style.borderRadius='50%';
+      img.style.clipPath='circle(49% at 50% 50%)';
+      img.style.background='transparent';
       img.alt='Stemma ASD Massa Lubrense Calcio';
       img.loading='eager';
       img.referrerPolicy='no-referrer';

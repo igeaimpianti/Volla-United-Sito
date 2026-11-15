@@ -85,6 +85,14 @@ const menu=document.querySelector('#menu'),nav=document.querySelector('#navlinks
     const panel=document.createElement('div');
     if(volla(name)){
       const img=document.createElement('img');img.src='assets/logo.webp';img.alt='Volla United';panel.appendChild(img);
+    }else if(/MASSA\s*LUBRENSE/i.test(String(name||''))){
+      const img=document.createElement('img');
+      img.src='https://b2-content.tuttocampo.it/Teams/Original/64916.png?v=2';
+      img.alt='Stemma ASD Massa Lubrense Calcio';
+      img.loading='eager';
+      img.referrerPolicy='no-referrer';
+      img.onerror=()=>{const badge=document.createElement('div');badge.className='united-opponent-badge';badge.textContent='⚽';img.replaceWith(badge)};
+      panel.appendChild(img);
     }else{
       const badge=document.createElement('div');badge.className='united-opponent-badge';badge.textContent='⚽';panel.appendChild(badge);
     }

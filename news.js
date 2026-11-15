@@ -26,7 +26,7 @@ else if(query){
   const shareTitle=document.createElement('h2');shareTitle.textContent='CONDIVIDI LA NOTIZIA';sharing.append(shareTitle);
   const links=document.createElement('div');links.className='news-share-actions';
   const shareVersion=encodeURIComponent(item.updated_at||item.published_at||item.created_at||'1');
-  const articleUrl=new URL('/notizie/'+encodeURIComponent(item.slug||item.id)+'.html?v='+shareVersion,location.origin).href;
+  const articleUrl=new URL('/news.html?articolo='+encodeURIComponent(item.slug||item.id)+'&v='+shareVersion,location.origin).href;
   const shareText=item.title+' — Volla United Academy';
   const iconSvg=(kind)=>{
    const paths={
@@ -136,7 +136,7 @@ else if(query){
  for(const item of data){
   const card=document.createElement('a');
   card.className='vu-home-news-card';
-  card.href='/notizie/'+encodeURIComponent(item.slug||item.id)+'.html';
+  card.href='/news.html?articolo='+encodeURIComponent(item.slug||item.id);
   if(item.cover_url){
    const img=document.createElement('img');
    img.src=item.cover_url;img.alt='Fotografia: '+item.title;img.loading='lazy';

@@ -41,7 +41,7 @@ def last_modified(path):
             ["git", "-C", str(ROOT), "log", "-1", "--format=%cs", "--", str(path.relative_to(ROOT))],
             text=True, stderr=subprocess.DEVNULL
         ).strip()
-        if re.fullmatch(r"\\d{4}-\\d{2}-\\d{2}", result):
+        if re.fullmatch(r"\d{4}-\d{2}-\d{2}", result):
             return result
     except (OSError, subprocess.CalledProcessError):
         pass

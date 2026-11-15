@@ -103,7 +103,7 @@ def main():
         head = set_meta(head, "name", "twitter:description", description)
         img = parser.field("meta", "property", "og:image") or LOGO
         head = set_meta(head, "name", "twitter:image", img)
-        structured = re.findall(r'<script\b[^>]*type=["\\']application/ld\+json["\\'][^>]*>([\s\S]*?)</script>', head, re.I)
+        structured = re.findall(r"<script\b[^>]*type=['\"]application/ld\+json['\"][^>]*>([\s\S]*?)</script>", head, re.I)
         has_page = any('"WebPage"' in s or '"NewsArticle"' in s or '"Article"' in s for s in structured)
         if not has_page:
             data = {"@context": "https://schema.org",

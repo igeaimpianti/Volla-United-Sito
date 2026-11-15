@@ -4,7 +4,7 @@
     "season": "2026/27",
     "group": "GIRONE B",
     "sourceUrl": "https://www.tuttocampo.it/WidgetV2/Classifica/94e9e03a-43ad-4573-ab6d-0829547ca206",
-    "updatedAt": "06/11/2026 08:44",
+    "updatedAt": "15/11/2026",
     "live": {
       "provider": "youtube",
       "youtubeId": "",
@@ -1043,10 +1043,10 @@
       {
         "date": "2026-11-15",
         "dateLabel": "15/11/2026",
-        "time": "",
+        "time": "14:30",
         "homeTeam": "VOLLA UNITED 2024",
         "awayTeam": "A.C. SAN GIORGIO CALCIO",
-        "score": "—",
+        "score": "4 - 0",
         "venue": "GIORNATA 10",
         "round": 10
       },
@@ -1123,7 +1123,7 @@
       {
         "date": "2026-11-22",
         "dateLabel": "22/11/2026",
-        "time": "",
+        "time": "15:00",
         "homeTeam": "MASSA LUBRENSE",
         "awayTeam": "VOLLA UNITED 2024",
         "score": "—",

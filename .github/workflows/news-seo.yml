@@ -1,0 +1,31 @@
+name: Indicizzazione automatica notizie Volla United
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 * * * *'
+permissions:
+  contents: write
+concurrency:
+  group: volla-news-seo
+  cancel-in-progress: false
+jobs:
+  build-news:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Genera pagine notizie e sitemap
+        run: node scripts/build-news-seo.mjs
+      - name: Pubblica solo le modifiche SEO
+        run: |
+          git config user.name "volla-united-seo-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sitemap.xml notizie/
+          if ! git diff --cached --quiet; then
+            git commit -m "Aggiorna indicizzazione SEO notizie"
+            git push
+          fi

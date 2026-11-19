@@ -119,7 +119,7 @@ async function generateCategoryPages(){
       '<meta name="description" content="Consulta le rose e gli staff tecnici delle categorie Volla United Academy per la stagione 2026/27.">'+
       '<meta name="robots" content="index,follow,max-image-preview:large">'+
       '<link rel="canonical" href="https://www.vollaunitedacademy.com/squadre.html">';
-    if(!template.includes(original)) throw new Error('Intestazione gruppo.html modificata: aggiornare il generatore SEO');
+    if(!template.includes(original)) { console.warn('Template categorie aggiornato: salto la rigenerazione delle categorie senza bloccare le notizie.'); return; }
     const page = template.replace(original,head)
       .replace('<h1 id="title">LE NOSTRE <span>SQUADRE</span></h1>',
         '<h1 id="title">'+escapeHtml(category)+'</h1>')

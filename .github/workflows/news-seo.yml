@@ -6,7 +6,7 @@ on:
       - 'scripts/build-news-seo.mjs'
   workflow_dispatch:
   schedule:
-    - cron: '17 * * * *'
+    - cron: '*/15 * * * *'
 permissions:
   contents: write
 concurrency:

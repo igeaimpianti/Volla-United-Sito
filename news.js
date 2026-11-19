@@ -25,8 +25,7 @@ else if(query){
   const sharing=document.createElement('section');sharing.className='news-share';sharing.setAttribute('aria-label','Condividi questo articolo');
   const shareTitle=document.createElement('h2');shareTitle.textContent='CONDIVIDI LA NOTIZIA';sharing.append(shareTitle);
   const links=document.createElement('div');links.className='news-share-actions';
-  const shareVersion=encodeURIComponent(item.updated_at||item.published_at||item.created_at||'1');
-  const articleUrl=new URL('/notizie/'+encodeURIComponent(item.slug||item.id)+'.html?v='+shareVersion,location.origin).href;
+  const articleUrl=new URL('/notizie/'+encodeURIComponent(item.slug||item.id)+'.html',location.origin).href;
   const shareText=item.title+' — Volla United Academy';
   const iconSvg=(kind)=>{
    const paths={

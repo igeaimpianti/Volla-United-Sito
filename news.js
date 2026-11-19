@@ -1,4 +1,4 @@
-import {createNewsCarousel} from './news-carousel.js?v=1';
+import {createNewsCarousel} from './news-carousel.js?v=2';
 import {createClient} from 'https://esm.sh/@supabase/supabase-js@2';
 const db=createClient('https://ceitsxrbpabphfplahve.supabase.co',"sb_publishable_NVDBiMpRUshpXEEV8viKRg_pw6bVV8b");
 const root=document.getElementById('news');

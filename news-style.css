@@ -112,3 +112,20 @@
 .news-share-link.copy-link svg{display:block;width:25px;height:25px}
 .news-share-link.copy-link:hover{background:#f7f8fa}
 @media(max-width:520px){.news-share-link.copy-link{width:46px;height:46px;min-width:46px;min-height:46px}.news-share-actions{gap:6px}}
+
+/* Prevent iOS Safari's rapid-tap page zoom on gallery controls only. */
+.news-carousel-arrow,.news-carousel-dot,.news-carousel-slide img,.news-carousel-track{touch-action:manipulation}
+.news-carousel-slide img{cursor:zoom-in}
+.news-lightbox{position:fixed;inset:0;z-index:99999;background:rgba(7,7,10,.97);display:flex;align-items:center;justify-content:center;color:#fff;touch-action:manipulation}
+.news-lightbox-top{position:absolute;top:0;left:0;right:0;z-index:2;padding:calc(env(safe-area-inset-top,0px) + 16px) 18px 12px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:linear-gradient(#0009,transparent)}
+.news-lightbox-actions{display:flex;align-items:center;gap:10px}
+.news-lightbox button{touch-action:manipulation;color:#fff;background:#24242bdc;border:1px solid #ffffff65;border-radius:11px;min-width:43px;min-height:43px;padding:8px 14px;font-weight:750}
+.news-lightbox .news-lightbox-close{font-size:22px;padding:5px 12px}
+.news-lightbox-count{font-weight:800;font-size:13px;letter-spacing:.12em}
+.news-lightbox-image{max-width:100vw;max-height:100dvh;width:auto;height:auto;object-fit:contain;user-select:none;-webkit-user-select:none;-webkit-user-drag:none}
+.news-lightbox-prev,.news-lightbox-next{position:absolute;top:50%;transform:translateY(-50%);z-index:2;font-size:32px!important;padding:0!important;width:45px;height:55px}
+.news-lightbox-prev{left:10px}.news-lightbox-next{right:10px}
+.news-lightbox-hint{position:absolute;bottom:calc(env(safe-area-inset-bottom,0px) + 16px);left:20px;right:20px;text-align:center;font-size:12px;color:#eee;pointer-events:none}
+.news-lightbox-hint:empty{display:none}
+.news-lightbox button:focus-visible,.news-carousel-slide img:focus-visible{outline:3px solid #ff6986;outline-offset:3px}
+@media(max-width:560px){.news-lightbox-prev,.news-lightbox-next{top:auto;bottom:calc(env(safe-area-inset-bottom,0px) + 60px);transform:none}.news-lightbox-prev{left:20px}.news-lightbox-next{right:20px}.news-lightbox-hint{bottom:calc(env(safe-area-inset-bottom,0px) + 4px)}}

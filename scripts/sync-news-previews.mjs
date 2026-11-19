@@ -18,7 +18,7 @@ for(const p of posts){
  const excerpt=String(p.excerpt||'Notizie ufficiali Volla United Academy');
  const image=String(p.cover_url||'');
  const url=site+'/notizie/'+slug+'.html';
- const previewUrl=url+'?v='+encodeURIComponent(p.updated_at||p.published_at||p.created_at||'1');
+ const previewUrl=url;
  let meta='<title>'+esc(title)+' | Volla United Academy</title>';
  meta+='<meta name="description" content="'+esc(excerpt)+'">';
  meta+='<link rel="canonical" href="'+url+'">';

@@ -129,3 +129,16 @@
 .news-lightbox-hint:empty{display:none}
 .news-lightbox button:focus-visible,.news-carousel-slide img:focus-visible{outline:3px solid #ff6986;outline-offset:3px}
 @media(max-width:560px){.news-lightbox-prev,.news-lightbox-next{top:auto;bottom:calc(env(safe-area-inset-bottom,0px) + 60px);transform:none}.news-lightbox-prev{left:20px}.news-lightbox-next{right:20px}.news-lightbox-hint{bottom:calc(env(safe-area-inset-bottom,0px) + 4px)}}
+
+/* Refined, compact gallery navigation */
+.news-carousel-controls{gap:18px!important;margin-top:20px!important}
+.news-carousel-arrow{width:44px!important;height:44px!important;min-width:44px!important;border-radius:13px!important;background:#24242b!important;border:1px solid #ffffff2c!important;box-shadow:0 4px 14px #0003!important;color:#fff!important;font-size:29px!important;line-height:1!important;transition:background .2s,border-color .2s,transform .2s!important}
+.news-carousel-arrow:not(:disabled):active{transform:scale(.94)!important}
+.news-carousel-arrow:hover:not(:disabled){background:#34343e!important;border-color:#ed496a!important}
+.news-carousel-arrow:disabled{opacity:.35!important}
+.news-carousel-count{font-weight:800!important;letter-spacing:.09em!important;font-variant-numeric:tabular-nums}
+.news-carousel-dots{gap:7px!important;margin-top:14px!important}
+.news-carousel-dot{width:7px!important;height:7px!important;min-width:7px!important;border-radius:99px!important;transition:width .2s,background .2s!important}
+.news-carousel-dot.active{width:24px!important;border-radius:99px!important}
+.news-lightbox button{border-radius:13px;background:#24242be8;border-color:#ffffff35;backdrop-filter:blur(10px)}
+.news-lightbox .news-lightbox-download{font-size:13px;letter-spacing:.02em}

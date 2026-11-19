@@ -3,6 +3,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
+// Social previews are generated as static HTML for WhatsApp and other crawlers.
 const origin = 'https://www.vollaunitedacademy.com';
 const api = 'https://ceitsxrbpabphfplahve.supabase.co';
 const key = 'sb_publishable_NVDBiMpRUshpXEEV8viKRg_pw6bVV8b';

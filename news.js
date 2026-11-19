@@ -43,7 +43,7 @@ else if(query){
    link.innerHTML=iconSvg(kind);return link;
   };
   links.append(
-   makeLink('WhatsApp','https://api.whatsapp.com/send?text='+encodeURIComponent(shareText+'\n'+articleUrl),'whatsapp'),
+   makeLink('WhatsApp','https://api.whatsapp.com/send?text='+encodeURIComponent(articleUrl),'whatsapp'),
    makeLink('Facebook','https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(articleUrl),'facebook')
   );
   // Carica in anticipo la copertina così iOS può condividere un vero file
@@ -102,7 +102,7 @@ else if(query){
   void photoReady;
   const shareNative=async(control)=>{
    if(navigator.share){
-    try{await navigator.share({title:item.title,text:shareText,url:articleUrl})}
+    try{await navigator.share({url:articleUrl})}
     catch(err){if(err.name!=='AbortError')console.warn('Condivisione non riuscita',err)}
    }else{
     try{await navigator.clipboard.writeText(articleUrl);control.title='Link copiato: incollalo nell’app scelta'}

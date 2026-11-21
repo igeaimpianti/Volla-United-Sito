@@ -134,7 +134,7 @@ else if(query){
  }
 }else{
  root.className='grid news-list';
- for(const item of data){
+ for(const item of (selectedCategory?data.filter(x=>(x.category||'News').toLocaleLowerCase('it')===selectedCategory.toLocaleLowerCase('it')):data)){
   const card=document.createElement('a');
   card.className='vu-home-news-card';
   card.href='/notizie/'+encodeURIComponent(item.slug||item.id)+'.html';
@@ -151,6 +151,6 @@ else if(query){
   const title=document.createElement('h2');title.textContent=item.title;
   const excerpt=document.createElement('p');excerpt.textContent=item.excerpt||item.content.slice(0,180);
   const more=document.createElement('span');more.className='vu-home-news-more';more.textContent='LEGGI LA NEWS →';
-  copy.append(date,title,excerpt,more);card.append(copy);root.append(card);
+  const category=document.createElement('span');category.className='vu-home-news-date';category.textContent=item.category||'News';copy.append(category,date,title,excerpt,more);card.append(copy);root.append(card);
  }
 }

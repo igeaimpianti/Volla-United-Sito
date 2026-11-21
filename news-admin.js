@@ -4,7 +4,10 @@ const db=createClient('https://ceitsxrbpabphfplahve.supabase.co',"sb_publishable
 const el=id=>document.getElementById(id);
 const tell=s=>{el('msg').textContent=s};
 let user=null,articles=[],currentImages=[];
-function reset(){el('article').reset();el('articleid').value='';currentImages=[];renderThumbs();}
+const categoryName=value=>(value||'').trim().replace(/\s+/g,' ');
+function refreshCategories(){const names=[...new Set(['Prima Squadra','Juniores','Academy','News',...articles.map(x=>categoryName(x.category))].filter(Boolean))].sort((a,b)=>a.localeCompare(b,'it'));const list=el('news-categories');list.replaceChildren(...names.map(name=>{const option=document.createElement('option');option.value=name;return option}));}
+
+function reset(){el('article').reset();el('articleid').value='';currentImages=[];renderThumbs();el('category').value='News';}
 function renderThumbs(){el('thumbs').replaceChildren();for(const url of currentImages){const wrap=document.createElement('div'),img=document.createElement('img'),btn=document.createElement('button');img.src=url;img.alt='Foto articolo';btn.type='button';btn.textContent='Rimuovi';btn.className='mini';btn.onclick=()=>{currentImages=currentImages.filter(x=>x!==url);renderThumbs()};wrap.append(img,btn);el('thumbs').append(wrap)}}
 function showPreview(item){
  const modal=el('article-preview'),body=el('article-preview-body');
@@ -23,7 +26,7 @@ el('article-preview').addEventListener('click',e=>{if(e.target===el('article-pre
 async function load(){
  const {data,error}=await db.from('news_articles').select('*').order('created_at',{ascending:false});
  if(error)throw error;
- articles=data||[];
+ articles=data||[];refreshCategories();
  const list=el('articlelist');list.replaceChildren();
  if(!articles.length){list.textContent='Nessun articolo.';return}
  for(const item of articles){
@@ -36,7 +39,7 @@ async function load(){
   const edit=document.createElement('button');edit.type='button';edit.className='news-action edit';edit.textContent='Modifica';
   edit.onclick=()=>{
    el('articleid').value=item.id;el('title').value=item.title;el('excerpt').value=item.excerpt;
-   el('content').value=item.content;el('published').checked=item.published;
+   el('content').value=item.content;el('category').value=item.category||'News';el('published').checked=item.published;
    currentImages=[item.cover_url,...(item.image_urls||[])].filter(Boolean);renderThumbs();
    el('images').value='';el('title').scrollIntoView({behavior:'smooth',block:'center'});el('title').focus({preventScroll:true});
    tell('Stai modificando: '+item.title);
@@ -65,7 +68,8 @@ el('article').onsubmit=async e=>{e.preventDefault();if(!user)return;const save=e
  const original=articles.find(x=>x.id===id);
  const baseSlug=title.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,65)||'articolo';
  const slug=original?.slug||(articles.some(article=>article.slug===baseSlug)?baseSlug+'-'+crypto.randomUUID().slice(0,6):baseSlug);
- const entry={title,slug,excerpt:el('excerpt').value.trim(),content:el('content').value.trim(),cover_url:currentImages[0]||null,image_urls:currentImages.slice(1),published,author_id:original?.author_id||user.id,published_at:published?(original?.published_at||new Date().toISOString()):null,updated_at:new Date().toISOString()};
+ const typedCategory=categoryName(el('category').value);if(!typedCategory)throw Error('Inserisci una categoria');const category=[...new Set(articles.map(x=>categoryName(x.category)))].find(x=>x.toLocaleLowerCase('it')===typedCategory.toLocaleLowerCase('it'))||typedCategory;
+ const entry={title,slug,category,excerpt:el('excerpt').value.trim(),content:el('content').value.trim(),cover_url:currentImages[0]||null,image_urls:currentImages.slice(1),published,author_id:original?.author_id||user.id,published_at:published?(original?.published_at||new Date().toISOString()):null,updated_at:new Date().toISOString()};
  const req=id?db.from('news_articles').update(entry).eq('id',id):db.from('news_articles').insert(entry);
  const {error}=await req;if(error)throw error;tell(published?'Articolo pubblicato sul sito.':'Bozza salvata.');reset();await load();
  }catch(e){tell('Errore: '+e.message)}finally{save.disabled=false}};

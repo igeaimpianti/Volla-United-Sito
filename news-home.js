@@ -2,7 +2,7 @@ import {createClient} from 'https://esm.sh/@supabase/supabase-js@2';
 const db=createClient('https://ceitsxrbpabphfplahve.supabase.co',"sb_publishable_NVDBiMpRUshpXEEV8viKRg_pw6bVV8b");
 const root=document.getElementById('vu-home-news-grid');
 if(root){
- const {data,error}=await db.from('news_articles').select('id,slug,title,excerpt,content,cover_url,published_at,created_at').eq('published',true).order('published_at',{ascending:false}).limit(5);
+ const {data,error}=await db.from('news_articles').select('id,slug,title,excerpt,content,cover_url,category,published_at,created_at').eq('published',true).order('published_at',{ascending:false}).limit(5);
  root.replaceChildren();
  if(error){const p=document.createElement('p');p.textContent='Le notizie non sono disponibili in questo momento.';root.append(p);console.warn('News Volla United',error)}
  else if(!data?.length){const p=document.createElement('p');p.textContent='Le nuove notizie della società saranno pubblicate qui.';root.append(p)}
@@ -15,6 +15,6 @@ if(root){
   const title=document.createElement('h3');title.textContent=item.title;
   const desc=document.createElement('p');desc.textContent=item.excerpt||item.content.slice(0,180);
   const more=document.createElement('span');more.className='vu-home-news-more';more.textContent='LEGGI LA NEWS →';
-  copy.append(date,title,desc,more);card.append(copy);root.append(card);
+  const category=document.createElement('span');category.className='vu-home-news-date';category.textContent=item.category||'News';copy.append(category,date,title,desc,more);card.append(copy);root.append(card);
  }
 }

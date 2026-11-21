@@ -2653,5 +2653,30 @@
     ],
     "calendarSourceUrl": "https://www.tuttocalciocampano.it/calendar/promozione-girone-b-2026-2027/",
     "automaticTuttocampo": true
+  },
+  "juniores": {
+    "competition": "Juniores Under 19 Regionale",
+    "season": "2026/2027",
+    "group": "E",
+    "sourceUrl": "https://campania.lnd.it/",
+    "updatedAt": "2026-11-19",
+    "matches": [
+      {
+        "date": "2026-11-16",
+        "round": 7,
+        "homeTeam": "S.V.T.",
+        "awayTeam": "VOLLA UNITED 2024",
+        "score": "1 - 6",
+        "source": "Comunicato Ufficiale LND Campania n. 52 del 19/11/2026"
+      },
+      {
+        "date": "2026-11-02",
+        "round": 5,
+        "homeTeam": "VIRTUS POMPEI SOCCER",
+        "awayTeam": "VOLLA UNITED 2024",
+        "score": "0 - 6",
+        "source": "Comunicato Ufficiale LND Campania n. 47 del 05/11/2026"
+      }
+    ]
   }
 }

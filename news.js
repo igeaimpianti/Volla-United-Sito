@@ -6,9 +6,11 @@ const fmt=d=>new Date(d).toLocaleDateString('it-IT',{day:'2-digit',month:'long',
 const params=new URLSearchParams(location.search);
 const pageSlug=location.pathname.match(/^\/notizie\/([a-z0-9-]+)\.html$/i)?.[1]||'';
 const query=pageSlug||params.get('articolo')||params.get('id');
+const selectedCategory=params.get('categoria');
 document.body.classList.toggle('article-view',Boolean(query));
-const {data,error}=await db.from('news_articles').select('id,slug,title,excerpt,content,cover_url,image_urls,published_at,created_at,updated_at').eq('published',true).order('published_at',{ascending:false}).limit(100);
+const {data,error}=await db.from('news_articles').select('id,slug,title,excerpt,content,cover_url,image_urls,category,published_at,created_at,updated_at').eq('published',true).order('published_at',{ascending:false}).limit(100);
 root.replaceChildren();
+if(!query&&selectedCategory){const heading=document.createElement('h2');heading.textContent='Notizie: '+selectedCategory;root.before(heading)}
 if(error){root.textContent='Impossibile caricare le notizie al momento.';}
 else if(!data?.length){root.textContent='Le notizie ufficiali saranno pubblicate qui a breve.';}
 else if(query){

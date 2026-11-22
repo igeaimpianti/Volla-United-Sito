@@ -118,6 +118,42 @@ const menu=document.querySelector('#menu'),nav=document.querySelector('#navlinks
     }
     const title=document.createElement('strong');title.textContent=name||'AVVERSARIO DA CONFERMARE';panel.appendChild(title);return panel;
   };
+  const resultsStage=document.getElementById('vu-results-stage');
+  const resultsCounter=document.getElementById('vu-results-index');
+  const romeDate=new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Rome',year:'numeric',month:'2-digit',day:'2-digit'});
+  let games=[],resultsIndex=0,resultsKey=null;
+  const clean=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+  const paintResults=()=>{
+    if(!games.length){
+      resultsStage.textContent='Nessun risultato confermato disponibile.';
+      resultsCounter.textContent='—';
+      return;
+    }
+    const game=games[resultsIndex];
+    resultsStage.innerHTML='<div class="vu-results-game"><div class="vu-results-team">'+clean(game.homeTeam)+'</div><div><div class="vu-results-score">'+clean(game.score)+'</div><div class="vu-results-meta">'+clean(game.dateLabel||game.date)+'</div></div><div class="vu-results-team">'+clean(game.awayTeam)+'</div></div>';
+    resultsCounter.textContent=(resultsIndex+1)+' / '+games.length;
+  };
+  const updateResults=(rows,now)=>{
+    const today=romeDate.format(now);
+    const latest=rows.filter(match=>(volla(match.homeTeam)||volla(match.awayTeam))&&completed(match.score)&&match.date&&match.date<=today)
+      .sort((a,b)=>b.date.localeCompare(a.date)||(b.time||'').localeCompare(a.time||'')).slice(0,8);
+    const key=JSON.stringify(latest);
+    if(key===resultsKey)return;
+    games=latest;
+    resultsKey=key;
+    resultsIndex=0;
+    paintResults();
+  };
+  const moveResult=direction=>{
+    if(!games.length)return;
+    resultsIndex=(resultsIndex+direction+games.length)%games.length;
+    paintResults();
+  };
+  document.getElementById('vu-results-prev').onclick=()=>moveResult(-1);
+  document.getElementById('vu-results-next').onclick=()=>moveResult(1);
+  if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    setInterval(()=>{if(!document.hidden)moveResult(1)},5500);
+  }
   const load=async()=>{
     try{
       const response=await fetch('./site-data.json?v=20261115b',{cache:'no-store'});
@@ -125,6 +161,7 @@ const menu=document.querySelector('#menu'),nav=document.querySelector('#navlinks
       const data=await response.json();
       const rows=(data.firstTeam&&data.firstTeam.fullCalendar)||[];
       const now=Date.now();
+      updateResults(rows,now);
       const matches=rows.filter(m=>(volla(m.homeTeam)||volla(m.awayTeam))&&/^\d{4}-\d{2}-\d{2}$/.test(m.date||''))
         .map(match=>({match,start:kickoff(match)}))
         .filter(({match,start})=>Number.isFinite(start)&&!/rinviat|postpon|annullat|cancel/i.test([match.status,match.venue,match.score].join(' ')))
@@ -154,6 +191,7 @@ const menu=document.querySelector('#menu'),nav=document.querySelector('#navlinks
       target=!awaitingResult&&next.time?selected.start:null;
     }catch(err){
       console.warn('Prossima gara:',err);
+      if(resultsKey===null)resultsStage.textContent='Risultati temporaneamente non disponibili.';
       versus.replaceChildren();
       dateLine.textContent='CALENDARIO TEMPORANEAMENTE NON DISPONIBILE';
       note.textContent='Consulta il Centro Partite per gli aggiornamenti.';
@@ -170,4 +208,4 @@ const menu=document.querySelector('#menu'),nav=document.querySelector('#navlinks
   void load().then(tick);
   setInterval(tick,1000);
   setInterval(()=>void load(),300000);
-})();</script><script id="vu-results-script">(function(){const root=document.getElementById('vu-results-stage'),counter=document.getElementById('vu-results-index');if(!root)return;let games=[],index=0;const clean=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));function paint(){if(!games.length){root.textContent='Nessun risultato confermato disponibile.';counter.textContent='—';return}const m=games[index];root.innerHTML='<div class="vu-results-game"><div class="vu-results-team">'+clean(m.homeTeam)+'</div><div><div class="vu-results-score">'+clean(m.score)+'</div><div class="vu-results-meta">'+clean(m.dateLabel||m.date)+'</div></div><div class="vu-results-team">'+clean(m.awayTeam)+'</div></div>';counter.textContent=(index+1)+' / '+games.length}function move(d){if(games.length){index=(index+d+games.length)%games.length;paint()}}document.getElementById('vu-results-prev').onclick=()=>move(-1);document.getElementById('vu-results-next').onclick=()=>move(1);const readResults=url=>fetch(url,{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('no data');return r.json()});readResults('./site-data.json?v=20261115b').then(d=>{const rows=d?.firstTeam?.fullCalendar||[];games=rows.filter(m=>/VOLLA\s*UNITED/i.test((m.homeTeam||'')+' '+(m.awayTeam||''))&&/^\s*\d+\s*[-–:]\s*\d+\s*$/.test(m.score||'')&&m.date&&m.date<=new Date().toLocaleDateString('en-CA')).sort((a,b)=>b.date.localeCompare(a.date)).slice(0,8);paint()}).catch(()=>{root.textContent='Risultati temporaneamente non disponibili.'});if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches)setInterval(()=>{if(!document.hidden)move(1)},5500)})();</script><script type="module" src="/news-home.js?v=5"></script></body></html>
+})();</script><script type="module" src="/news-home.js?v=5"></script></body></html>

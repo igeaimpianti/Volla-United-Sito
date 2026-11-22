@@ -3,6 +3,7 @@
 const renderMatchReplays = (() => {
   const dateInRome = new Intl.DateTimeFormat('sv-SE', {timeZone: 'Europe/Rome'});
   const previousRender = new WeakMap();
+  const hasReplay = match => /^[A-Za-z0-9_-]{11}$/.test(match.youtubeId || '');
 
   function element(tag, className, text) {
     const node = document.createElement(tag);
@@ -21,7 +22,7 @@ const renderMatchReplays = (() => {
     );
     card.append(element('p', 'match-replay-date', match.dateLabel || match.date), result);
 
-    if (/^[A-Za-z0-9_-]{11}$/.test(match.youtubeId || '')) {
+    if (hasReplay(match)) {
       const link = element('a', 'match-replay-link');
       link.href = 'https://www.youtube.com/watch?v=' + match.youtubeId;
       link.setAttribute('aria-label', 'Guarda ' + match.homeTeam + ' – ' + match.awayTeam + ' su YouTube');
@@ -43,7 +44,7 @@ const renderMatchReplays = (() => {
       /VOLLA\s*UNITED/i.test(match.homeTeam) || /VOLLA\s*UNITED/i.test(match.awayTeam)
     ).filter(match =>
       match.date && match.date <= today && /^\s*\d+\s*[-–:]\s*\d+\s*$/.test(match.score)
-    ).sort((a, b) =>
+    ).filter(match => !('replaysOnly' in list.dataset) || hasReplay(match)).sort((a, b) =>
       b.date.localeCompare(a.date) || (b.time || '').localeCompare(a.time || '')
     ).slice(0, list.dataset.limit ? Number(list.dataset.limit) : undefined);
 
@@ -52,6 +53,6 @@ const renderMatchReplays = (() => {
     previousRender.set(list, key);
     list.replaceChildren(...(results.length
       ? results.map(matchCard)
-      : [element('p', 'match-replay-status', 'Nessun risultato confermato disponibile.')]));
+      : [element('p', 'match-replay-status', 'Nessun replay disponibile.')]));
   };
 })();

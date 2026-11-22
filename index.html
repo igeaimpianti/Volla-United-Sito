@@ -84,6 +84,13 @@ const menu=document.querySelector('#menu'),nav=document.querySelector('#navlinks
   const dateLine=section.querySelector('.united-next-date');
   const note=section.querySelector('.united-next-note');
   const kicker=section.querySelector('.united-next-kicker');
+  const countdown=section.querySelector('.united-countdown');
+  const romeOffset=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Rome',timeZoneName:'longOffset'});
+  const kickoff=match=>{
+    const midday=new Date(match.date+'T12:00:00Z');
+    const offset=romeOffset.formatToParts(midday).find(part=>part.type==='timeZoneName').value.slice(3);
+    return Date.parse(match.date+'T'+(match.time||'15:00')+':00'+offset);
+  };
   let target=null,activeId='';
   const volla=name=>/VOLLA\s*UNITED/i.test(String(name||''));
   const completed=score=>/^\s*\d+\s*[-–:]\s*\d+\s*$/.test(String(score||''));
@@ -112,8 +119,15 @@ const menu=document.querySelector('#menu'),nav=document.querySelector('#navlinks
       const data=await response.json();
       const rows=(data.firstTeam&&data.firstTeam.fullCalendar)||[];
       const now=Date.now();
-      const upcoming=rows.filter(m=>(volla(m.homeTeam)||volla(m.awayTeam))&&!completed(m.score)&&m.date&&new Date(m.date+'T'+(m.time||'15:00')+':00').getTime()>now).sort((a,b)=>(a.date+' '+(a.time||'15:00')).localeCompare(b.date+' '+(b.time||'15:00')));
-      const next=upcoming[0];
+      const matches=rows.filter(m=>(volla(m.homeTeam)||volla(m.awayTeam))&&/^\d{4}-\d{2}-\d{2}$/.test(m.date||''))
+        .map(match=>({match,start:kickoff(match)}))
+        .filter(({match,start})=>Number.isFinite(start)&&!/rinviat|postpon|annullat|cancel/i.test([match.status,match.venue,match.score].join(' ')))
+        .sort((a,b)=>a.start-b.start);
+      const previous=matches.findLast(game=>game.start<=now);
+      const awaitingResult=previous&&!completed(previous.match.score);
+      const selected=awaitingResult?previous:matches.find(game=>game.start>now&&!completed(game.match.score));
+      const next=selected?.match;
+      countdown.style.display=next&&!awaitingResult&&next.time?'':'none';
       if(!next){
         versus.replaceChildren();
         dateLine.textContent='PROSSIMA GARA DA CONFERMARE';
@@ -121,23 +135,24 @@ const menu=document.querySelector('#menu'),nav=document.querySelector('#navlinks
         kicker.textContent='⚽ PRIMA SQUADRA · PROMOZIONE CAMPANIA · GIRONE B';
         target=null;activeId='';return;
       }
-      const id=next.date+'|'+next.homeTeam+'|'+next.awayTeam;
+      const id=next.date+'|'+next.time+'|'+next.homeTeam+'|'+next.awayTeam;
       if(id!==activeId){
         versus.replaceChildren(logo(next.homeTeam),document.createElement('b'),logo(next.awayTeam));
         versus.children[1].textContent='VS';
-        const when=new Date(next.date+'T'+(next.time||'15:00')+':00');
-        const dateLabel=when.toLocaleDateString('it-IT',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+        const when=new Date(selected.start);
+        const dateLabel=when.toLocaleDateString('it-IT',{timeZone:'Europe/Rome',weekday:'long',day:'numeric',month:'long',year:'numeric'});
         dateLine.textContent=dateLabel.toLocaleUpperCase('it-IT')+(next.time?' · ORE '+next.time:' · ORARIO DA CONFERMARE');
-        note.textContent=next.time?'Gara in programma secondo il calendario disponibile. Orario soggetto a variazioni.':'Orario non ancora confermato.';
         activeId=id;
       }
-      target=new Date(next.date+'T'+(next.time||'15:00')+':00').getTime();
+      note.textContent=awaitingResult?'In attesa del risultato finale.':next.time?'Gara in programma secondo il calendario disponibile. Orario soggetto a variazioni.':'Orario non ancora confermato.';
+      target=!awaitingResult&&next.time?selected.start:null;
     }catch(err){
       console.warn('Prossima gara:',err);
       versus.replaceChildren();
       dateLine.textContent='CALENDARIO TEMPORANEAMENTE NON DISPONIBILE';
       note.textContent='Consulta il Centro Partite per gli aggiornamenti.';
-      target=null;
+      target=null;activeId='';
+      countdown.style.display='none';
     }
   };
   const tick=()=>{

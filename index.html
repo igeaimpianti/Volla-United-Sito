@@ -158,7 +158,10 @@ const menu=document.querySelector('#menu'),nav=document.querySelector('#navlinks
   const tcWidgetId='94e9e03a-43ad-4573-ab6d-0829547ca206';
   const teamKey=name=>name.normalize('NFD').toUpperCase().replace(/[^A-Z0-9]/g,'').replace(/^VOLLAUNITED2024$/,'VOLLAUNITED');
   const matchKey=match=>[match.date,match.round,match.homeTeam,match.awayTeam].join('|');
-  const matchUrls=new Map();
+  const matchUrls=new Map([
+    ['2026-11-22|11|MASSA LUBRENSE|VOLLA UNITED 2024',
+      tcOrigin+'/Campania/Promozione/GironeB/Partita/11.8/massa-lubrense-volla-united-2024']
+  ]);
   let widgetResult=null;
   let loading=false;
   const fetchTuttocampo=async url=>{

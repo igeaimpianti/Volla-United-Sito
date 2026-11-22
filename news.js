@@ -8,7 +8,18 @@ const pageSlug=location.pathname.match(/^\/notizie\/([a-z0-9-]+)\.html$/i)?.[1]|
 const query=pageSlug||params.get('articolo')||params.get('id');
 const selectedCategory=params.get('categoria');
 document.body.classList.toggle('article-view',Boolean(query));
-const {data,error}=await db.from('news_articles').select('id,slug,title,excerpt,content,cover_url,image_urls,category,published_at,created_at,updated_at').eq('published',true).order('published_at',{ascending:false}).limit(100);
+const columns='id,slug,title,excerpt,content,cover_url,image_urls,category,published_at,created_at,updated_at';
+let request=db.from('news_articles').select(columns).eq('published',true);
+if(query){
+ const uuid=/^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$/i;
+ request=uuid.test(query)?request.or('slug.eq.'+query+',id.eq.'+query):request.eq('slug',query);
+}else{
+ request=request.order('published_at',{ascending:false}).limit(100);
+}
+const {data,error}=await request;
+if(error&&root.children.length&&(pageSlug||(!query&&!selectedCategory))){
+ console.warn('Impossibile aggiornare le notizie, uso la versione pubblicata.',error);
+}else{
 root.replaceChildren();
 if(!query&&selectedCategory){const heading=document.createElement('h2');heading.textContent='Notizie: '+selectedCategory;root.before(heading)}
 if(error){root.textContent='Impossibile caricare le notizie al momento.';}
@@ -17,7 +28,7 @@ else if(query){
  const item=data.find(x=>x.slug===query||x.id===query);
  if(!item){root.textContent='Articolo non disponibile.';}
  else {
-  root.className='single';const date=document.createElement('div');date.className='date';date.textContent=fmt(item.published_at||item.created_at);
+  root.className='single';const date=document.createElement('time');date.className='date';date.dateTime=new Date(item.published_at||item.created_at).toISOString();date.textContent=fmt(date.dateTime);
   const title=document.createElement('h1');title.textContent=item.title;
   const lead=document.createElement('p');lead.className='lead';lead.textContent=item.excerpt||'';
   root.append(date,title,lead);
@@ -149,8 +160,9 @@ else if(query){
   const copy=document.createElement('div');copy.className='vu-home-news-copy';
   const date=document.createElement('span');date.className='vu-home-news-date';date.textContent=fmt(item.published_at||item.created_at);
   const title=document.createElement('h2');title.textContent=item.title;
-  const excerpt=document.createElement('p');excerpt.textContent=item.excerpt||item.content.slice(0,180);
+  const excerpt=document.createElement('p');excerpt.textContent=item.excerpt||(item.content||'').slice(0,180);
   const more=document.createElement('span');more.className='vu-home-news-more';more.textContent='LEGGI LA NEWS →';
   const category=document.createElement('span');category.className='vu-home-news-date';category.textContent=item.category||'News';copy.append(category,date,title,excerpt,more);card.append(copy);root.append(card);
  }
+}
 }

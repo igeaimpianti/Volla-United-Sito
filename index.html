@@ -156,12 +156,15 @@ const menu=document.querySelector('#menu'),nav=document.querySelector('#navlinks
   }
   const tcOrigin='https://www.tuttocampo.it';
   const tcWidgetId='94e9e03a-43ad-4573-ab6d-0829547ca206';
-  const teamKey=name=>name.normalize('NFD').toUpperCase().replace(/[^A-Z0-9]/g,'').replace(/^VOLLAUNITED2024$/,'VOLLAUNITED');
+  const teamKey=name=>name.normalize('NFD').toUpperCase()
+    .replace(/^\s*(?:A\.?\s*S\.?\s*D\.?|S\.?\s*S\.?\s*D\.?|A\.?\s*C\.?)\s+/,'')
+    .replace(/[^A-Z0-9]/g,'').replace(/20\d{2}$/,'');
+  const sameTeam=(left,right)=>{
+    const a=teamKey(left),b=teamKey(right);
+    return Boolean(a&&b&&(a===b||Math.min(a.length,b.length)>=10&&(a.startsWith(b)||b.startsWith(a))));
+  };
   const matchKey=match=>[match.date,match.round,match.homeTeam,match.awayTeam].join('|');
-  const matchUrls=new Map([
-    ['2026-11-22|11|MASSA LUBRENSE|VOLLA UNITED 2024',
-      tcOrigin+'/Campania/Promozione/GironeB/Partita/11.8/massa-lubrense-volla-united-2024']
-  ]);
+  const matchUrls=new Map();
   let widgetResult=null;
   let liveOnScreen=null;
   let loading=false;
@@ -186,8 +189,8 @@ const menu=document.querySelector('#menu'),nav=document.querySelector('#navlinks
       try{
         const calendar=await fetchTuttocampo(tcOrigin+'/WidgetV2/Risultati/'+tcWidgetId+'/'+match.round+'?y='+season);
         const rows=[...calendar.content.querySelectorAll('tr.match')].filter(item=>
-          teamKey(item.querySelector('.team.home .team-name')?.textContent||'')===teamKey(match.homeTeam)&&
-          teamKey(item.querySelector('.team.away .team-name')?.textContent||'')===teamKey(match.awayTeam));
+          sameTeam(item.querySelector('.team.home .team-name')?.textContent||'',match.homeTeam)&&
+          sameTeam(item.querySelector('.team.away .team-name')?.textContent||'',match.awayTeam));
         if(rows.length===1){
           row=rows[0];
           const href=row.querySelector('.details a.info')?.getAttribute('href')||'';
@@ -202,14 +205,14 @@ const menu=document.querySelector('#menu'),nav=document.querySelector('#navlinks
       const panel=page.content.querySelector('.match-result');
       if(!panel)return null;
       const field=selector=>panel.querySelector(selector)?.textContent.trim()||'';
-      if(teamKey(field('.home-team a span'))!==teamKey(match.homeTeam)||
-        teamKey(field('.away-team a span'))!==teamKey(match.awayTeam))return null;
+      if(!sameTeam(field('.home-team a span'),match.homeTeam)||
+        !sameTeam(field('.away-team a span'),match.awayTeam))return null;
       if(address!==widgetUrl)matchUrls.set(key,page.url);
       panel.dataset.liveSource=address===widgetUrl?'widget':'detail';
       return panel;
     };
     let panel=null;
-    for(const address of [url,widgetUrl].filter(Boolean)){
+    for(const address of [url,row?widgetUrl:null].filter(Boolean)){
       try{panel=await readPage(address);}catch(err){console.warn('Tabellino Tuttocampo:',err);}
       if(panel)break;
     }
@@ -307,33 +310,34 @@ const menu=document.querySelector('#menu'),nav=document.querySelector('#navlinks
         .filter(({match,start})=>Number.isFinite(start)&&!/rinviat|postpon|annullat|cancel/i.test([match.status,match.venue,match.score].join(' ')))
         .sort((a,b)=>a.start-b.start);
       const previous=matches.findLast(game=>game.start<=now);
-      if(previous&&!completed(previous.match.score)&&now-previous.start<4*60*60*1000){
+      const today=romeDate.format(now);
+      const candidate=matches.find(game=>game.match.date===today&&!completed(game.match.score))||
+        (previous&&now-previous.start<4*60*60*1000?previous:null);
+      if(candidate&&!completed(candidate.match.score)){
         try{
-          const snapshot=await readWidget(previous.match);
+          const snapshot=await readWidget(candidate.match);
           if(snapshot&&(!widgetResult?.finished||matchKey(widgetResult.match)!==matchKey(snapshot.match)||snapshot.finished)){
             const sameMinute=widgetResult&&matchKey(widgetResult.match)===matchKey(snapshot.match)&&
               widgetResult.period===snapshot.period&&widgetResult.minute===snapshot.minute;
-            snapshot.confirmedAt=sameMinute?widgetResult.confirmedAt:clockAnchor(snapshot,previous.start);
+            snapshot.confirmedAt=sameMinute?widgetResult.confirmedAt:clockAnchor(snapshot,candidate.start);
             widgetResult=snapshot;
           }
         }catch(err){console.warn('Diretta Tuttocampo:',err);}
       }
-      const widgetMatch=widgetResult?.match;
-      const currentWidget=previous&&widgetMatch&&widgetMatch.date===previous.match.date&&
-        widgetMatch.homeTeam===previous.match.homeTeam&&widgetMatch.awayTeam===previous.match.awayTeam&&
-        !completed(previous.match.score)?widgetResult:null;
-      if(currentWidget?.finished)previous.match.score=currentWidget.score;
+      const currentWidget=candidate&&widgetResult&&matchKey(widgetResult.match)===matchKey(candidate.match)&&
+        !completed(candidate.match.score)?widgetResult:null;
+      if(currentWidget?.finished)candidate.match.score=currentWidget.score;
       updateResults(rows,now);
       const awaitingResult=previous&&!completed(previous.match.score);
-      const live=awaitingResult&&currentWidget&&now-previous.start<4*60*60*1000?currentWidget:null;
+      const live=currentWidget&&!currentWidget.finished?currentWidget:null;
       liveOnScreen=live;
       renderScorers(live);
       const heading=section.querySelector('h2');
       const headingText=live?'PARTITA IN CORSO':'LA PROSSIMA SFIDA';
       if(heading.textContent!==headingText)heading.innerHTML=live?'PARTITA <span>IN CORSO</span>':'LA PROSSIMA <span>SFIDA</span>';
-      const selected=awaitingResult?previous:matches.find(game=>game.start>now&&!completed(game.match.score));
+      const selected=live?candidate:awaitingResult?previous:matches.find(game=>game.start>now&&!completed(game.match.score));
       const next=selected?.match;
-      countdown.style.display=next&&!awaitingResult&&next.time?'':'none';
+      countdown.style.display=next&&!live&&!awaitingResult&&next.time?'':'none';
       if(!next){
         versus.replaceChildren();
         dateLine.textContent='PROSSIMA GARA DA CONFERMARE';
@@ -357,7 +361,7 @@ const menu=document.querySelector('#menu'),nav=document.querySelector('#navlinks
       if(live)paintLiveClock();
       else dateLine.textContent=dateLine.dataset.scheduledLabel;
       note.textContent=live?'Dati da Tuttocampo · ~ indica un minuto stimato.':awaitingResult?'In attesa del risultato finale.':next.time?'Gara in programma secondo il calendario disponibile. Orario soggetto a variazioni.':'Orario non ancora confermato.';
-      target=!awaitingResult&&next.time?selected.start:null;
+      target=!live&&!awaitingResult&&next.time?selected.start:null;
     }catch(err){
       console.warn('Prossima gara:',err);
       liveOnScreen=null;

@@ -218,13 +218,22 @@ const menu=document.querySelector('#menu'),nav=document.querySelector('#navlinks
     const rowAway=row?.querySelector('.team.away .goal');
     const rowState=rowHome?.getAttribute('title')||'';
     const pageState=field('.match-state');
+    const isHalftime=state=>/intervallo|\bint\.(?:\s*\)|$)|fine (?:primo|1[°º]?) tempo/i.test(state);
     const elapsed=state=>Number(state.match(/(\d+)(?:\s*\+\s*\d+)?\s*['’′]/)?.[1]||0);
-    const useRow=Boolean(rowState)&&!/^partita terminata$/i.test(pageState)&&
-      (!pageState||panel.dataset.liveSource==='widget'||elapsed(rowState)>elapsed(pageState));
+    const phase=state=>{
+      if(/^partita terminata$/i.test(state))return 4;
+      if(/secondo tempo|2[°º]?\s*tempo/i.test(state)||elapsed(state)>45)return 3;
+      if(isHalftime(state))return 2;
+      return state?1:0;
+    };
+    const rowPhase=phase(rowState);
+    const pagePhase=phase(pageState);
+    const useRow=Boolean(rowState)&&
+      (rowPhase>pagePhase||rowPhase===pagePhase&&elapsed(rowState)>elapsed(pageState));
     const state=useRow?rowState:pageState;
     const goal=panel?.querySelector('.match-goal');
     const finished=/^partita terminata$/i.test(state);
-    const halftime=/intervallo|fine (?:primo|1[°º]?) tempo/i.test(state);
+    const halftime=isHalftime(state);
     if(!finished&&!halftime&&!/^partita in corso/i.test(state)&&!goal?.classList.contains('live'))return null;
     const home=useRow?rowHome.textContent.trim():field('.match-goal .home');
     const away=useRow?(rowAway?.textContent.trim()||''):field('.match-goal .away');
@@ -233,7 +242,7 @@ const menu=document.querySelector('#menu'),nav=document.querySelector('#navlinks
     const firstHalfScore=/\d+\s*[-–:]\s*\d+/.test(field('.first-half'));
     let period='IN CORSO';
     if(halftime)period='INTERVALLO';
-    else if(/secondo tempo|2[°º]?\s*tempo/i.test(state)||firstHalfScore)period='2° TEMPO';
+    else if(/secondo tempo|2[°º]?\s*tempo/i.test(state)||firstHalfScore||elapsed(state)>45)period='2° TEMPO';
     else if(/primo tempo|1[°º]?\s*tempo/i.test(state)||minute&&parseInt(minute,10)<=45)period='1° TEMPO';
     const scorers=['home','away'].map(side=>
       [...(panel?.querySelectorAll('.match-scorers ul.'+side+' li > a:first-child')||[])]

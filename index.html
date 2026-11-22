@@ -163,6 +163,7 @@ const menu=document.querySelector('#menu'),nav=document.querySelector('#navlinks
       tcOrigin+'/Campania/Promozione/GironeB/Partita/11.8/massa-lubrense-volla-united-2024']
   ]);
   let widgetResult=null;
+  let liveOnScreen=null;
   let loading=false;
   const fetchTuttocampo=async url=>{
     const response=await fetch(url,{cache:'no-store',signal:AbortSignal.timeout(8000)});
@@ -233,7 +234,7 @@ const menu=document.querySelector('#menu'),nav=document.querySelector('#navlinks
     const scorers=['home','away'].map(side=>
       [...(panel?.querySelectorAll('.match-scorers ul.'+side+' li > a:first-child')||[])]
         .map(link=>link.textContent.trim()).filter(Boolean));
-    return {match,finished,scorers,score:home+'–'+away,label:period+(minute&&!halftime?' · '+minute.trim()+'′':'')};
+    return {match,finished,scorers,score:home+'–'+away,period,minute:halftime?'':(minute||'').trim()};
   };
   const scorersPanel=document.createElement('div');
   scorersPanel.className='united-live-scorers';
@@ -255,6 +256,17 @@ const menu=document.querySelector('#menu'),nav=document.querySelector('#navlinks
     });
     scorersPanel.replaceChildren(...lists);
   };
+  const paintLiveClock=()=>{
+    if(!liveOnScreen)return;
+    const {period,minute,confirmedAt}=liveOnScreen;
+    const confirmed=Number(minute);
+    const limit=period==='1° TEMPO'?45:period==='2° TEMPO'?90:0;
+    const added=minute&&confirmed>0&&confirmed<limit
+      ?Math.min(Math.floor((Date.now()-confirmedAt)/60000),limit-confirmed):0;
+    const shown=added?'~'+(confirmed+added):minute;
+    const label=period+(shown?' · '+shown+'′':'');
+    if(dateLine.textContent!==label)dateLine.textContent=label;
+  };
   const load=async()=>{
     if(loading)return;
     loading=true;
@@ -272,7 +284,12 @@ const menu=document.querySelector('#menu'),nav=document.querySelector('#navlinks
       if(previous&&!completed(previous.match.score)&&now-previous.start<4*60*60*1000){
         try{
           const snapshot=await readWidget(previous.match);
-          if(snapshot&&(!widgetResult?.finished||widgetResult.match.date!==snapshot.match.date||snapshot.finished))widgetResult=snapshot;
+          if(snapshot&&(!widgetResult?.finished||matchKey(widgetResult.match)!==matchKey(snapshot.match)||snapshot.finished)){
+            const sameMinute=widgetResult&&matchKey(widgetResult.match)===matchKey(snapshot.match)&&
+              widgetResult.period===snapshot.period&&widgetResult.minute===snapshot.minute;
+            snapshot.confirmedAt=sameMinute?widgetResult.confirmedAt:Date.now();
+            widgetResult=snapshot;
+          }
         }catch(err){console.warn('Diretta Tuttocampo:',err);}
       }
       const widgetMatch=widgetResult?.match;
@@ -283,6 +300,7 @@ const menu=document.querySelector('#menu'),nav=document.querySelector('#navlinks
       updateResults(rows,now);
       const awaitingResult=previous&&!completed(previous.match.score);
       const live=awaitingResult&&currentWidget&&now-previous.start<4*60*60*1000?currentWidget:null;
+      liveOnScreen=live;
       renderScorers(live);
       const heading=section.querySelector('h2');
       const headingText=live?'PARTITA IN CORSO':'LA PROSSIMA SFIDA';
@@ -310,11 +328,13 @@ const menu=document.querySelector('#menu'),nav=document.querySelector('#navlinks
       const score=live?live.score:'VS';
       if(center.textContent!==score)center.textContent=score;
       center.classList.toggle('united-live-score',Boolean(live));
-      dateLine.textContent=live?live.label:dateLine.dataset.scheduledLabel;
-      note.textContent=live?'Dati in diretta da Tuttocampo.':awaitingResult?'In attesa del risultato finale.':next.time?'Gara in programma secondo il calendario disponibile. Orario soggetto a variazioni.':'Orario non ancora confermato.';
+      if(live)paintLiveClock();
+      else dateLine.textContent=dateLine.dataset.scheduledLabel;
+      note.textContent=live?'Dati da Tuttocampo · ~ indica un minuto stimato.':awaitingResult?'In attesa del risultato finale.':next.time?'Gara in programma secondo il calendario disponibile. Orario soggetto a variazioni.':'Orario non ancora confermato.';
       target=!awaitingResult&&next.time?selected.start:null;
     }catch(err){
       console.warn('Prossima gara:',err);
+      liveOnScreen=null;
       renderScorers(null);
       if(resultsKey===null)resultsStage.textContent='Risultati temporaneamente non disponibili.';
       versus.replaceChildren();
@@ -327,6 +347,7 @@ const menu=document.querySelector('#menu'),nav=document.querySelector('#navlinks
     }
   };
   const tick=()=>{
+    paintLiveClock();
     const left=target?Math.max(0,target-Date.now()):0;
     const values={days:Math.floor(left/86400000),hours:Math.floor(left/3600000)%24,minutes:Math.floor(left/60000)%60,seconds:Math.floor(left/1000)%60};
     Object.entries(values).forEach(([key,val])=>{const el=document.getElementById('united-'+key);if(el)el.textContent=target?String(val).padStart(2,'0'):'--'});

@@ -98,6 +98,12 @@ const menu=document.querySelector('#menu'),nav=document.querySelector('#navlinks
     const panel=document.createElement('div');
     if(volla(name)){
       const img=document.createElement('img');img.src='assets/logo.webp';img.alt='Volla United';panel.appendChild(img);
+    }else if(/CAPRESE|GERMANO\s+BLADIER/i.test(String(name||''))){
+      const img=document.createElement('img');
+      img.src='/assets/caprese-logo.svg';
+      img.alt='Stemma ASD Germano Bladier Caprese';
+      img.style.background='transparent';
+      panel.appendChild(img);
     }else if(/MASSA\s*LUBRENSE/i.test(String(name||''))){
       const img=document.createElement('img');
       img.src='/assets/massa-lubrense-transparent.png?v=20261115-4';

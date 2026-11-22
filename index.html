@@ -200,6 +200,7 @@ const menu=document.querySelector('#menu'),nav=document.querySelector('#navlinks
       if(teamKey(field('.home-team a span'))!==teamKey(match.homeTeam)||
         teamKey(field('.away-team a span'))!==teamKey(match.awayTeam))return null;
       if(address!==widgetUrl)matchUrls.set(key,page.url);
+      panel.dataset.liveSource=address===widgetUrl?'widget':'detail';
       return panel;
     };
     let panel=null;
@@ -212,7 +213,9 @@ const menu=document.querySelector('#menu'),nav=document.querySelector('#navlinks
     const rowAway=row?.querySelector('.team.away .goal');
     const rowState=rowHome?.getAttribute('title')||'';
     const pageState=field('.match-state');
-    const useRow=Boolean(rowState)&&!/^partita terminata$/i.test(pageState);
+    const elapsed=state=>Number(state.match(/(\d+)(?:\s*\+\s*\d+)?\s*['’′]/)?.[1]||0);
+    const useRow=Boolean(rowState)&&!/^partita terminata$/i.test(pageState)&&
+      (!pageState||panel.dataset.liveSource==='widget'||elapsed(rowState)>elapsed(pageState));
     const state=useRow?rowState:pageState;
     const goal=panel?.querySelector('.match-goal');
     const finished=/^partita terminata$/i.test(state);

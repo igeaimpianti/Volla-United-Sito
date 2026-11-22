@@ -173,36 +173,53 @@ const menu=document.querySelector('#menu'),nav=document.querySelector('#navlinks
   };
   const readWidget=async match=>{
     const key=matchKey(match);
+    const year=Number(match.date.slice(0,4))-(Number(match.date.slice(5,7))<7?1:0);
+    const season=year+'-'+String(year+1).slice(-2);
+    let row=null;
     let url=matchUrls.get(key);
-    if(!url){
-      if(!Number.isInteger(match.round)||match.round<1)return null;
-      const year=Number(match.date.slice(0,4))-(Number(match.date.slice(5,7))<7?1:0);
-      const season=year+'-'+String(year+1).slice(-2);
-      const calendar=await fetchTuttocampo(tcOrigin+'/WidgetV2/Risultati/'+tcWidgetId+'/'+match.round+'?y='+season);
-      const rows=[...calendar.content.querySelectorAll('tr.match')].filter(row=>
-        teamKey(row.querySelector('.team.home .team-name')?.textContent||'')===teamKey(match.homeTeam)&&
-        teamKey(row.querySelector('.team.away .team-name')?.textContent||'')===teamKey(match.awayTeam));
-      if(rows.length!==1)return null;
-      const href=rows[0].querySelector('.details a.info')?.getAttribute('href')||'';
-      const path=href.match(/^https:\/\/www\.tuttocampo\.it\/(?:\d{4}-\d{2}\/)?(Partita\/\d+\.\d+_CP\.P\.B)(?:\?|$)/i)?.[1];
-      if(!path)return null;
-      url=tcOrigin+'/'+path;
+    if(Number.isInteger(match.round)&&match.round>0){
+      try{
+        const calendar=await fetchTuttocampo(tcOrigin+'/WidgetV2/Risultati/'+tcWidgetId+'/'+match.round+'?y='+season);
+        const rows=[...calendar.content.querySelectorAll('tr.match')].filter(item=>
+          teamKey(item.querySelector('.team.home .team-name')?.textContent||'')===teamKey(match.homeTeam)&&
+          teamKey(item.querySelector('.team.away .team-name')?.textContent||'')===teamKey(match.awayTeam));
+        if(rows.length===1){
+          row=rows[0];
+          const href=row.querySelector('.details a.info')?.getAttribute('href')||'';
+          const path=href.match(/^https:\/\/www\.tuttocampo\.it\/(?:\d{4}-\d{2}\/)?(Partita\/\d+\.\d+_CP\.P\.B)(?:\?|$)/i)?.[1];
+          if(!url&&path)url=tcOrigin+'/'+path;
+        }
+      }catch(err){console.warn('Calendario Tuttocampo:',err);}
     }
-    const page=await fetchTuttocampo(url);
-    const field=selector=>page.content.querySelector(selector)?.textContent.trim()||'';
-    if(teamKey(field('.home-team a span'))!==teamKey(match.homeTeam)||
-      teamKey(field('.away-team a span'))!==teamKey(match.awayTeam)){
-      matchUrls.delete(key);
-      return null;
+    const widgetUrl=tcOrigin+'/WidgetV2/Partita/'+tcWidgetId;
+    const readPage=async address=>{
+      const page=await fetchTuttocampo(address);
+      const panel=page.content.querySelector('.match-result');
+      if(!panel)return null;
+      const field=selector=>panel.querySelector(selector)?.textContent.trim()||'';
+      if(teamKey(field('.home-team a span'))!==teamKey(match.homeTeam)||
+        teamKey(field('.away-team a span'))!==teamKey(match.awayTeam))return null;
+      if(address!==widgetUrl)matchUrls.set(key,page.url);
+      return panel;
+    };
+    let panel=null;
+    for(const address of [url,widgetUrl].filter(Boolean)){
+      try{panel=await readPage(address);}catch(err){console.warn('Tabellino Tuttocampo:',err);}
+      if(panel)break;
     }
-    matchUrls.set(key,page.url);
-    const state=field('.match-state');
-    const goal=page.content.querySelector('.match-goal');
+    const field=selector=>panel?.querySelector(selector)?.textContent.trim()||'';
+    const rowHome=row?.querySelector('.team.home .goal');
+    const rowAway=row?.querySelector('.team.away .goal');
+    const rowState=rowHome?.getAttribute('title')||'';
+    const pageState=field('.match-state');
+    const useRow=Boolean(rowState)&&!/^partita terminata$/i.test(pageState);
+    const state=useRow?rowState:pageState;
+    const goal=panel?.querySelector('.match-goal');
     const finished=/^partita terminata$/i.test(state);
     const halftime=/intervallo|fine (?:primo|1[°º]?) tempo/i.test(state);
     if(!finished&&!halftime&&!/^partita in corso/i.test(state)&&!goal?.classList.contains('live'))return null;
-    const home=field('.match-goal .home');
-    const away=field('.match-goal .away');
+    const home=useRow?rowHome.textContent.trim():field('.match-goal .home');
+    const away=useRow?(rowAway?.textContent.trim()||''):field('.match-goal .away');
     if(!/^\d+$/.test(home)||!/^\d+$/.test(away))return null;
     const minute=state.match(/(\d+(?:\s*\+\s*\d+)?)\s*['’′]/)?.[1];
     const firstHalfScore=/\d+\s*[-–:]\s*\d+/.test(field('.first-half'));
@@ -211,7 +228,7 @@ const menu=document.querySelector('#menu'),nav=document.querySelector('#navlinks
     else if(/secondo tempo|2[°º]?\s*tempo/i.test(state)||firstHalfScore)period='2° TEMPO';
     else if(/primo tempo|1[°º]?\s*tempo/i.test(state)||minute&&parseInt(minute,10)<=45)period='1° TEMPO';
     const scorers=['home','away'].map(side=>
-      [...page.content.querySelectorAll('.match-scorers ul.'+side+' li > a:first-child')]
+      [...(panel?.querySelectorAll('.match-scorers ul.'+side+' li > a:first-child')||[])]
         .map(link=>link.textContent.trim()).filter(Boolean));
     return {match,finished,scorers,score:home+'–'+away,label:period+(minute&&!halftime?' · '+minute.trim()+'′':'')};
   };

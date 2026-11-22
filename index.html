@@ -166,11 +166,15 @@ const menu=document.querySelector('#menu'),nav=document.querySelector('#navlinks
   let liveOnScreen=null;
   let loading=false;
   const fetchTuttocampo=async url=>{
-    const response=await fetch(url,{cache:'no-store',signal:AbortSignal.timeout(8000)});
+    const requestUrl=new URL(url);
+    requestUrl.searchParams.set('live',String(Math.floor(Date.now()/30000)));
+    const response=await fetch(requestUrl,{cache:'no-store',signal:AbortSignal.timeout(8000)});
     if(!response.ok)throw Error('Tuttocampo HTTP '+response.status);
     const template=document.createElement('template');
     template.innerHTML=await response.text();
-    return {content:template.content,url:response.url};
+    const canonical=new URL(response.url);
+    canonical.searchParams.delete('live');
+    return {content:template.content,url:canonical.href};
   };
   const readWidget=async match=>{
     const key=matchKey(match);
@@ -256,11 +260,24 @@ const menu=document.querySelector('#menu'),nav=document.querySelector('#navlinks
     });
     scorersPanel.replaceChildren(...lists);
   };
+  const clockAnchor=(snapshot,start)=>{
+    const key='volla-live-clock';
+    const id=matchKey(snapshot.match)+'|'+snapshot.period+'|'+snapshot.minute;
+    const now=Date.now();
+    const minute=Number(snapshot.minute);
+    let anchor=snapshot.period==='1° TEMPO'&&minute>0?Math.min(now,start+minute*60000):now;
+    try{
+      const saved=JSON.parse(localStorage.getItem(key)||'null');
+      if(saved?.id===id&&Number.isFinite(saved.anchor)&&saved.anchor<=now)anchor=Math.min(anchor,saved.anchor);
+      localStorage.setItem(key,JSON.stringify({id,anchor}));
+    }catch{}
+    return anchor;
+  };
   const paintLiveClock=()=>{
     if(!liveOnScreen)return;
     const {period,minute,confirmedAt}=liveOnScreen;
     const confirmed=Number(minute);
-    const limit=period==='1° TEMPO'?45:period==='2° TEMPO'?90:0;
+    const limit=period==='1° TEMPO'||period==='2° TEMPO'&&confirmed<45?45:period==='2° TEMPO'?90:0;
     const added=minute&&confirmed>0&&confirmed<limit
       ?Math.min(Math.floor((Date.now()-confirmedAt)/60000),limit-confirmed):0;
     const shown=added?'~'+(confirmed+added):minute;
@@ -287,7 +304,7 @@ const menu=document.querySelector('#menu'),nav=document.querySelector('#navlinks
           if(snapshot&&(!widgetResult?.finished||matchKey(widgetResult.match)!==matchKey(snapshot.match)||snapshot.finished)){
             const sameMinute=widgetResult&&matchKey(widgetResult.match)===matchKey(snapshot.match)&&
               widgetResult.period===snapshot.period&&widgetResult.minute===snapshot.minute;
-            snapshot.confirmedAt=sameMinute?widgetResult.confirmedAt:Date.now();
+            snapshot.confirmedAt=sameMinute?widgetResult.confirmedAt:clockAnchor(snapshot,previous.start);
             widgetResult=snapshot;
           }
         }catch(err){console.warn('Diretta Tuttocampo:',err);}

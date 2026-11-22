@@ -12,6 +12,17 @@ const renderMatchReplays = (() => {
     return node;
   }
 
+  function replayLink(match, className, text) {
+    const link = element('a', className, text);
+    link.href = 'https://www.youtube.com/watch?v=' + match.youtubeId;
+    link.setAttribute('aria-label', text + ' – Guarda su YouTube');
+    return link;
+  }
+
+  function matchTitle(match) {
+    return match.homeTeam + ' – ' + match.awayTeam + ' ' + match.score.replace(/\s*[-–:]\s*/g, '–');
+  }
+
   function matchCard(match) {
     const card = element('article', 'match-replay-card');
     const result = element('div', 'match-replay-result');
@@ -23,9 +34,8 @@ const renderMatchReplays = (() => {
     card.append(element('p', 'match-replay-date', match.dateLabel || match.date), result);
 
     if (hasReplay(match)) {
-      const link = element('a', 'match-replay-link');
-      link.href = 'https://www.youtube.com/watch?v=' + match.youtubeId;
-      link.setAttribute('aria-label', 'Guarda ' + match.homeTeam + ' – ' + match.awayTeam + ' su YouTube');
+      const link = replayLink(match, 'match-replay-link', matchTitle(match));
+      link.textContent = '';
       const thumbnail = element('img', 'match-replay-thumbnail');
       thumbnail.alt = '';
       thumbnail.loading = 'lazy';
@@ -52,7 +62,9 @@ const renderMatchReplays = (() => {
     if (previousRender.get(list) === key) return;
     previousRender.set(list, key);
     list.replaceChildren(...(results.length
-      ? results.map(matchCard)
+      ? results.map((match, index) => index === 0
+        ? matchCard(match)
+        : replayLink(match, 'match-replay-row', matchTitle(match)))
       : [element('p', 'match-replay-status', 'Nessun replay disponibile.')]));
   };
 })();

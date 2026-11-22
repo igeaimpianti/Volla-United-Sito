@@ -1,0 +1,17 @@
+.match-replays { background: #111114; color: #fff; padding: clamp(36px, 6vw, 72px) 0; }
+.match-replays h2 { margin: 0 0 24px; font-size: clamp(28px, 5vw, 52px); line-height: 1.08; }
+.match-replays-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
+.match-replay-card { min-width: 0; display: flex; flex-direction: column; gap: 12px; padding: 14px; border: 1px solid #45454b; border-radius: 12px; background: #1b1b20; text-align: center; }
+.match-replay-date { margin: 0; color: #c8c8ce; font-size: 12px; }
+.match-replay-result { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 8px; align-items: center; }
+.match-replay-score { font-size: clamp(20px, 3vw, 28px); white-space: nowrap; }
+.match-replay-team { font-size: 13px; font-weight: 800; line-height: 1.25; overflow-wrap: anywhere; }
+.match-replay-link { position: relative; display: grid; place-items: end center; aspect-ratio: 16/9; margin-top: auto; overflow: hidden; border-radius: 8px; background: #303036; color: #fff; text-decoration: none; }
+.match-replay-thumbnail { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.match-replay-play { position: relative; margin: 10px; padding: 6px 10px; border-radius: 6px; background: #19191d; color: #fff; font-size: 13px; font-weight: 800; }
+.match-replay-link:hover .match-replay-play, .match-replay-link:focus-visible .match-replay-play { background: #a51d3b; }
+.match-replay-link:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.match-replay-status { grid-column: 1 / -1; }
+.match-replays-all { display: inline-block; margin-top: 20px; color: #fff; font-weight: 800; text-decoration: underline; }
+@media (max-width: 950px) { .match-replays-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .match-replays-grid { grid-template-columns: minmax(0, 1fr); } }

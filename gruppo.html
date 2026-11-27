@@ -54,7 +54,7 @@ body{background:#fff!important}
 }
 </style><script>
 const legacyCategory = new URLSearchParams(location.search).get('categoria')?.trim().toUpperCase();
-const indexedRosters = new Set(['2011 REGIONALI', '2013 REGIONALI', '2015 NERA', '2016 NERA', '2016 ROSSA', '2017', '2019', '2020', '2021/22']);
+const indexedRosters = new Set(['2010 REGIONALI','2011 REGIONALI', '2013 REGIONALI', '2015 NERA', '2016 NERA', '2016 ROSSA', '2017', '2019', '2020', '2021/22']);
 if (indexedRosters.has(legacyCategory)) {
   location.replace('/categorie/' + legacyCategory.toLowerCase().replace(/[ /]/g, '-') + '.html');
 }
